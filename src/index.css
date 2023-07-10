@@ -600,6 +600,11 @@ video {
   grid-column: 1 / -1;
 }
 
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .mb-\[32px\] {
   margin-bottom: 32px;
 }
@@ -682,6 +687,10 @@ video {
 
 .w-\[65\%\] {
   width: 65%;
+}
+
+.max-w-\[1440px\] {
+  max-width: 1440px;
 }
 
 .cursor-pointer {
