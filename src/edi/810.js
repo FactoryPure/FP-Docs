@@ -1,7 +1,12 @@
+import BackButton from "./components/BackButton";
+
 export default function EightTen() {
     return (
-        <h1 class="text-offwhite">
-            EDI 810 Implementation Guide
-        </h1>
+        <>
+            <BackButton previousHash={"#guides"} />
+            <h1 class="text-offwhite">
+                EDI 810 Implementation Guide
+            </h1>   
+        </>
     )
 }
