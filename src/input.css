@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+
+body {
+    background-color: #05111C;
+}
+.background-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    z-index: -1;
+}
+.background-pattern-1 {
+    width: 33.33vw;
+    height: 200%;
+    background-image: url("/public/abstract-113-svgrepo-com.svg");
+    background-repeat: repeat-y;
+    background-size: 33.33vw 66.66vh;
+    animation: slideup 15s infinite
+}
+.background-pattern-2 {
+    width: 33.33vw;
+    height: 200%;
+    background-image: url("/public/abstract-113-svgrepo-com.svg");
+    background-repeat: repeat-y;
+    background-size: 33.33vw 66.66vh;
+    z-index: -1;
+    margin-top: -50%;
+    animation: slidedown 17s infinite
+}
+.background-pattern-3 {
+    top: 0;
+    left: 0;
+    width: 33.33vw;
+    height: 200%;
+    background-image: url("/public/abstract-113-svgrepo-com.svg");
+    background-repeat: repeat-y;
+    background-size: 33.33vw 66.66vh;
+    z-index: -1;
+    animation: slideup 19s infinite;
+}
+@keyframes slideup {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-33.33%);
+    }
+}
+@keyframes slidedown {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(33.33%);
+    }
+}

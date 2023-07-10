@@ -1,24 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
+import Layout from './layout/Layout';
+import Router from './routes/Routes';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {window.location.pathname === "/" && 
+        <div class="absolute background-pattern">
+          <div class="background-pattern-1">&nbsp;</div>
+          <div class="background-pattern-2">&nbsp;</div>
+          <div class="background-pattern-3">&nbsp;</div>
+        </div>
+      }
+      <Layout>
+        <Router />
+      </Layout>
+    </>
   );
 }
 
