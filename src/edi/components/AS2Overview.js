@@ -32,7 +32,7 @@ export default function AS2Overview() {
                     <p className="text-offwhite">ZZ*FACTORYPUREEDIP</p>
                 </div>
             </div>
-            <p className="text-offwhite mb-[16px]">If you need to trade, replace, or update a certificate please contact us to set up a meeting.</p>
+            <p className="text-offwhite mb-[32px]">If you need to trade, replace, or update a certificate please contact us to set up a meeting.</p>
         </div>
     )
 }
