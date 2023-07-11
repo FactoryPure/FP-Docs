@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import ComingSoon from "../api/ComingSoon";
 import Hero from "../components/Hero";
 import ContactScreen from "../contact/ContactScreen";
 import EightTen from "../edi/810";
@@ -22,7 +23,7 @@ export default function Router() {
                     <Route path="997" element={ <NineNineSeven /> } />                
                 </Route>
                 <Route path="api">
-
+                    <Route index={true} element={ <ComingSoon /> } />
                 </Route>
                 <Route path="/contact" element={ <ContactScreen /> } />
             </Routes>

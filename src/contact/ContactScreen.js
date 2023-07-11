@@ -30,7 +30,7 @@ export default function ContactScreen() {
             {
             success === "pending" 
                 ?
-                    <form onSubmit={handleSubmit} className="w-full max-w-[600px] flex flex-col gap-[8px] mx-auto bg-darkaccent p-[32px] rounded-[4px] items-center" data-netlify="true">
+                    <form onSubmit={handleSubmit} className="w-full max-w-[600px] flex flex-col gap-[8px] mx-auto bg-darkaccent p-[32px] rounded-[4px] items-center shadow-small" data-netlify="true">
                         <input type="hidden" name="form-name" value="contact" />
                         <div className="flex flex-col gap-[4px] w-full">
                             <label htmlFor="name" className="text-offwhite text-[12px] font-bold uppercase leading-[1]">Name</label>
