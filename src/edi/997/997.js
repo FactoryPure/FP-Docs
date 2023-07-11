@@ -1,7 +1,9 @@
 import { HashLink } from "react-router-hash-link";
 import BackButton from "../components/BackButton";
+import GS from "./components/GS";
 import ISA from "./components/ISA";
 import Overview from "./components/Overview";
+import ST from "./components/ST";
 
 export default function EightFortySix() {
     return (
@@ -16,6 +18,8 @@ export default function EightFortySix() {
                 <div className="w-[70%]">
                     <Overview />
                     <ISA />
+                    <GS />
+                    <ST />
                 </div>
                 <div className="text-offwhite w-[30%] rounded-[4px] p-[32px] shadow-small bg-darkaccent h-fit sticky top-[32px]">
                     <h3 className="text-offwhite font-bold mb-[8px] leading-[1]">On this page</h3>
