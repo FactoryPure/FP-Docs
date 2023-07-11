@@ -4,7 +4,7 @@ export default function EightFifty() {
     return (
         <>
             <BackButton previousHash={"#guides"} />
-            <h1 class="text-offwhite">
+            <h1 className="text-offwhite">
                 EDI 850 Implementation Guide
             </h1>
         </>

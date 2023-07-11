@@ -1,10 +1,10 @@
 export default function Topbar() {
     return (
-        <nav class="shadow-small bg-darkaccent">
-            <div class="max-w-[1440px] mx-auto flex gap-[64px] items-center px-[36px] py-[12px]">
-                <a class="font-bai font-medium text-[20px] text-offwhite block w-fit" href="/">
-                    <p class="leading-[1]">FactoryPure</p>
-                    <p class="font-light text-accent leading-[1] flex justify-between">
+        <nav className="shadow-small bg-darkaccent">
+            <div className="max-w-[1440px] mx-auto flex gap-[64px] items-center px-[36px] py-[12px]">
+                <a className="font-bai font-medium text-[20px] text-offwhite block w-fit" href="/">
+                    <p className="leading-[1]">FactoryPure</p>
+                    <p className="font-light text-accent leading-[1] flex justify-between">
                         <span>D</span>
                         <span>e</span>
                         <span>v</span>
@@ -17,7 +17,7 @@ export default function Topbar() {
                         <span>s</span>
                     </p>
                 </a>
-                <ul class="text-offwhite font-bold flex items-center gap-[32px]">
+                <ul className="text-offwhite font-bold flex items-center gap-[32px]">
                     <li>
                         <a href="/edi">
                             EDI
@@ -29,7 +29,7 @@ export default function Topbar() {
                         </a>
                     </li>
                 </ul>
-                <a class="uppercase ml-auto py-[4px] px-[16px] bg-accent rounded-[4px] text-darkness font-bold" href="/contact">
+                <a className="uppercase ml-auto py-[4px] px-[16px] bg-accent rounded-[4px] text-darkness font-bold" href="/contact">
                     Contact
                 </a>
             </div>

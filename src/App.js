@@ -7,10 +7,10 @@ function App() {
   return (
     <>
       {(window.location.pathname === "/" || window.location.pathname === "/contact") && 
-        <div class="absolute background-pattern">
-          <div class="background-pattern-1">&nbsp;</div>
-          <div class="background-pattern-2">&nbsp;</div>
-          <div class="background-pattern-3">&nbsp;</div>
+        <div className="absolute background-pattern">
+          <div className="background-pattern-1">&nbsp;</div>
+          <div className="background-pattern-2">&nbsp;</div>
+          <div className="background-pattern-3">&nbsp;</div>
         </div>
       }
       <Layout>
