@@ -2,11 +2,11 @@ import { Route, Routes } from "react-router-dom";
 import ComingSoon from "../api/ComingSoon";
 import Hero from "../components/Hero";
 import ContactScreen from "../contact/ContactScreen";
-import EightTen from "../edi/810";
+import EightTen from "../edi/810/810";
 import EightFortySix from "../edi/846/846";
-import EightFifty from "../edi/850";
-import EightFiftySix from "../edi/856";
-import NineNineSeven from "../edi/997";
+import EightFifty from "../edi/850/850";
+import EightFiftySix from "../edi/856/856";
+import NineNineSeven from "../edi/997/997";
 import EDIOverview from "../edi/EDIOverview";
 
 export default function Router() {
