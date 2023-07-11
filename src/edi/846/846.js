@@ -30,8 +30,8 @@ export default function EightFortySix() {
                     <GS />
                     <ST />
                     <BIA />
-                    <div className="p-[8px] bg-darkgrey rounded-[4px] shadow-small mb-[32px]">
-                        <p className="text-fire text-[20px] font-bold leading-[1] mb-[8px] text-[18px]">LIN LOOP</p>
+                    <div id="lin-loop" className="p-[8px] bg-darkgrey rounded-[4px] shadow-small mb-[32px]">
+                        <p className="text-fire text-[20px] font-bold leading-[1] mb-[8px] text-[18px]">LIN LOOP - Repeat: &gt;1</p>
                         <LIN />
                         <PID />
                         <CTP />
@@ -59,6 +59,9 @@ export default function EightFortySix() {
                         </li>
                         <li>
                             <HashLink to="#bia">BIA Segment</HashLink>
+                        </li>
+                        <li>
+                            <HashLink to="#lin-loop">LIN Loop</HashLink>
                         </li>
                         <li>
                             <HashLink to="#lin">LIN Segment</HashLink>

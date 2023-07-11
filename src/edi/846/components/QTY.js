@@ -10,7 +10,7 @@ export default function QTY() {
                     <div>Segment Name</div>
                     <div>Req</div>
                     <div>Max Use</div>
-                    <div>Repeat</div>
+                    <div>Loop</div>
                     <div>Notes</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
@@ -18,7 +18,7 @@ export default function QTY() {
                     <div>Quanitity Information</div>
                     <div>M</div>
                     <div>1</div>
-                    <div>LOOP - LIN</div>
+                    <div>LIN</div>
                     <div></div>
                 </div>
             </div>
