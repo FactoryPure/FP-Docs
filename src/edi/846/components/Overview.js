@@ -82,6 +82,14 @@ export default function Overview() {
                     <div></div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>LDT</div>
+                    <div>Lead Time</div>
+                    <div>O</div>
+                    <div>1</div>
+                    <div>LIN</div>
+                    <div></div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>QTY</div>
                     <div>Item Available Quantity</div>
                     <div>M</div>

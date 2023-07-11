@@ -7,6 +7,7 @@ import GE from "./components/GE";
 import GS from "./components/GS";
 import IEA from "./components/IEA";
 import ISA from "./components/ISA";
+import LDT from "./components/LDT";
 import LIN from "./components/LIN";
 import Overview from "./components/Overview";
 import PID from "./components/PID";
@@ -35,6 +36,7 @@ export default function EightFortySix() {
                         <LIN />
                         <PID />
                         <CTP />
+                        <LDT />
                         <QTY />
                     </div>
                     <CTT />
@@ -71,6 +73,9 @@ export default function EightFortySix() {
                         </li>
                         <li>
                             <HashLink to="#ctp">CTP Segment</HashLink>
+                        </li>
+                        <li>
+                            <HashLink to="#ldt">LDT Segment</HashLink>
                         </li>
                         <li>
                             <HashLink to="#qty">QTY Segment</HashLink>
