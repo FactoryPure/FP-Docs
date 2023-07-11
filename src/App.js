@@ -6,7 +6,7 @@ import Router from './routes/Routes';
 function App() {
   return (
     <>
-      {window.location.pathname === "/" && 
+      {(window.location.pathname === "/" || window.location.pathname === "/contact") && 
         <div class="absolute background-pattern">
           <div class="background-pattern-1">&nbsp;</div>
           <div class="background-pattern-2">&nbsp;</div>

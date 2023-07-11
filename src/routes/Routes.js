@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Hero from "../components/Hero";
+import ContactScreen from "../contact/ContactScreen";
 import EightTen from "../edi/810";
 import EightFortySix from "../edi/846";
 import EightFifty from "../edi/850";
@@ -23,6 +24,7 @@ export default function Router() {
                 <Route path="api">
 
                 </Route>
+                <Route path="/contact" element={ <ContactScreen /> } />
             </Routes>
         </>
     )
