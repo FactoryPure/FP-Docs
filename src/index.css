@@ -753,6 +753,18 @@ video {
   grid-template-columns: 1fr 200px 1fr 1fr 1fr 1fr;
 }
 
+.grid-cols-\[1fr_1fr_200px_1fr_1fr_1fr_1fr_1fr_1fr\] {
+  grid-template-columns: 1fr 1fr 200px 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.grid-cols-\[1fr_200px_1fr_1fr_1fr_1fr_1fr_1fr\] {
+  grid-template-columns: 1fr 200px 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.grid-cols-\[1fr_1fr_200px_1fr_1fr_1fr_1fr\] {
+  grid-template-columns: 1fr 1fr 200px 1fr 1fr 1fr 1fr;
+}
+
 .flex-col {
   flex-direction: column;
 }

@@ -3,7 +3,7 @@ import ComingSoon from "../api/ComingSoon";
 import Hero from "../components/Hero";
 import ContactScreen from "../contact/ContactScreen";
 import EightTen from "../edi/810";
-import EightFortySix from "../edi/846";
+import EightFortySix from "../edi/846/846";
 import EightFifty from "../edi/850";
 import EightFiftySix from "../edi/856";
 import NineNineSeven from "../edi/997";
