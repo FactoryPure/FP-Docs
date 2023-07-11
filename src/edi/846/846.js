@@ -76,13 +76,13 @@ export default function EightFortySix() {
                             <HashLink to="#ctt">CTT Segment</HashLink>
                         </li>
                         <li>
-                            <HashLink to="#ctt">SE Trailer</HashLink>
+                            <HashLink to="#se">SE Trailer</HashLink>
                         </li>
                         <li>
-                            <HashLink to="#ctt">GE Trailer</HashLink>
+                            <HashLink to="#ge">GE Trailer</HashLink>
                         </li>
                         <li>
-                            <HashLink to="#IEA">IEA Trailer</HashLink>
+                            <HashLink to="#iea">IEA Trailer</HashLink>
                         </li>
                     </ul>
                 </div>
