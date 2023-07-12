@@ -3,14 +3,15 @@ import { HashLink } from "react-router-hash-link";
 export default function Overview() {
     return (
         <div id="overview" className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkaccent mb-[32px]">
-            <h2 className="text-offwhite border-b pb-[8px] font-bold text-[20px] leading-[1] mb-[16px]">Headings</h2>
+            <h2 className="text-offwhite border-b pb-[8px] font-bold text-[20px] leading-[1] mb-[16px]">Overview</h2>
+            <p className="text-fire font-bold leading-[1] mb-[16px] text-[18px]">Headings</p>
             <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr_1fr] gap-x-[16px] mb-[32px]">
                 <div className="text-offwhite font-bold text-[12px] uppercase grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>Id</div>
                     <div>Segment Name</div>
                     <div>Req</div>
                     <div>Max Use</div>
-                    <div>Repeat</div>
+                    <div>Loop</div>
                     <div>Notes</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
@@ -46,14 +47,14 @@ export default function Overview() {
                     <div></div>
                 </div>
             </div>
-            <h2 className="text-offwhite border-b pb-[8px] font-bold text-[20px] leading-[1] mb-[16px]">Details</h2>
+            <p className="text-fire font-bold leading-[1] mb-[16px] text-[18px]">Details</p>
             <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr_1fr] gap-x-[16px] mb-[32px]">
                 <div className="text-offwhite font-bold text-[12px] uppercase grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>Id</div>
                     <div>Segment Name</div>
                     <div>Req</div>
                     <div>Max Use</div>
-                    <div>Repeat</div>
+                    <div>Loop</div>
                     <div>Notes</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
@@ -61,7 +62,7 @@ export default function Overview() {
                     <div>Item Identification</div>
                     <div>M</div>
                     <div>1</div>
-                    <div>LOOP - LIN</div>
+                    <div>LIN</div>
                     <div></div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
@@ -69,7 +70,7 @@ export default function Overview() {
                     <div>Item Description</div>
                     <div>O</div>
                     <div>1</div>
-                    <div>LOOP - LIN</div>
+                    <div>LIN</div>
                     <div></div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
@@ -77,7 +78,15 @@ export default function Overview() {
                     <div>Item Cost</div>
                     <div>M</div>
                     <div>1</div>
-                    <div>LOOP - LIN</div>
+                    <div>LIN</div>
+                    <div></div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>LDT</div>
+                    <div>Lead Time</div>
+                    <div>O</div>
+                    <div>1</div>
+                    <div>LIN</div>
                     <div></div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
@@ -85,18 +94,18 @@ export default function Overview() {
                     <div>Item Available Quantity</div>
                     <div>M</div>
                     <div>1</div>
-                    <div>LOOP - LIN</div>
+                    <div>LIN</div>
                     <div></div>
                 </div>
             </div>
-            <h2 className="text-offwhite border-b pb-[8px] font-bold text-[20px] leading-[1] mb-[16px]">Summary</h2>
+            <p className="text-fire font-bold leading-[1] mb-[16px] text-[18px]">Summary</p>
             <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr_1fr] gap-x-[16px] mb-[32px]">
                 <div className="text-offwhite font-bold text-[12px] uppercase grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>Id</div>
                     <div>Segment Name</div>
                     <div>Req</div>
                     <div>Max Use</div>
-                    <div>Repeat</div>
+                    <div>Loop</div>
                     <div>Notes</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
