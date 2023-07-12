@@ -35,7 +35,7 @@ export default function Overview() {
                     <div>M</div>
                     <div>1</div>
                     <div></div>
-                    <div></div>
+                    <div>N1/0100</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-darkgrey">
                     <div>AK1</div>
@@ -43,7 +43,7 @@ export default function Overview() {
                     <div>M</div>
                     <div>1</div>
                     <div></div>
-                    <div></div>
+                    <div>N1/0200</div>
                 </div>
             </div>
             <h2 className="text-offwhite border-b pb-[8px] font-bold text-[20px] leading-[1] mb-[16px]">Details</h2>

@@ -2,7 +2,7 @@ import { HashLink } from "react-router-hash-link";
 
 export default function ISA() {
     return (
-        <div id="isa" className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkaccent">
+        <div id="isa" className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkaccent mb-[32px]">
             <h2 className="text-offwhite border-b pb-[8px] font-bold text-[20px] leading-[1] mb-[16px]">ISA Segment</h2>
             <p className="text-offwhite mb-[16px]">To start and identify an interchange of one functional group and interchange-related control segments</p>
             <p className="text-fire font-bold leading-[1] mb-[16px] text-[18px]">Usage</p>
