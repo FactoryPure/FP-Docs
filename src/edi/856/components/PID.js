@@ -1,8 +1,8 @@
-export default function HLShipment() {
+export default function PID() {
     return (
-        <div id="hls" className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkaccent mb-[16px]">
-            <h2 className="text-offwhite border-b pb-[8px] font-bold text-[20px] leading-[1] mb-[16px]">HL (Shipment) Segment</h2>
-            <p className="text-offwhite mb-[16px]">To identify dependencies among and the content of hierarchically related groups of data segments.</p>
+        <div id="pid" className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkaccent mb-[16px]">
+            <h2 className="text-offwhite border-b pb-[8px] font-bold text-[20px] leading-[1] mb-[16px]">PID Segment</h2>
+            <p className="text-offwhite mb-[16px]">To describe the item in free-form format. Assists in identifiying discrepancies in product map.</p>
             <p className="text-fire font-bold leading-[1] mb-[16px] text-[18px]">Usage</p>
             <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] mb-[32px]">
                 <div className="text-offwhite font-bold text-[12px] uppercase grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
@@ -14,12 +14,12 @@ export default function HLShipment() {
                     <div>Notes</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
-                    <div>HL</div>
-                    <div>Hierarchical Loop</div>
+                    <div>PID</div>
+                    <div>Item Description</div>
                     <div>M</div>
                     <div>1</div>
-                    <div>HL</div>
-                    <div>Code = S (Shipment)</div>
+                    <div>HL (Item)</div>
+                    <div></div>
                 </div>
             </div>
             <p className="text-fire font-bold leading-[1] mb-[16px] text-[18px]">Elements</p>
@@ -34,31 +34,52 @@ export default function HLShipment() {
                     <div>Codes</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
-                    <div>HL01</div>
-                    <div>628</div>
-                    <div>Hierarchical ID Number</div>
+                    <div>PID01</div>
+                    <div>349</div>
+                    <div>Item Descrption Type</div>
                     <div>M</div>
-                    <div>AN</div>
-                    <div>1/12</div>
-                    <div></div>
+                    <div>ID</div>
+                    <div>1/1</div>
+                    <div>F</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
-                    <div>HL02</div>
-                    <div>734</div>
-                    <div>Hierarchical Parent ID Number</div>
+                    <div>PID02</div>
+                    <div>750</div>
+                    <div>Product Characteristic Code</div>
+                    <div>O</div>
+                    <div>ID</div>
+                    <div>2/3</div>
+                    <div></div>
+                    <div className="col-span-full px-[8px] text-[14px] my-[8px] font-bold text-accent">This field is not used by FactoryPure.</div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>PID03</div>
+                    <div>559</div>
+                    <div>Agency Qualifier Code</div>
+                    <div>O</div>
+                    <div>ID</div>
+                    <div>2/2</div>
+                    <div></div>
+                    <div className="col-span-full px-[8px] text-[14px] my-[8px] font-bold text-accent">This field is not used by FactoryPure.</div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>PID04</div>
+                    <div>751</div>
+                    <div>Product Description Code</div>
                     <div>O</div>
                     <div>AN</div>
                     <div>1/12</div>
                     <div></div>
+                    <div className="col-span-full px-[8px] text-[14px] my-[8px] font-bold text-accent">This field is not used by FactoryPure.</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
-                    <div>HL03</div>
-                    <div>735</div>
-                    <div>Hierarchical Level Code</div>
+                    <div>PID05</div>
+                    <div>352</div>
+                    <div>Description</div>
                     <div>M</div>
                     <div>AN</div>
-                    <div>1/12</div>
-                    <div>S, O, P, I</div>
+                    <div>1/80</div>
+                    <div></div>
                 </div>
             </div>
         </div>

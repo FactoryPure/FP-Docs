@@ -18,7 +18,7 @@ export default function LIN() {
                     <div>Item Identification</div>
                     <div>M</div>
                     <div>1</div>
-                    <div>LIN</div>
+                    <div>HL (Item)</div>
                     <div></div>
                 </div>
             </div>

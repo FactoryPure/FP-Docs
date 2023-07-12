@@ -169,20 +169,20 @@ export default function Overview() {
                     <div></div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
-                    <div>PID</div>
-                    <div>Line Item Description</div>
-                    <div>O</div>
-                    <div>1</div>
-                    <div>HL (Item)</div>
-                    <div></div>
-                </div>
-                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>SN1</div>
                     <div>Item Detail - Shipment</div>
                     <div>M</div>
                     <div>1</div>
                     <div>HL (Item)</div>
                     <div>Quantity &amp; units</div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>PID</div>
+                    <div>Line Item Description</div>
+                    <div>O</div>
+                    <div>1</div>
+                    <div>HL (Item)</div>
+                    <div></div>
                 </div>
             </div>
             <h2 className="text-offwhite border-b pb-[8px] font-bold text-[20px] leading-[1] mb-[16px]">Summary</h2>
