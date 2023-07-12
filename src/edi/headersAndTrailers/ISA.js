@@ -141,7 +141,7 @@ export default function ISA() {
                     <div>M</div>
                     <div>ID</div>
                     <div>5/5</div>
-                    <div>00401</div>
+                    <div>00400</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>ISA13</div>

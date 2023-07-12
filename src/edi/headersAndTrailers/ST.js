@@ -1,6 +1,6 @@
 import { HashLink } from "react-router-hash-link";
 
-export default function ST() {
+export default function ST({ transactionSetIdentifierCode }) {
     return (
         <div id="st" className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkaccent mb-[32px]">
             <h2 className="text-offwhite border-b pb-[8px] font-bold text-[20px] leading-[1] mb-[16px]">ST Header</h2>
@@ -42,7 +42,7 @@ export default function ST() {
                     <div>M</div>
                     <div>ID</div>
                     <div>3/3</div>
-                    <div>856</div>
+                    <div>{transactionSetIdentifierCode}</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>ST02</div>

@@ -12,8 +12,8 @@ import LIN from "./components/LIN";
 import Overview from "./components/Overview";
 import PID from "./components/PID";
 import QTY from "./components/QTY";
-import SE from "./components/SE";
-import ST from "./components/ST";
+import SE from "../headersAndTrailers/SE";
+import ST from "../headersAndTrailers/ST";
 
 export default function EightFortySix() {
     return (
@@ -28,8 +28,8 @@ export default function EightFortySix() {
                 <div className="w-[70%]">
                     <Overview />
                     <ISA />
-                    <GS />
-                    <ST />
+                    <GS functionalGroupIdentifierCode={"IB"} />
+                    <ST transactionSetIdentifierCode={846} />
                     <BIA />
                     <div id="lin-loop" className="p-[8px] bg-darkgrey rounded-[4px] shadow-small mb-[32px]">
                         <p className="text-fire text-[20px] font-bold leading-[1] mb-[8px] text-[18px]">LIN LOOP - Repeat: &gt;1</p>

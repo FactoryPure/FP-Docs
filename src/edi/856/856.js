@@ -4,9 +4,10 @@ import GE from "../headersAndTrailers/GE";
 import GS from "../headersAndTrailers/GS";
 import IEA from "../headersAndTrailers/IEA";
 import ISA from "../headersAndTrailers/ISA";
+import BSN from "./components/BSN";
 import Overview from "./components/Overview";
-import SE from "./components/SE";
-import ST from "./components/ST";
+import SE from "../headersAndTrailers/SE";
+import ST from "../headersAndTrailers/ST";
 
 export default function EightFiftySix() {
     return (
@@ -21,8 +22,9 @@ export default function EightFiftySix() {
                 <div className="w-[70%]">
                     <Overview />
                     <ISA />
-                    <GS />
-                    <ST />
+                    <GS functionalGroupIdentifierCode={"SH"} />
+                    <ST transactionSetIdentifierCode={856} />
+                    <BSN />
                     <SE />
                     <GE />
                     <IEA />

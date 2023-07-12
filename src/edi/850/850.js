@@ -2,9 +2,9 @@ import { HashLink } from "react-router-hash-link";
 import BackButton from "../components/BackButton";
 import Overview from "./components/Overview";
 import ISA from "../headersAndTrailers/ISA";
-import ST from "./components/ST";
+import ST from "../headersAndTrailers/ST";
 import GS from "../headersAndTrailers/GS";
-import SE from "./components/SE";
+import SE from "../headersAndTrailers/SE";
 import GE from "../headersAndTrailers/GE";
 import IEA from "../headersAndTrailers/IEA";
 import N9 from "./components/N9";
@@ -33,8 +33,8 @@ export default function EightFifty() {
                 <div className="w-[70%]">
                     <Overview />
                     <ISA />
-                    <GS />
-                    <ST />
+                    <GS functionalGroupIdentifierCode={"PO"} />
+                    <ST transactionSetIdentifierCode={850} />
                     <BEG />
                     <div id="n9-loop" className="p-[8px] bg-darkgrey rounded-[4px] shadow-small mb-[32px]">
                         <p className="text-fire text-[20px] font-bold leading-[1] mb-[8px] text-[18px]">N9 LOOP - Repeat: 1</p>
