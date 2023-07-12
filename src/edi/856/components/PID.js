@@ -1,6 +1,6 @@
 export default function PID() {
     return (
-        <div id="pid" className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkaccent mb-[16px]">
+        <div id="pid" className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkaccent">
             <h2 className="text-offwhite border-b pb-[8px] font-bold text-[20px] leading-[1] mb-[16px]">PID Segment</h2>
             <p className="text-offwhite mb-[16px]">To describe the item in free-form format. Assists in identifiying discrepancies in product map.</p>
             <p className="text-fire font-bold leading-[1] mb-[16px] text-[18px]">Usage</p>
