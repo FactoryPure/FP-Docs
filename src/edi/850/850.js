@@ -1,7 +1,14 @@
 import { HashLink } from "react-router-hash-link";
 import BackButton from "../components/BackButton";
-import ISA from "./components/ISA";
 import Overview from "./components/Overview";
+import ISA from "./components/ISA";
+import ST from "./components/ST";
+import GS from "./components/GS";
+import SE from "./components/SE";
+import GE from "./components/GE";
+import IEA from "./components/IEA";
+
+
 
 export default function EightFifty() {
     return (
@@ -16,6 +23,11 @@ export default function EightFifty() {
                 <div className="w-[70%]">
                     <Overview />
                     <ISA />
+                    <GS />
+                    <ST />
+                    <SE />
+                    <GE />
+                    <IEA />
                 </div>
                 <div className="text-offwhite w-[30%] rounded-[4px] p-[32px] shadow-small bg-darkaccent h-fit sticky top-[32px]">
                     <h3 className="text-offwhite font-bold mb-[8px] leading-[1]">On this page</h3>
