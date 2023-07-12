@@ -2,6 +2,10 @@ import { HashLink } from "react-router-hash-link";
 import BackButton from "../components/BackButton";
 import ISA from "../headersAndTrailers/ISA";
 import Overview from "./components/Overview";
+import GS from "../headersAndTrailers/GS";
+import IEA from "../headersAndTrailers/IEA";
+import GE from "../headersAndTrailers/GE";
+import ST from "./components/ST";
 
 export default function EightFortySix() {
     return (
@@ -16,6 +20,10 @@ export default function EightFortySix() {
                 <div className="w-[70%]">
                     <Overview />
                     <ISA />
+                    <GS />
+                    <ST />
+                    <GE />
+                    <IEA />
                 </div>
                 <div className="text-offwhite w-[30%] rounded-[4px] p-[32px] shadow-small bg-darkaccent h-fit sticky top-[32px]">
                     <h3 className="text-offwhite font-bold mb-[8px] leading-[1]">On this page</h3>

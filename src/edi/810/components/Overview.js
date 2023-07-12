@@ -38,8 +38,72 @@ export default function Overview() {
                     <div></div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
-                    <div>BIA</div>
-                    <div>Beginning segment for inventory advice</div>
+                    <div>BIG</div>
+                    <div>Beginning segment for Invoice</div>
+                    <div>M</div>
+                    <div>1</div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>NTE</div>
+                    <div>Note/Special Instruction</div>
+                    <div>O</div>
+                    <div>100</div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>CUR</div>
+                    <div>Currency</div>
+                    <div>M</div>
+                    <div>1</div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>N1</div>
+                    <div>Name</div>
+                    <div>M</div>
+                    <div>1</div>
+                    <div>N1</div>
+                    <div></div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>N3</div>
+                    <div>Address Information</div>
+                    <div>M</div>
+                    <div>1</div>
+                    <div>N1</div>
+                    <div></div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>N4</div>
+                    <div>Geographic Location</div>
+                    <div>M</div>
+                    <div>1</div>
+                    <div>N1</div>
+                    <div></div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>ITD</div>
+                    <div>Terms of Sale/Deferred Terms of Sale</div>
+                    <div>M</div>
+                    <div>1</div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>DTM</div>
+                    <div>Date/Time Reference</div>
+                    <div>M</div>
+                    <div>1</div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>FOB</div>
+                    <div>F.O.B. Related Instructions</div>
                     <div>M</div>
                     <div>1</div>
                     <div></div>
@@ -56,6 +120,22 @@ export default function Overview() {
                     <div>Loop</div>
                     <div>Notes</div>
                 </div>
+                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>IT1</div>
+                    <div>Baseline Item Data</div>
+                    <div>M</div>
+                    <div>1</div>
+                    <div>IT1</div>
+                    <div></div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>PID</div>
+                    <div>Product/Item Description</div>
+                    <div>M</div>
+                    <div>1</div>
+                    <div>PID</div>
+                    <div></div>
+                </div>
             </div>
             <h2 className="text-offwhite border-b pb-[8px] font-bold text-[20px] leading-[1] mb-[16px]">Summary</h2>
             <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr_1fr] gap-x-[16px] mb-[32px]">
@@ -68,11 +148,35 @@ export default function Overview() {
                     <div>Notes</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
-                    <div>CTT</div>
-                    <div>Transaction totals</div>
+                    <div>TDS</div>
+                    <div>Total Monetary Value Summary</div>
                     <div>M</div>
                     <div>1</div>
                     <div></div>
+                    <div></div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>TXI</div>
+                    <div>Tax Information</div>
+                    <div>M</div>
+                    <div>1</div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>CAD</div>
+                    <div>Carrier Detail</div>
+                    <div>M</div>
+                    <div>1</div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>ISS</div>
+                    <div>Invoice Shipment Summary</div>
+                    <div>M</div>
+                    <div>1</div>
+                    <div>ISS</div>
                     <div></div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">

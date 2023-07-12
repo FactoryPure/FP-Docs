@@ -59,7 +59,7 @@ export default function Overview() {
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey">
                     <div>AK2</div>
                     <div>Transaction Set Response Header</div>
-                    <div>O</div>
+                    <div>M</div>
                     <div>1</div>
                     <div>AK2</div>
                     <div>N1/0300L</div>
@@ -67,7 +67,7 @@ export default function Overview() {
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey">
                     <div>AK5</div>
                     <div>Transaction Set Response Trailer</div>
-                    <div>O</div>
+                    <div>M</div>
                     <div>1</div>
                     <div>AK2</div>
                     <div></div>
