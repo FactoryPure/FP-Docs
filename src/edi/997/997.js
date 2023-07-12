@@ -1,13 +1,16 @@
 import { HashLink } from "react-router-hash-link";
 import BackButton from "../components/BackButton";
-import GS from "./components/GS";
-import ISA from "./components/ISA";
+import GS from "../headersAndTrailers/GS";
+import ISA from "../headersAndTrailers/ISA";
 import Overview from "./components/Overview";
 import ST from "./components/ST";
 import AK1 from "./components/AK1.js";
 import AK2 from "./components/AK2";
 import AK5 from "./components/AK5";
 import AK9 from "./components/AK9";
+import SE from "./components/SE";
+import GE from "../headersAndTrailers/GE";
+import IEA from "../headersAndTrailers/IEA";
 
 export default function EightFortySix() {
     return (
@@ -31,7 +34,9 @@ export default function EightFortySix() {
                         <AK5 />
                     </div>
                     <AK9 />
-                    
+                    <SE />
+                    <GE />
+                    <IEA />
                 </div>
                 <div className="text-offwhite w-[30%] rounded-[4px] p-[32px] shadow-small bg-darkaccent h-fit sticky top-[32px]">
                     <h3 className="text-offwhite font-bold mb-[8px] leading-[1]">On this page</h3>
@@ -41,6 +46,27 @@ export default function EightFortySix() {
                         </li>
                         <li>
                             <HashLink to="#isa">ISA Segment</HashLink>
+                        </li>
+                        <li>
+                            <HashLink to="#ak1">AK1 Segment</HashLink>
+                        </li>
+                        <li>
+                            <HashLink to="#ak2">AK2 Segment</HashLink>
+                        </li>
+                        <li>
+                            <HashLink to="#ak5">AK5 Segment</HashLink>
+                        </li>
+                        <li>
+                            <HashLink to="#ak9">AK9 Segment</HashLink>
+                        </li>
+                        <li>
+                            <HashLink to="#se">SE Trailer</HashLink>
+                        </li>
+                        <li>
+                            <HashLink to="#ge">GE Trailer</HashLink>
+                        </li>
+                        <li>
+                            <HashLink to="#iea">IEA Trailer</HashLink>
                         </li>
                     </ul>
                 </div>

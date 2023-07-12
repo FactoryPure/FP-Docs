@@ -2,7 +2,7 @@ import { HashLink } from "react-router-hash-link";
 
 export default function AK5() {
     return (
-        <div id="AK5" className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkaccent mb-[32px]">
+        <div id="ak5" className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkaccent">
             <h2 className="text-offwhite border-b pb-[8px] font-bold text-[20px] leading-[1] mb-[16px]">AK5 Segment</h2>
             <p className="text-offwhite mb-[16px]">To acknowledge acceptance or rejection in a transaction set.</p>
             <p className="text-fire font-bold leading-[1] mb-[16px] text-[18px]">Usage</p>

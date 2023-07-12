@@ -3,10 +3,6 @@ import BackButton from "../components/BackButton";
 import BIA from "./components/BIA";
 import CTP from "./components/CTP";
 import CTT from "./components/CTT";
-import GE from "./components/GE";
-import GS from "./components/GS";
-import IEA from "./components/IEA";
-import ISA from "./components/ISA";
 import LDT from "./components/LDT";
 import LIN from "./components/LIN";
 import Overview from "./components/Overview";
@@ -14,6 +10,10 @@ import PID from "./components/PID";
 import QTY from "./components/QTY";
 import SE from "./components/SE";
 import ST from "./components/ST";
+import ISA from "../headersAndTrailers/ISA";
+import IEA from "../headersAndTrailers/IEA";
+import GS from "../headersAndTrailers/GS";
+import GE from "../headersAndTrailers/GE";
 
 export default function EightFortySix() {
     return (

@@ -1,10 +1,8 @@
-import { HashLink } from "react-router-hash-link";
-
-export default function AK9() {
+export default function SE() {
     return (
-        <div id="ak9" className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkaccent mb-[32px]">
-            <h2 className="text-offwhite border-b pb-[8px] font-bold text-[20px] leading-[1] mb-[16px]">AK9 Segment</h2>
-            <p className="text-offwhite mb-[16px]">To acknowledge acceptance or rejection of a functional group and report the number of included transaction sets from the original trailer, the accepted sets, and the received sets in this functional group.</p>
+        <div id="se" className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkaccent mb-[32px]">
+            <h2 className="text-offwhite border-b pb-[8px] font-bold text-[20px] leading-[1] mb-[16px]">SE Trailer</h2>
+            <p className="text-offwhite mb-[16px]">To indicate the end of the transaction set and provide the count of the transmitted segments (including the beginning ST and ending SE segments).</p>
             <p className="text-fire font-bold leading-[1] mb-[16px] text-[18px]">Usage</p>
             <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] mb-[32px]">
                 <div className="text-offwhite font-bold text-[12px] uppercase grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
@@ -16,10 +14,11 @@ export default function AK9() {
                     <div>Notes</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
-                    <div>AK9</div>
-                    <div>Functional Group Response Header</div>
+                    <div>SE</div>
+                    <div>Transaction Set Trailer</div>
                     <div>M</div>
                     <div>1</div>
+                    <div></div>
                     <div></div>
                 </div>
             </div>
@@ -35,39 +34,21 @@ export default function AK9() {
                     <div>Codes</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
-                    <div>AK901</div>
-                    <div>715</div>
-                    <div>Functional Group Acknowledge Code</div>
-                    <div>M</div>
-                    <div>ID</div>
-                    <div>2/2</div>
-                    <div>A, R</div>
-                </div>
-                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
-                    <div>AK902</div>
+                    <div>SE01</div>
                     <div>96</div>
-                    <div>Number of Transaction Sets Included</div>
+                    <div>Number of Included Segments</div>
                     <div>M</div>
                     <div>N0</div>
-                    <div>1/6</div>
+                    <div>1/10</div>
                     <div></div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
-                    <div>AK903</div>
-                    <div>123</div>
-                    <div>Number of Received Transaction Sets</div>
+                    <div>SE02</div>
+                    <div>329</div>
+                    <div>Transaction Set Control Number</div>
                     <div>M</div>
-                    <div>N0</div>
-                    <div>1/6</div>
-                    <div></div>
-                </div>
-                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey">
-                    <div>AK904</div>
-                    <div>2</div>
-                    <div>/number of Accepted Transaction Sets</div>
-                    <div>M</div>
-                    <div>N0</div>
-                    <div>1/6</div>
+                    <div>AN</div>
+                    <div>4/9</div>
                     <div></div>
                 </div>
             </div>

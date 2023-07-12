@@ -1,9 +1,9 @@
 import { HashLink } from "react-router-hash-link";
 import BackButton from "../components/BackButton";
 import Overview from "./components/Overview";
-import ISA from "./components/ISA";
+import ISA from "../headersAndTrailers/ISA";
 import ST from "./components/ST";
-import GS from "./components/GS";
+import GS from "../headersAndTrailers/GS";
 import SE from "./components/SE";
 import GE from "./components/GE";
 import IEA from "./components/IEA";
