@@ -38,8 +38,8 @@ export default function Overview() {
                     <div></div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
-                    <div>BIA</div>
-                    <div>Beginning segment for inventory advice</div>
+                    <div>BEG</div>
+                    <div>Beginning segment for purchase order</div>
                     <div>M</div>
                     <div>1</div>
                     <div></div>
@@ -55,6 +55,70 @@ export default function Overview() {
                     <div>Max Use</div>
                     <div>Loop</div>
                     <div>Notes</div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>N9</div>
+                    <div>Reference Identification</div>
+                    <div>O</div>
+                    <div>1</div>
+                    <div>N9</div>
+                    <div className="text-[14px]">Free form notes will follow in MSG segment</div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>MSG</div>
+                    <div>Message Text</div>
+                    <div>O</div>
+                    <div>1</div>
+                    <div>N9</div>
+                    <div></div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>N1</div>
+                    <div>Customer Name</div>
+                    <div>M</div>
+                    <div>1</div>
+                    <div>N1</div>
+                    <div className="text-[14px]">Only the customer (ship to) will be added to purchase order.</div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>N3</div>
+                    <div>Customer Address</div>
+                    <div>M</div>
+                    <div>1</div>
+                    <div>N1</div>
+                    <div></div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>N4</div>
+                    <div>Customer Geographic Location</div>
+                    <div>M</div>
+                    <div>1</div>
+                    <div>N1</div>
+                    <div></div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>FOB</div>
+                    <div>F.O.B. Related Instructions</div>
+                    <div>M</div>
+                    <div>1</div>
+                    <div>N1</div>
+                    <div className="text-[14px]">Specifies the type of destination and whether or not liftgate should be added.</div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>TD5</div>
+                    <div>Carrier Details</div>
+                    <div>M</div>
+                    <div>1</div>
+                    <div>N1</div>
+                    <div></div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>PO1</div>
+                    <div>Line Item Information</div>
+                    <div>M</div>
+                    <div>&gt;1</div>
+                    <div>PO1</div>
+                    <div className="text-[14px]">PO107 = FactoryPure SKU, PO109 = Supplier SKU</div>
                 </div>
             </div>
             <h2 className="text-offwhite border-b pb-[8px] font-bold text-[20px] leading-[1] mb-[16px]">Summary</h2>
