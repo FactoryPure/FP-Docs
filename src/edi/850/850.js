@@ -1,12 +1,12 @@
 import { HashLink } from "react-router-hash-link";
 import BackButton from "../components/BackButton";
 import Overview from "./components/Overview";
-import ISA from "./components/ISA";
+import ISA from "../headersAndTrailers/ISA";
 import ST from "./components/ST";
-import GS from "./components/GS";
+import GS from "../headersAndTrailers/GS";
 import SE from "./components/SE";
-import GE from "./components/GE";
-import IEA from "./components/IEA";
+import GE from "../headersAndTrailers/GE";
+import IEA from "../headersAndTrailers/IEA";
 import N9 from "./components/N9";
 import MSG from "./components/MSG";
 import N1 from "./components/N1";
@@ -57,7 +57,6 @@ export default function EightFifty() {
                     <SE />
                     <GE />
                     <IEA />
-
                 </div>
                 <div className="text-offwhite w-[30%] rounded-[4px] p-[32px] shadow-small bg-darkaccent h-fit sticky top-[32px]">
                     <h3 className="text-offwhite font-bold mb-[8px] leading-[1]">On this page</h3>

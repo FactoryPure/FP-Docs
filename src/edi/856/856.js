@@ -1,11 +1,14 @@
 import { HashLink } from "react-router-hash-link";
 import BackButton from "../components/BackButton";
-import GS from "./components/GS";
-import ISA from "./components/ISA";
+import GE from "../headersAndTrailers/GE";
+import GS from "../headersAndTrailers/GS";
+import IEA from "../headersAndTrailers/IEA";
+import ISA from "../headersAndTrailers/ISA";
 import Overview from "./components/Overview";
+import SE from "./components/SE";
 import ST from "./components/ST";
 
-export default function EightFortySix() {
+export default function EightFiftySix() {
     return (
         <>
             <BackButton previousLink={"/edi#guides"} />
@@ -20,6 +23,9 @@ export default function EightFortySix() {
                     <ISA />
                     <GS />
                     <ST />
+                    <SE />
+                    <GE />
+                    <IEA />
                 </div>
                 <div className="text-offwhite w-[30%] rounded-[4px] p-[32px] shadow-small bg-darkaccent h-fit sticky top-[32px]">
                     <h3 className="text-offwhite font-bold mb-[8px] leading-[1]">On this page</h3>

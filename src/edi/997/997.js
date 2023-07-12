@@ -1,7 +1,7 @@
 import { HashLink } from "react-router-hash-link";
 import BackButton from "../components/BackButton";
-import GS from "./components/GS";
-import ISA from "./components/ISA";
+import GS from "../headersAndTrailers/GS";
+import ISA from "../headersAndTrailers/ISA";
 import Overview from "./components/Overview";
 import ST from "./components/ST";
 import AK1 from "./components/AK1.js";
@@ -31,7 +31,6 @@ export default function EightFortySix() {
                         <AK5 />
                     </div>
                     <AK9 />
-                    
                 </div>
                 <div className="text-offwhite w-[30%] rounded-[4px] p-[32px] shadow-small bg-darkaccent h-fit sticky top-[32px]">
                     <h3 className="text-offwhite font-bold mb-[8px] leading-[1]">On this page</h3>
