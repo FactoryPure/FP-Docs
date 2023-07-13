@@ -3,17 +3,17 @@ import BackButton from "../components/BackButton";
 import BIA from "./components/BIA";
 import CTP from "./components/CTP";
 import CTT from "./components/CTT";
+import GE from "../headersAndTrailers/GE";
+import GS from "../headersAndTrailers/GS";
+import IEA from "../headersAndTrailers/IEA";
+import ISA from "../headersAndTrailers/ISA";
 import LDT from "./components/LDT";
 import LIN from "./components/LIN";
 import Overview from "./components/Overview";
 import PID from "./components/PID";
 import QTY from "./components/QTY";
-import SE from "./components/SE";
-import ST from "./components/ST";
-import ISA from "../headersAndTrailers/ISA";
-import IEA from "../headersAndTrailers/IEA";
-import GS from "../headersAndTrailers/GS";
-import GE from "../headersAndTrailers/GE";
+import SE from "../headersAndTrailers/SE";
+import ST from "../headersAndTrailers/ST";
 
 export default function EightFortySix() {
     return (
@@ -28,8 +28,8 @@ export default function EightFortySix() {
                 <div className="w-[70%]">
                     <Overview />
                     <ISA />
-                    <GS />
-                    <ST />
+                    <GS functionalGroupIdentifierCode={"IB"} />
+                    <ST transactionSetIdentifierCode={846} />
                     <BIA />
                     <div id="lin-loop" className="p-[8px] bg-darkgrey rounded-[4px] shadow-small mb-[32px]">
                         <p className="text-fire text-[20px] font-bold leading-[1] mb-[8px] text-[18px]">LIN LOOP - Repeat: &gt;1</p>

@@ -3,7 +3,7 @@ import BackButton from "../components/BackButton";
 import GS from "../headersAndTrailers/GS";
 import ISA from "../headersAndTrailers/ISA";
 import Overview from "./components/Overview";
-import ST from "./components/ST";
+import ST from "../headersAndTrailers/ST";
 import AK1 from "./components/AK1.js";
 import AK2 from "./components/AK2";
 import AK5 from "./components/AK5";
@@ -12,7 +12,7 @@ import SE from "./components/SE";
 import GE from "../headersAndTrailers/GE";
 import IEA from "../headersAndTrailers/IEA";
 
-export default function EightFortySix() {
+export default function NineNineSeven() {
     return (
         <>
             <BackButton previousLink={"/edi#guides"} />
@@ -25,8 +25,8 @@ export default function EightFortySix() {
                 <div className="w-[70%]">
                     <Overview />
                     <ISA />
-                    <GS />
-                    <ST />
+                    <GS functionalGroupIdentifierCode={"FA"} />
+                    <ST transactionSetIdentifierCode={997} />
                     <AK1 />
                     <div id="lin-loop" className="p-[8px] bg-darkgrey rounded-[4px] shadow-small mb-[32px]">
                         <p className="text-fire text-[20px] font-bold leading-[1] mb-[8px]">AK2 LOOP - Repeat: 1</p>

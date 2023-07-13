@@ -5,6 +5,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&display=swap');
 
+* {
+    font-family: 'Bai Jamjuree';
+}
+*::-webkit-scrollbar {
+    width: 8px;
+    background-color: #1D212D;
+}
+*::-webkit-scrollbar-thumb {
+    background-color: orange;
+    border-radius: 99vw;
+}
 body {
     background-color: #05111C;
 }

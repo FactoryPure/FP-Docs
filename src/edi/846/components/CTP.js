@@ -41,7 +41,7 @@ export default function CTP() {
                     <div>ID</div>
                     <div>2/2</div>
                     <div></div>
-                    <div className="col-span-full px-[8px] text-[14px] my-[8px] text-accent">This field is not used by FactoryPure.</div>
+                    <div className="col-span-full px-[8px] text-[14px] my-[8px] font-bold text-accent">This field is not used by FactoryPure.</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>CTP02</div>

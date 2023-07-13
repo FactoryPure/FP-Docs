@@ -1,8 +1,8 @@
-export default function GE() {
+export default function N4() {
     return (
-        <div id="ge" className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkaccent mb-[32px]">
-            <h2 className="text-offwhite border-b pb-[8px] font-bold text-[20px] leading-[1] mb-[16px]">GE Trailer</h2>
-            <p className="text-offwhite mb-[16px]">To indicate the end of a functional group and to provide control information.</p>
+        <div id="n4" className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkaccent">
+            <h2 className="text-offwhite border-b pb-[8px] font-bold text-[20px] leading-[1] mb-[16px]">N4 Segment</h2>
+            <p className="text-offwhite mb-[16px]">To specify the geographic location of the named party.</p>
             <p className="text-fire font-bold leading-[1] mb-[16px] text-[18px]">Usage</p>
             <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] mb-[32px]">
                 <div className="text-offwhite font-bold text-[12px] uppercase grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
@@ -14,11 +14,11 @@ export default function GE() {
                     <div>Notes</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
-                    <div>GE</div>
-                    <div>Functional Group Trailer</div>
+                    <div>N4</div>
+                    <div>Geographic Location</div>
                     <div>M</div>
                     <div>1</div>
-                    <div></div>
+                    <div>N1 (HL - Shipment)</div>
                     <div></div>
                 </div>
             </div>
@@ -34,21 +34,39 @@ export default function GE() {
                     <div>Codes</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
-                    <div>GE01</div>
-                    <div>97</div>
-                    <div>Number of Included Transaction Sets</div>
+                    <div>N401</div>
+                    <div>19</div>
+                    <div>City Name</div>
                     <div>M</div>
-                    <div>N0</div>
-                    <div>1/6</div>
+                    <div>AN</div>
+                    <div>2/30</div>
                     <div></div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
-                    <div>GE02</div>
-                    <div>28</div>
-                    <div>Group Control Number</div>
+                    <div>N402</div>
+                    <div>156</div>
+                    <div>State or Province Code</div>
                     <div>M</div>
-                    <div>N0</div>
-                    <div>1/9</div>
+                    <div>ID</div>
+                    <div>2/2</div>
+                    <div></div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>N403</div>
+                    <div>116</div>
+                    <div>Postal Code</div>
+                    <div>M</div>
+                    <div>ID</div>
+                    <div>2/2</div>
+                    <div></div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>N404</div>
+                    <div>26</div>
+                    <div>Country Code</div>
+                    <div>O</div>
+                    <div>ID</div>
+                    <div>2/3</div>
                     <div></div>
                 </div>
             </div>
