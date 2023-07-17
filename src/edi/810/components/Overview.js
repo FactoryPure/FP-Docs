@@ -93,14 +93,14 @@ export default function Overview() {
                     <div></div>
                     <div></div>
                 </div>
-                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                {/* <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>DTM</div>
                     <div>Date/Time Reference</div>
                     <div>M</div>
                     <div>1</div>
                     <div></div>
                     <div></div>
-                </div>
+                </div> */}
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>FOB</div>
                     <div>F.O.B. Related Instructions</div>

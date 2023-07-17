@@ -6,6 +6,21 @@ import GS from "../headersAndTrailers/GS";
 import IEA from "../headersAndTrailers/IEA";
 import GE from "../headersAndTrailers/GE";
 import ST from "./components/ST";
+import BIG from "./components/BIG";
+import NTE from "./components/NTE";
+import CUR from "./components/CUR";
+import N1 from "./components/N1";
+import N3 from "./components/N3";
+import N4 from "./components/N4";
+import ITD from "./components/ITD";
+import FOB from "./components/FOB";
+import IT1 from "./components/IT1";
+import TDS from "./components/TDS";
+import TXI from "./components/TXI";
+import CAD from "./components/CAD";
+import ISS from "./components/ISS";
+import CTT from "./components/CTT";
+import SE from "./components/SE";
 
 export default function EightFortySix() {
     return (
@@ -22,6 +37,21 @@ export default function EightFortySix() {
                     <ISA />
                     <GS />
                     <ST />
+                    <BIG />
+                    <NTE />
+                    <CUR />
+                    <N1 />
+                    <N3 />
+                    <N4 />
+                    <ITD />
+                    <FOB />
+                    <IT1/>
+                    <TDS />
+                    <TXI />
+                    <CAD />
+                    <ISS />
+                    <CTT />
+                    <SE />
                     <GE />
                     <IEA />
                 </div>
