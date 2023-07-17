@@ -81,6 +81,86 @@ export default function EightTen() {
                         <li>
                             <HashLink to="#isa">ISA Segment</HashLink>
                         </li>
+                        <li>
+                            <HashLink to="#gs">GS Segment</HashLink>
+                        </li>
+                        <li>
+                            <HashLink to="#st">ST Segment</HashLink>
+                        </li>
+                        <li>
+                            <HashLink to="#big">BIG Segment</HashLink>
+                        </li>
+                        <li>
+                            <HashLink to="#nte">NTE Segment</HashLink>
+                        </li>
+                        <li>
+                            <HashLink to="#cur">CUR Segment</HashLink>
+                        </li>
+                        <li>
+                            <HashLink to="#ref">REF Segment</HashLink>
+                        </li>
+                        <li>
+                            <HashLink to="#n1-loop">N1 Loop</HashLink>
+                            <ul className="pl-[8px] list-disc ml-[8px] text-offwhite">
+                                <li>
+                                    <HashLink to="#n1">N1 Segment</HashLink>
+                                </li>
+                                <li>
+                                    <HashLink to="#n3">N3 Segment</HashLink>
+                                </li>
+                                <li>
+                                    <HashLink to="#n4">N4 Segment</HashLink>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <HashLink to="#itd">ITD Segment</HashLink>
+                        </li>
+                        <li>
+                            <HashLink to="#fob">FOB Segment</HashLink>
+                        </li>
+                        <li>
+                            <HashLink to="#it1-loop">IT1 Loop</HashLink>
+                            <ul className="pl-[8px] list-disc ml-[8px] text-offwhite">
+                                <li>
+                                    <HashLink to="#it1">IT1 Segment</HashLink>
+                                </li>
+                                <li>
+                                    <HashLink to="#pid-loop">PID Loop</HashLink>
+                                </li>
+                                <ul className="pl-[8px] list-disc ml-[8px] text-offwhite">
+                                    <li>
+                                        <HashLink to="#pid">PID Segment</HashLink>
+                                    </li>
+                                </ul>
+                            </ul>
+                        </li>
+                        <li>
+                            <HashLink to="#tds">TDS Segment</HashLink>
+                        </li>
+                        <li>
+                            <HashLink to="#txi">TXI Segment</HashLink>
+                        </li>
+                        <li>
+                            <HashLink to="#cad">CAD Segment</HashLink>
+                        </li>
+                        <li>
+                            <HashLink to="#iss-loop">ISS Loop</HashLink>
+                            <ul className="pl-[8px] list-disc ml-[8px] text-offwhite">
+                                <li>
+                                    <HashLink to="#iss">ISS Segment</HashLink>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <HashLink to="#se">SE Segment</HashLink>
+                        </li>
+                        <li>
+                            <HashLink to="#ge">GE Segment</HashLink>
+                        </li>
+                        <li>
+                            <HashLink to="#iea">IEA Segment</HashLink>
+                        </li>
                     </ul>
                 </div>
             </div>

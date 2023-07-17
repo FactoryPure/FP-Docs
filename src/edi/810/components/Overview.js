@@ -188,16 +188,16 @@ export default function Overview() {
                     <div></div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
-                    <div>GE</div>
-                    <div>Functional Group Trailer</div>
+                    <div>SE</div>
+                    <div>Transaction Set Trailer</div>
                     <div>M</div>
                     <div>1</div>
                     <div></div>
                     <div></div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
-                    <div>SE</div>
-                    <div>Transaction Set Trailer</div>
+                    <div>GE</div>
+                    <div>Functional Group Trailer</div>
                     <div>M</div>
                     <div>1</div>
                     <div></div>
