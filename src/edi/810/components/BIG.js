@@ -43,7 +43,7 @@ export default function BIG() {
                     <div>8/8</div>
                     <div></div>
                 </div>
-                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey">
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey mb-[8px]">
                     <div>BIG02</div>
                     <div>76</div>
                     <div>Invoice Number</div>
@@ -52,7 +52,7 @@ export default function BIG() {
                     <div>1/22</div>
                     <div></div>
                 </div>
-                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey">
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey mb-[8px]">
                     <div>BIG03</div>
                     <div>373</div>
                     <div>Date</div>
@@ -61,7 +61,7 @@ export default function BIG() {
                     <div>8/8</div>
                     <div></div>
                 </div>
-                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey">
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey mb-[8px]">
                     <div>BIG04</div>
                     <div>324</div>
                     <div>Purchase Order Number</div>

@@ -62,6 +62,14 @@ export default function Overview() {
                     <div></div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>REF</div>
+                    <div>Reference Identification</div>
+                    <div>M</div>
+                    <div>12</div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>N1</div>
                     <div>Name</div>
                     <div>M</div>
@@ -175,7 +183,7 @@ export default function Overview() {
                     <div>ISS</div>
                     <div>Invoice Shipment Summary</div>
                     <div>M</div>
-                    <div>1</div>
+                    <div>&gt;1</div>
                     <div>ISS</div>
                     <div></div>
                 </div>

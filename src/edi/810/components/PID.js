@@ -1,8 +1,10 @@
-export default function SE() {
+import { HashLink } from "react-router-hash-link";
+
+export default function PID() {
     return (
-        <div id="se" className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkaccent mb-[32px]">
-            <h2 className="text-offwhite border-b pb-[8px] font-bold text-[20px] leading-[1] mb-[16px]">SE Trailer</h2>
-            <p className="text-offwhite mb-[16px]">To indicate the end of the transaction set and provide the count of the transmitted segments (including the beginning ST and ending SE segments).</p>
+        <div id="pid" className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkaccent">
+            <h2 className="text-offwhite border-b pb-[8px] font-bold text-[20px] leading-[1] mb-[16px]">PID Segment</h2>
+            <p className="text-offwhite mb-[16px]">To specify the location of the named party</p>
             <p className="text-fire font-bold leading-[1] mb-[16px] text-[18px]">Usage</p>
             <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] mb-[32px]">
                 <div className="text-offwhite font-bold text-[12px] uppercase grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
@@ -14,11 +16,11 @@ export default function SE() {
                     <div>Notes</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
-                    <div>SE</div>
-                    <div>Transaction Set Trailer</div>
+                    <div>PID</div>
+                    <div>Address Information</div>
                     <div>M</div>
                     <div>1</div>
-                    <div></div>
+                    <div>PID</div>
                     <div></div>
                 </div>
             </div>
@@ -34,21 +36,21 @@ export default function SE() {
                     <div>Codes</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
-                    <div>SE01</div>
-                    <div>96</div>
-                    <div>Number of Included Segments</div>
+                    <div>PID01</div>
+                    <div>349</div>
+                    <div>Item Description Type</div>
                     <div>M</div>
-                    <div>N0</div>
-                    <div>1/10</div>
-                    <div></div>
+                    <div>ID</div>
+                    <div>1/1</div>
+                    <div>F</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
-                    <div>SE02</div>
-                    <div>329</div>
-                    <div>Transaction Set Control Number</div>
+                    <div>PID05</div>
+                    <div>352</div>
+                    <div>Description</div>
                     <div>M</div>
                     <div>AN</div>
-                    <div>4/9</div>
+                    <div>1/80</div>
                     <div></div>
                 </div>
             </div>

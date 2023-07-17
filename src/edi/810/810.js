@@ -5,7 +5,7 @@ import Overview from "./components/Overview";
 import GS from "../headersAndTrailers/GS";
 import IEA from "../headersAndTrailers/IEA";
 import GE from "../headersAndTrailers/GE";
-import ST from "./components/ST";
+import ST from "../headersAndTrailers/ST";
 import BIG from "./components/BIG";
 import NTE from "./components/NTE";
 import CUR from "./components/CUR";
@@ -20,9 +20,12 @@ import TXI from "./components/TXI";
 import CAD from "./components/CAD";
 import ISS from "./components/ISS";
 import CTT from "./components/CTT";
-import SE from "./components/SE";
+import SE from "../headersAndTrailers/SE";
+import PID from "./components/PID";
+import REF from "./components/REF";
 
-export default function EightFortySix() {
+
+export default function EightTen() {
     return (
         <>
             <BackButton previousLink={"/edi#guides"} />
@@ -34,22 +37,36 @@ export default function EightFortySix() {
             <div className="flex gap-[32px]">
                 <div className="w-[70%]">
                     <Overview />
-                    <ISA />
-                    <GS />
-                    <ST />
+                    <ISA  />
+                    <GS functionalGroupIdentifierCode="IN" />
+                    <ST transactionSetIdentifierCode={810} />
                     <BIG />
                     <NTE />
                     <CUR />
-                    <N1 />
-                    <N3 />
-                    <N4 />
+                    <REF />
+                    <div id="n1-loop" className="p-[8px] bg-darkgrey rounded-[4px] shadow-small mb-[32px]">
+                        <p className="text-fire text-[20px] font-bold leading-[1] mb-[8px] text-[18px]">N1 LOOP - Repeat: &gt;1</p>
+                        <N1 />
+                        <N3 />
+                        <N4 />
+                    </div>
                     <ITD />
                     <FOB />
-                    <IT1/>
+                    <div id="it1-loop" className="p-[8px] bg-darkgrey rounded-[4px] shadow-small mb-[32px]">
+                        <p className="text-fire text-[20px] font-bold leading-[1] mb-[8px] text-[18px]">IT1 LOOP - Repeat: 200000</p>
+                        <IT1/>
+                        <div id="pid-loop" className="p-[8px] bg-grey/20 rounded-[4px] shadow-small">
+                            <p className="text-fire text-[20px] font-bold leading-[1] mb-[8px] text-[18px]">PID LOOP - Repeat: 1000</p>
+                            <PID />
+                        </div>
+                    </div>
                     <TDS />
                     <TXI />
                     <CAD />
-                    <ISS />
+                    <div id="iss-loop" className="p-[8px] bg-darkgrey rounded-[4px] shadow-small mb-[32px]">
+                        <p className="text-fire text-[20px] font-bold leading-[1] mb-[8px] text-[18px]">ISS LOOP - Repeat: &gt;1</p>
+                        <ISS/>
+                    </div>
                     <CTT />
                     <SE />
                     <GE />

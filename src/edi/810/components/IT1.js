@@ -2,7 +2,7 @@ import { HashLink } from "react-router-hash-link";
 
 export default function IT1() {
     return (
-        <div id="it1" className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkaccent mb-[32px]">
+        <div id="it1" className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkaccent mb-[16px]">
             <h2 className="text-offwhite border-b pb-[8px] font-bold text-[20px] leading-[1] mb-[16px]">IT1 Segment</h2>
             <p className="text-offwhite mb-[16px]">To specify the basic and most frequently used line item data for the invoice and related transactions</p>
             <p className="text-fire font-bold leading-[1] mb-[16px] text-[18px]">Usage</p>
@@ -99,7 +99,7 @@ export default function IT1() {
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>IT109</div>
-                    <div>235</div>
+                    <div>234</div>
                     <div>Product/Service ID</div>
                     <div>X</div>
                     <div>AN</div>
@@ -117,7 +117,7 @@ export default function IT1() {
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>IT111</div>
-                    <div>235</div>
+                    <div>234</div>
                     <div>Product/Service ID</div>
                     <div>X</div>
                     <div>AN</div>

@@ -61,28 +61,32 @@ export default function ITD() {
                     <div>1/6</div>
                     <div></div>
                 </div>
-                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
-                    <div>ITD04</div>
-                    <div>370</div>
-                    <div>Terms Discount Due Date</div>
-                    <div>X</div>
-                    <div>DT</div>
-                    <div>8/8</div>
-                    <div></div>
+                <div className="col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px]">
+                        <div>ITD04</div>
+                        <div>370</div>
+                        <div>Terms Discount Due Date</div>
+                        <div>X</div>
+                        <div>DT</div>
+                        <div>8/8</div>
+                        <div></div>
+                    </div>
                     <div className="col-span-8 mt-[8px]">
-                        <p>If FactoryPure receives a Terms discount, the Terms Discount Due Date(ITD04) or Terms Discount Days (ITD05) must be used. Do not use both</p>
+                        <p className="font-bold">If FactoryPure receives a Terms discount, the Terms Discount Due Date(ITD04) or Terms Discount Days (ITD05) must be used. Do not use both</p>
                     </div>
                 </div>
-                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
-                    <div>ITD05</div>
-                    <div>351</div>
-                    <div>Terms Discount Days Due</div>
-                    <div>X</div>
-                    <div>N0</div>
-                    <div>1/3</div>
-                    <div></div>
+                <div className="col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px]">
+                        <div>ITD05</div>
+                        <div>351</div>
+                        <div>Terms Discount Days Due</div>
+                        <div>X</div>
+                        <div>N0</div>
+                        <div>1/3</div>
+                        <div></div>
+                    </div>
                     <div className="col-span-8 mt-[8px]">
-                        <p>If FactoryPure receives a Terms discount, the Terms Discount Due Date(ITD04) or Terms Discount Days (ITD05) must be used. Do not use both</p>
+                        <p className="font-bold">If FactoryPure receives a Terms discount, the Terms Discount Due Date(ITD04) or Terms Discount Days (ITD05) must be used. Do not use both</p>
                     </div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
@@ -94,28 +98,32 @@ export default function ITD() {
                     <div>8/8</div>
                     <div></div>
                 </div>
-                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
-                    <div>ITD07</div>
-                    <div>386</div>
-                    <div>Terms Net Days</div>
-                    <div>X</div>
-                    <div>N0</div>
-                    <div>1/3</div>
-                    <div></div>
+                <div className="col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px]">
+                        <div>ITD07</div>
+                        <div>386</div>
+                        <div>Terms Net Days</div>
+                        <div>X</div>
+                        <div>N0</div>
+                        <div>1/3</div>
+                        <div></div>
+                    </div>
                     <div className="col-span-8 mt-[8px]">
-                        <p>Use number of days from invoice date (BIG01) to due date. Terms Net Due Date (ITD06) can be used instead. Do not use both.</p>
+                        <p className="font-bold">Use number of days from invoice date (BIG01) to due date. Terms Net Due Date (ITD06) can be used instead. Do not use both.</p>
                     </div>
                 </div>
-                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
-                    <div>ITD08</div>
-                    <div>362</div>
-                    <div>Terms Discount Amount</div>
-                    <div>X</div>
-                    <div>N2</div>
-                    <div>1/10</div>
-                    <div></div>
+                <div className="col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px]">
+                        <div>ITD08</div>
+                        <div>362</div>
+                        <div>Terms Discount Amount</div>
+                        <div>X</div>
+                        <div>N2</div>
+                        <div>1/10</div>
+                        <div></div>
+                    </div>
                     <div className="col-span-8 mt-[8px]">
-                        <p>If FactoryPure receives a Terms discount, the Terms Discount Amount (ITD08) must be used.</p>
+                        <p className="font-bold">If FactoryPure receives a Terms discount, the Terms Discount Amount (ITD08) must be used.</p>
                     </div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
