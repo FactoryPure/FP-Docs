@@ -43,7 +43,7 @@ export default function TD1() {
                     <div>BOX, PLT</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
-                    <div>TD502</div>
+                    <div>TD102</div>
                     <div>80</div>
                     <div>Lading Quantity</div>
                     <div>M</div>
