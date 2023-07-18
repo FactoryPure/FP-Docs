@@ -1,5 +1,3 @@
-import { HashLink } from "react-router-hash-link";
-
 export default function AK5() {
     return (
         <div id="ak5" className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkaccent">
