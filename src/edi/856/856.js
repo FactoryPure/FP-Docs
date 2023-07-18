@@ -109,7 +109,7 @@ export default function EightFiftySix() {
                             <HashLink to="#n1">N1 Segment</HashLink>
                         </li>
                         <li>
-                            <HashLink to="#n3">N2 Segment</HashLink>
+                            <HashLink to="#n3">N3 Segment</HashLink>
                         </li>
                         <li>
                             <HashLink to="#n4">N4 Segment</HashLink>
