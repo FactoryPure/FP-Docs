@@ -50,17 +50,52 @@ export default function LIN() {
                     <div>M</div>
                     <div>ID</div>
                     <div>2/2</div>
-                    <div>SK</div>
+                    <div>UP</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>LIN03</div>
-                    <div>127</div>
-                    <div>Product SKU</div>
+                    <div>234</div>
+                    <div>Product UPC</div>
                     <div>M</div>
                     <div>AN</div>
                     <div>1/48</div>
                     <div></div>
-                    <div className="col-span-full px-[8px] text-[16px] font-bold my-[8px]">Please use your SKU. We will map to our catalogue accordingly.</div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>LIN04</div>
+                    <div>235</div>
+                    <div>Product ID Qualifier</div>
+                    <div>C</div>
+                    <div>ID</div>
+                    <div>2/2</div>
+                    <div>SK</div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>LIN05</div>
+                    <div>234</div>
+                    <div>Product SKU</div>
+                    <div>C</div>
+                    <div>AN</div>
+                    <div>1/48</div>
+                    <div></div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>LIN06</div>
+                    <div>235</div>
+                    <div>Product ID Qualifier</div>
+                    <div>C</div>
+                    <div>ID</div>
+                    <div>2/2</div>
+                    <div>MN</div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>LIN07</div>
+                    <div>234</div>
+                    <div>Product Model Name / Number</div>
+                    <div>C</div>
+                    <div>AN</div>
+                    <div>1/48</div>
+                    <div></div>
                 </div>
             </div>
         </div>

@@ -1,5 +1,3 @@
-import { HashLink } from "react-router-hash-link";
-
 export default function ST({ transactionSetIdentifierCode }) {
     return (
         <div id="st" className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkaccent mb-[32px]">
