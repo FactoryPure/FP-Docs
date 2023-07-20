@@ -41,7 +41,7 @@ export default function TXI() {
                     <div>M</div>
                     <div>ID</div>
                     <div>2/2</div>
-                    <div>CG, OH, PG, VA, ZZ</div>
+                    <div>ANY</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>TXI02</div>
@@ -82,7 +82,7 @@ export default function TXI() {
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>TXI09</div>
                     <div>325</div>
-                    <div>Tax Jurisdiction Code</div>
+                    <div>Tax Identification Number</div>
                     <div>O</div>
                     <div>AN</div>
                     <div>1/20</div>

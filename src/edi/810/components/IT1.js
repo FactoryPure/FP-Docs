@@ -66,7 +66,7 @@ export default function IT1() {
                     <div>212</div>
                     <div>Unit Price</div>
                     <div>M</div>
-                    <div>AN</div>
+                    <div>R</div>
                     <div>1/17</div>
                     <div></div>
                 </div>

@@ -92,7 +92,7 @@ export default function GS({ functionalGroupIdentifierCode }) {
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>GS07</div>
                     <div>455</div>
-                    <div>Responsibile Agency Code</div>
+                    <div>Responsible Agency Code</div>
                     <div>M</div>
                     <div>ID</div>
                     <div>1/2</div>
