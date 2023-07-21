@@ -19,7 +19,7 @@ export default function REF() {
                     <div>REF</div>
                     <div>Reference Identification</div>
                     <div>M</div>
-                    <div>1</div>
+                    <div>&gt;1</div>
                     <div>REF</div>
                 </div>
             </div>
