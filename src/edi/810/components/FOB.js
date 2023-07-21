@@ -56,7 +56,7 @@ export default function FOB() {
                     <div>FOB03</div>
                     <div>352</div>
                     <div>Description</div>
-                    <div>M</div>
+                    <div>O</div>
                     <div>AN</div>
                     <div>1/80</div>
                     <div></div>
