@@ -19,7 +19,7 @@ export default function TXI() {
                     <div>TXI</div>
                     <div>Tax Information</div>
                     <div>M</div>
-                    <div>1</div>
+                    <div>10</div>
                     <div>TXI</div>
                 </div>
             </div>
