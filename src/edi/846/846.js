@@ -64,21 +64,23 @@ export default function EightFortySix() {
                         </li>
                         <li>
                             <HashLink to="#lin-loop">LIN Loop</HashLink>
-                        </li>
-                        <li>
-                            <HashLink to="#lin">LIN Segment</HashLink>
-                        </li>
-                        <li>
-                            <HashLink to="#pid">PID Segment</HashLink>
-                        </li>
-                        <li>
-                            <HashLink to="#ctp">CTP Segment</HashLink>
-                        </li>
-                        <li>
-                            <HashLink to="#ldt">LDT Segment</HashLink>
-                        </li>
-                        <li>
-                            <HashLink to="#qty">QTY Segment</HashLink>
+                            <ul className="pl-[8px] list-disc ml-[8px] text-offwhite">
+                                <li>
+                                    <HashLink to="#lin">LIN Segment</HashLink>
+                                </li>
+                                <li>
+                                    <HashLink to="#pid">PID Segment</HashLink>
+                                </li>
+                                <li>
+                                    <HashLink to="#ctp">CTP Segment</HashLink>
+                                </li>
+                                <li>
+                                    <HashLink to="#ldt">LDT Segment</HashLink>
+                                </li>
+                                <li>
+                                    <HashLink to="#qty">QTY Segment</HashLink>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <HashLink to="#ctt">CTT Segment</HashLink>

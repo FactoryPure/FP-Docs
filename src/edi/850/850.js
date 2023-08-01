@@ -78,36 +78,42 @@ export default function EightFifty() {
                         </li>
                         <li>
                             <HashLink to="#n9-loop">N9 Loop</HashLink>
-                        </li>
-                        <li>
-                            <HashLink to="#n9">N9 Segment</HashLink>
-                        </li>
-                        <li>
-                            <HashLink to="#msg">MSG Segment</HashLink>
+                            <ul className="pl-[8px] list-disc ml-[8px] text-offwhite">
+                                <li>
+                                    <HashLink to="#n9">N9 Segment</HashLink>
+                                </li>
+                                <li>
+                                    <HashLink to="#msg">MSG Segment</HashLink>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <HashLink to="#n1-loop">N1 Loop</HashLink>
-                        </li>
-                        <li>
-                            <HashLink to="#n1">N1 Segment</HashLink>
-                        </li>
-                        <li>
-                            <HashLink to="#n3">N3 Segment</HashLink>
-                        </li>
-                        <li>
-                            <HashLink to="#n4">N4 Segment</HashLink>
-                        </li>
-                        <li>
-                            <HashLink to="#fob">FOB Segment</HashLink>
-                        </li>
-                        <li>
-                            <HashLink to="#td5">TD5 Segment</HashLink>
+                            <ul className="pl-[8px] list-disc ml-[8px] text-offwhite">
+                                <li>
+                                    <HashLink to="#n1">N1 Segment</HashLink>
+                                </li>
+                                <li>
+                                    <HashLink to="#n3">N3 Segment</HashLink>
+                                </li>
+                                <li>
+                                    <HashLink to="#n4">N4 Segment</HashLink>
+                                </li>
+                                <li>
+                                    <HashLink to="#fob">FOB Segment</HashLink>
+                                </li>
+                                <li>
+                                    <HashLink to="#td5">TD5 Segment</HashLink>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <HashLink to="#po1-loop">PO1 Loop</HashLink>
-                        </li>
-                        <li>
-                            <HashLink to="#po1">PO1 Segment</HashLink>
+                            <ul className="pl-[8px] list-disc ml-[8px] text-offwhite">
+                                <li>
+                                    <HashLink to="#po1">PO1 Segment</HashLink>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <HashLink to="#ctt">CTT Segment</HashLink>
