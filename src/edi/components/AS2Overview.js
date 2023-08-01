@@ -2,7 +2,7 @@ export default function AS2Overview() {
     return (
         <div id="as2">
             <h2 className="text-offwhite border-b pb-[8px] font-bold text-[20px] leading-[1] mb-[16px]">AS2</h2>
-            <p className="text-offwhite mb-[16px]">We currently only support EDI using the AS2 protocol over http. Our suppliers will need to supply and receive/store a self-signed x509 certificate for signing, encryption, and decryption. If you want to send messages over https you will need to supply an additional ssl certificate.</p>
+            <p className="text-offwhite mb-[16px]">We currently only support EDI using the AS2 protocol over http. Our suppliers will need to supply and receive/store a self-signed x509 certificate for signing, encryption, and decryption. If you want to send messages over https you may need to supply an additional ssl certificate.</p>
             <p className="text-offwhite font-bold mb-[4px] text-[18px]">Connection Information</p>
             <div className="grid grid-cols-2 mb-[16px] border-x border-darkgrey">
                 <div className="col-span-full grid grid-cols-2 p-[8px] border-b border-t border-darkgrey">
