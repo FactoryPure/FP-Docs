@@ -48,7 +48,7 @@ export default function CUR() {
                     <div>100</div>
                     <div>Currency Code</div>
                     <div>M</div>
-                    <div>AN</div>
+                    <div>ID</div>
                     <div>3/3</div>
                     <div>USD</div>
                 </div>
