@@ -60,6 +60,25 @@ export default function TD5() {
                     <div>2/80</div>
                     <div></div>
                 </div>
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>TD504</div>
+                    <div>91</div>
+                    <div>Transportation Method/Type Code</div>
+                    <div>M</div>
+                    <div>ID</div>
+                    <div>1/2</div>
+                    <div>T</div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>TD505</div>
+                    <div>338781</div>
+                    <div>Routing</div>
+                    <div>M</div>
+                    <div>AN</div>
+                    <div>1/35</div>
+                    <div></div>
+                    <div className="col-span-full px-[8px] text-[14px] my-[8px] font-bold">Free-form carrier name</div>
+                </div>
             </div>
         </div>
     )
