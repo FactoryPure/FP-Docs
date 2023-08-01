@@ -45,9 +45,12 @@ export default function EightFiftySix() {
                         <TD5 />
                         <REF referenceIdentifierCode={"BM"} name={"Bill of lading"} level={"Shipment"} index={0} />
                         <DTM />
-                        <N1 />
-                        <N3 />
-                        <N4 />
+                        <div id="n1-loop" className="p-[8px] bg-darkness rounded-[4px] shadow-small">
+                            <p className="text-fire text-[20px] font-bold leading-[1] mb-[8px] text-[18px]">N1 LOOP - Repeat: &gt;1</p>
+                            <N1 />
+                            <N3 />
+                            <N4 />
+                        </div>
                     </div>
                     <div id="hlo-loop" className="p-[8px] bg-darkgrey rounded-[4px] shadow-small mb-[32px]">
                         <p className="text-fire text-[20px] font-bold leading-[1] mb-[8px] text-[18px]">HL LOOP (Order) - Repeat: 1</p>
@@ -108,13 +111,18 @@ export default function EightFiftySix() {
                                     <HashLink to="#dtm">DTM Segment</HashLink>
                                 </li>
                                 <li>
-                                    <HashLink to="#n1">N1 Segment</HashLink>
-                                </li>
-                                <li>
-                                    <HashLink to="#n3">N3 Segment</HashLink>
-                                </li>
-                                <li>
-                                    <HashLink to="#n4">N4 Segment</HashLink>
+                                    <HashLink to="#n1-loop">N1 Loop</HashLink>
+                                    <ul className="pl-[8px] list-disc ml-[8px] text-offwhite">
+                                        <li>
+                                            <HashLink to="#n1">N1 Segment</HashLink>
+                                        </li>
+                                        <li>
+                                            <HashLink to="#n3">N3 Segment</HashLink>
+                                        </li>
+                                        <li>
+                                            <HashLink to="#n4">N4 Segment</HashLink>
+                                        </li>
+                                    </ul>
                                 </li>
                             </ul>
                         </li>
