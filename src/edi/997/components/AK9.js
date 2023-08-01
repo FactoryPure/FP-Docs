@@ -43,7 +43,7 @@ export default function AK9() {
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>AK902</div>
-                    <div>96</div>
+                    <div>97</div>
                     <div>Number of Transaction Sets Included</div>
                     <div>M</div>
                     <div>N0</div>
@@ -62,7 +62,7 @@ export default function AK9() {
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey">
                     <div>AK904</div>
                     <div>2</div>
-                    <div>/number of Accepted Transaction Sets</div>
+                    <div>Number of Accepted Transaction Sets</div>
                     <div>M</div>
                     <div>N0</div>
                     <div>1/6</div>
