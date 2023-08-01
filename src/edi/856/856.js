@@ -20,6 +20,7 @@ import N1 from "./components/N1";
 import LIN from "./components/LIN";
 import SN1 from "./components/SN1";
 import PID from "./components/PID";
+import CTT from "./components/CTT";
 
 export default function EightFiftySix() {
     return (
@@ -65,6 +66,7 @@ export default function EightFiftySix() {
                         <SN1 />
                         <PID />
                     </div>
+                    <CTT />
                     <SE />
                     <GE />
                     <IEA />
@@ -89,63 +91,74 @@ export default function EightFiftySix() {
                         </li>
                         <li>
                             <HashLink to="#hls-loop">HL Loop (Shipment)</HashLink>
-                        </li>
-                        <li>
-                            <HashLink to="#hls">HL Segment (Shipment)</HashLink>
-                        </li>
-                        <li>
-                            <HashLink to="#td1">TD1 Segment</HashLink>
-                        </li>
-                        <li>
-                            <HashLink to="#td5">TD5 Segment</HashLink>
-                        </li>
-                        <li>
-                            <HashLink to="#ref0">REF Segment (Bill of lading)</HashLink>
-                        </li>
-                        <li>
-                            <HashLink to="#dtm">DTM Segment</HashLink>
-                        </li>
-                        <li>
-                            <HashLink to="#n1">N1 Segment</HashLink>
-                        </li>
-                        <li>
-                            <HashLink to="#n3">N3 Segment</HashLink>
-                        </li>
-                        <li>
-                            <HashLink to="#n4">N4 Segment</HashLink>
+                            <ul className="pl-[8px] list-disc ml-[8px] text-offwhite">
+                                <li>
+                                    <HashLink to="#hls">HL Segment (Shipment)</HashLink>
+                                </li>
+                                <li>
+                                    <HashLink to="#td1">TD1 Segment</HashLink>
+                                </li>
+                                <li>
+                                    <HashLink to="#td5">TD5 Segment</HashLink>
+                                </li>
+                                <li>
+                                    <HashLink to="#ref0">REF Segment (Bill of lading)</HashLink>
+                                </li>
+                                <li>
+                                    <HashLink to="#dtm">DTM Segment</HashLink>
+                                </li>
+                                <li>
+                                    <HashLink to="#n1">N1 Segment</HashLink>
+                                </li>
+                                <li>
+                                    <HashLink to="#n3">N3 Segment</HashLink>
+                                </li>
+                                <li>
+                                    <HashLink to="#n4">N4 Segment</HashLink>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <HashLink to="#hlo-loop">HL Loop (Order)</HashLink>
-                        </li>
-                        <li>
-                            <HashLink to="#hlo">HL Segment (Order)</HashLink>
-                        </li>
-                        <li>
-                            <HashLink to="#prf">PRF Segment</HashLink>
+                            <ul className="pl-[8px] list-disc ml-[8px] text-offwhite">
+                                <li>
+                                    <HashLink to="#hlo">HL Segment (Order)</HashLink>
+                                </li>
+                                <li>
+                                    <HashLink to="#prf">PRF Segment</HashLink>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <HashLink to="#hlp-loop">HL Loop (Pack)</HashLink>
-                        </li>
-                        <li>
-                            <HashLink to="#hlp">HL Segment (Pack)</HashLink>
-                        </li>
-                        <li>
-                            <HashLink to="#ref1">REF Segment (Tracking info)</HashLink>
+                            <ul className="pl-[8px] list-disc ml-[8px] text-offwhite">
+                                <li>
+                                    <HashLink to="#hlp">HL Segment (Pack)</HashLink>
+                                </li>
+                                <li>
+                                    <HashLink to="#ref1">REF Segment (Tracking info)</HashLink>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <HashLink to="#hli-loop">HL Loop (Item)</HashLink>
+                            <ul className="pl-[8px] list-disc ml-[8px] text-offwhite">
+                                <li>
+                                    <HashLink to="#hli">HL Segment (Item)</HashLink>
+                                </li>
+                                <li>
+                                    <HashLink to="#lin">LIN Segment</HashLink>
+                                </li>
+                                <li>
+                                    <HashLink to="#sn1">SN1 Segment</HashLink>
+                                </li>
+                                <li>
+                                    <HashLink to="#pid">PID Segment</HashLink>
+                                </li>
+                            </ul>
                         </li>
                         <li>
-                            <HashLink to="#hli">HL Segment (Item)</HashLink>
-                        </li>
-                        <li>
-                            <HashLink to="#lin">LIN Segment</HashLink>
-                        </li>
-                        <li>
-                            <HashLink to="#sn1">SN1 Segment</HashLink>
-                        </li>
-                        <li>
-                            <HashLink to="#pid">PID Segment</HashLink>
+                            <HashLink to="#ctt">CTT Segment</HashLink>
                         </li>
                         <li>
                             <HashLink to="#se">SE Trailer</HashLink>
