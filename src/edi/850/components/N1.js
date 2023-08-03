@@ -2,7 +2,7 @@ export default function N1() {
     return (
         <div id="n1" className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkaccent mb-[16px]">
             <h2 className="text-offwhite border-b pb-[8px] font-bold text-[20px] leading-[1] mb-[16px]">N1 Segment</h2>
-            <p className="text-offwhite mb-[16px]">To identify the ship to party.</p>
+            <p className="text-offwhite mb-[16px]">To identify the shipping parties.</p>
             <p className="text-fire font-bold leading-[1] mb-[16px] text-[18px]">Usage</p>
             <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] mb-[32px]">
                 <div className="text-offwhite font-bold text-[12px] uppercase grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
@@ -40,7 +40,7 @@ export default function N1() {
                     <div>M</div>
                     <div>ID</div>
                     <div>2/3</div>
-                    <div>ST</div>
+                    <div>ST, SF</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>N102</div>
