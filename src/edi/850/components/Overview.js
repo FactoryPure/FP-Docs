@@ -57,6 +57,22 @@ export default function Overview() {
                     <div>Notes</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>REF</div>
+                    <div>Reference Identifier</div>
+                    <div>M</div>
+                    <div>1</div>
+                    <div></div>
+                    <div>FactoryPure MyCarrier Account Number</div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>SAC</div>
+                    <div>Service, Promotion, Allowance, or Charge Information</div>
+                    <div>O</div>
+                    <div>1</div>
+                    <div>SAC</div>
+                    <div>Insurance / shipping add-ons</div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>N9</div>
                     <div>Reference Identification</div>
                     <div>O</div>

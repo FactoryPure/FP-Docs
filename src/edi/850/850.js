@@ -17,6 +17,8 @@ import TD5 from "./components/TD5";
 import PO1 from "./components/PO1";
 import BEG from "./components/BEG";
 import CTT from "./components/CTT";
+import REF from "./components/REF";
+import SAC from "./components/SAC";
 
 
 
@@ -36,6 +38,8 @@ export default function EightFifty() {
                     <GS functionalGroupIdentifierCode={"PO"} />
                     <ST transactionSetIdentifierCode={850} />
                     <BEG />
+                    <REF />
+                    <SAC />
                     <div id="n9-loop" className="p-[8px] bg-darkgrey rounded-[4px] shadow-small mb-[32px]">
                         <p className="text-fire text-[20px] font-bold leading-[1] mb-[8px] text-[18px]">N9 LOOP - Repeat: 1</p>
                         <N9 />
@@ -75,6 +79,12 @@ export default function EightFifty() {
                         </li>
                         <li>
                             <HashLink to="#beg">BEG Segment</HashLink>
+                        </li>
+                        <li>
+                            <HashLink to="#ref">REF Segment</HashLink>
+                        </li>
+                        <li>
+                            <HashLink to="#sac">SAC Segment</HashLink>
                         </li>
                         <li>
                             <HashLink to="#n9-loop">N9 Loop</HashLink>

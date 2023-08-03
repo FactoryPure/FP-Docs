@@ -106,7 +106,7 @@ export default function PO1() {
                     <div>M</div>
                     <div>ID</div>
                     <div>2/2</div>
-                    <div>SK</div>
+                    <div>SK, MN, UP</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>PO109</div>
@@ -116,7 +116,7 @@ export default function PO1() {
                     <div>AN</div>
                     <div>1/48</div>
                     <div></div>
-                    <div className="col-span-full px-[8px] text-[16px] font-bold my-[8px]">Supplier SKU.</div>
+                    <div className="col-span-full px-[8px] text-[16px] font-bold my-[8px]">Supplier SKU, Model Name/Number, or UPC. FactoryPure and partners will agree on which to send in advance.</div>
                 </div>
             </div>
         </div>
