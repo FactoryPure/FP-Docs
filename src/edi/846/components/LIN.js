@@ -47,7 +47,7 @@ export default function LIN() {
                     <div>LIN02</div>
                     <div>235</div>
                     <div>Product ID Qualifier</div>
-                    <div>M</div>
+                    <div>C</div>
                     <div>ID</div>
                     <div>2/2</div>
                     <div>UP</div>
@@ -56,7 +56,7 @@ export default function LIN() {
                     <div>LIN03</div>
                     <div>234</div>
                     <div>Product UPC</div>
-                    <div>M</div>
+                    <div>C</div>
                     <div>AN</div>
                     <div>1/48</div>
                     <div></div>
@@ -96,6 +96,34 @@ export default function LIN() {
                     <div>AN</div>
                     <div>1/48</div>
                     <div></div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>LIN08</div>
+                    <div>235</div>
+                    <div>Product ID Qualifier</div>
+                    <div>M</div>
+                    <div>ID</div>
+                    <div>2/2</div>
+                    <div>DV</div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>LIN09</div>
+                    <div>234</div>
+                    <div>Location Code</div>
+                    <div>MM</div>
+                    <div>AN</div>
+                    <div>1/48</div>
+                    <div></div>
+                    <div className="col-span-full px-[8px] text-[16px] my-[8px] font-bold">Code for the warehouse that the product will be shipped from.</div>
+                </div>
+            </div>
+            <h2 className="text-offwhite border-b pb-[8px] font-bold text-[20px] leading-[1] mb-[16px]">Notes</h2>
+            <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr_1fr] gap-x-[16px] mb-[32px]">
+                <div className="text-offwhite grid grid-cols-[100px_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <p>1.</p>
+                    <p>
+                        At least one of LIN03, LIN05, or LIN07 must be present
+                    </p>
                 </div>
             </div>
         </div>
