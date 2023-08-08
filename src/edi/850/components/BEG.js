@@ -75,7 +75,7 @@ export default function BEG() {
                     <div>373</div>
                     <div>Date</div>
                     <div>O</div>
-                    <div>ANDT</div>
+                    <div>DT</div>
                     <div>8/8</div>
                     <div></div>
                 </div>
