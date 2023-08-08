@@ -90,15 +90,15 @@ export default function Overview() {
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>N1</div>
-                    <div>Customer Name</div>
+                    <div>Name</div>
                     <div>M</div>
                     <div>1</div>
                     <div>N1</div>
-                    <div className="text-[14px]">Only the customer (ship to) will be added to purchase order.</div>
+                    <div className="text-[14px]">Since we choose routes in advance to optimize cost, ST will be the customer, SF will specify which warehouse to ship from.</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>N3</div>
-                    <div>Customer Address</div>
+                    <div>Address</div>
                     <div>M</div>
                     <div>1</div>
                     <div>N1</div>
@@ -106,7 +106,7 @@ export default function Overview() {
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>N4</div>
-                    <div>Customer Geographic Location</div>
+                    <div>Geographic Location</div>
                     <div>M</div>
                     <div>1</div>
                     <div>N1</div>
@@ -134,7 +134,7 @@ export default function Overview() {
                     <div>M</div>
                     <div>&gt;1</div>
                     <div>PO1</div>
-                    <div className="text-[14px]">PO107 = FactoryPure SKU, PO109 = Supplier SKU</div>
+                    <div className="text-[14px]">We can determine in advance which product identifier best suits your needs</div>
                 </div>
             </div>
             <h2 className="text-offwhite border-b pb-[8px] font-bold text-[20px] leading-[1] mb-[16px]">Summary</h2>
