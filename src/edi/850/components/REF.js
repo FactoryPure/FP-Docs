@@ -19,7 +19,7 @@ export default function REF() {
                     <div>M</div>
                     <div>1</div>
                     <div></div>
-                    <div>FactoryPure MyCarrier Account Number</div>
+                    <div>FactoryPure Carrier Account Number</div>
                 </div>
             </div>
             <p className="text-fire font-bold leading-[1] mb-[16px] text-[18px]">Elements</p>
