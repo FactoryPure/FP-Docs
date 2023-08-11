@@ -103,7 +103,7 @@ export default function BIG() {
                     <div>M</div>
                     <div>ID</div>
                     <div>2/2</div>
-                    <div>CR, DR, ME</div>
+                    <div>DI</div>
                 </div>
             </div>
         </div>
