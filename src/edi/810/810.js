@@ -46,7 +46,7 @@ export default function EightTen() {
                     <CUR />
                     <REF />
                     <div id="n1-loop" className="p-[8px] bg-darkgrey rounded-[4px] shadow-small mb-[32px]">
-                        <p className="text-fire text-[20px] font-bold leading-[1] mb-[8px] text-[18px]">N1 LOOP - Repeat: &gt;1</p>
+                        <p className="text-fire font-bold leading-[1] mb-[8px] text-[18px]">N1 LOOP - Repeat: &gt;1</p>
                         <N1 />
                         <N3 />
                         <N4 />
@@ -54,10 +54,10 @@ export default function EightTen() {
                     <ITD />
                     <FOB />
                     <div id="it1-loop" className="p-[8px] bg-darkgrey rounded-[4px] shadow-small mb-[32px]">
-                        <p className="text-fire text-[20px] font-bold leading-[1] mb-[8px] text-[18px]">IT1 LOOP - Repeat: 200000</p>
+                        <p className="text-fire font-bold leading-[1] mb-[8px] text-[18px]">IT1 LOOP - Repeat: 200000</p>
                         <IT1/>
                         <div id="pid-loop" className="p-[8px] bg-grey/20 rounded-[4px] shadow-small">
-                            <p className="text-fire text-[20px] font-bold leading-[1] mb-[8px] text-[18px]">PID LOOP - Repeat: 1000</p>
+                            <p className="text-fire font-bold leading-[1] mb-[8px] text-[18px]">PID LOOP - Repeat: 1000</p>
                             <PID />
                         </div>
                     </div>
@@ -66,7 +66,7 @@ export default function EightTen() {
                     <CAD />
                     <SAC />
                     <div id="iss-loop" className="p-[8px] bg-darkgrey rounded-[4px] shadow-small mb-[32px]">
-                        <p className="text-fire text-[20px] font-bold leading-[1] mb-[8px] text-[18px]">ISS LOOP - Repeat: &gt;1</p>
+                        <p className="text-fire font-bold leading-[1] mb-[8px] text-[18px]">ISS LOOP - Repeat: &gt;1</p>
                         <ISS/>
                     </div>
                     <CTT />
@@ -145,6 +145,9 @@ export default function EightTen() {
                         </li>
                         <li>
                             <HashLink to="#cad">CAD Segment</HashLink>
+                        </li>
+                        <li>
+                            <HashLink to="#sac">SAC Segment</HashLink>
                         </li>
                         <li>
                             <HashLink to="#iss-loop">ISS Loop</HashLink>
