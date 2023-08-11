@@ -42,6 +42,9 @@ export default function BIG() {
                     <div>DT</div>
                     <div>8/8</div>
                     <div></div>
+                    <div className="col-span-8 mt-[8px]">
+                        <p className="font-bold">Invoice date</p>
+                    </div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey mb-[8px]">
                     <div>BIG02</div>
@@ -60,6 +63,9 @@ export default function BIG() {
                     <div>DT</div>
                     <div>8/8</div>
                     <div></div>
+                    <div className="col-span-8 mt-[8px]">
+                        <p className="font-bold">Purchase order date</p>
+                    </div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey mb-[8px]">
                     <div>BIG04</div>
