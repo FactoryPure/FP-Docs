@@ -11,6 +11,7 @@ import AK9 from "./components/AK9";
 import SE from "./components/SE";
 import GE from "../headersAndTrailers/GE";
 import IEA from "../headersAndTrailers/IEA";
+import Example from "./components/Example";
 
 export default function NineNineSeven() {
     return (
@@ -68,9 +69,13 @@ export default function NineNineSeven() {
                         <li>
                             <HashLink to="#iea">IEA Trailer</HashLink>
                         </li>
+                        <li>
+                            <HashLink to="#example">Example Functional Acknowledgement</HashLink>
+                        </li>
                     </ul>
                 </div>
             </div>
+            <Example />
         </>
     )
 }

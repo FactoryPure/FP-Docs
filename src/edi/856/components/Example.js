@@ -4,8 +4,8 @@ export default function Example() {
             <h2 className="text-offwhite border-b pb-[8px] font-bold text-[20px] leading-[1] mb-[16px]">Example Shipping Notice</h2>
             <pre className="whitespace-pre-line text-white text-[14px] p-[8px] bg-darkgrey rounded-[4px] shadow-small overflow-auto">
                 ISA*00*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*00*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ZZ*VENDOREDIID&nbsp;&nbsp;&nbsp;&nbsp;*ZZ*FACTORYPUREEDIP*230811*1145*U*00400*000000001*O*P*|~<br/>
-                GS*IB*VENDOREDIID*FACTORYPUREEDIP*20230811*1145*1*X*004010~<br/>
-                ST*846*0001~<br/>
+                GS*SH*VENDOREDIID*FACTORYPUREEDIP*20230811*1145*1*X*004010~<br/>
+                ST*856*0001~<br/>
                 BSN*00*99999-1*20230811*1145*0001~<br/>
                 HL*1**S~<br/>
                 TD1*PLT*1~<br/>
