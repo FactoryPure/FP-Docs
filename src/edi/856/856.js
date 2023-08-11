@@ -21,6 +21,7 @@ import LIN from "./components/LIN";
 import SN1 from "./components/SN1";
 import PID from "./components/PID";
 import CTT from "./components/CTT";
+import Example from "./components/Example";
 
 export default function EightFiftySix() {
     return (
@@ -73,6 +74,7 @@ export default function EightFiftySix() {
                     <SE />
                     <GE />
                     <IEA />
+                    <Example />
                 </div>
                 <div className="text-offwhite w-[30%] rounded-[4px] p-[32px] shadow-small bg-darkaccent h-fit sticky top-[32px] max-h-[calc(100vh-64px)] overflow-auto">
                     <h3 className="text-offwhite font-bold mb-[8px] leading-[1]">On this page</h3>
@@ -176,6 +178,9 @@ export default function EightFiftySix() {
                         </li>
                         <li>
                             <HashLink to="#iea">IEA Trailer</HashLink>
+                        </li>
+                        <li>
+                            <HashLink to="#example">Example Shipping Notice</HashLink>
                         </li>
                     </ul>
                 </div>
