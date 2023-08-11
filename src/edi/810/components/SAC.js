@@ -76,7 +76,7 @@ export default function SAC() {
                     <div>SAC05</div>
                     <div>610</div>
                     <div>Amount</div>
-                    <div>O</div>
+                    <div>M</div>
                     <div>N2</div>
                     <div>1/10</div>
                     <div></div>
