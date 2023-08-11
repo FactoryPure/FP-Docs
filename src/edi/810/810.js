@@ -23,6 +23,7 @@ import CTT from "./components/CTT";
 import SE from "../headersAndTrailers/SE";
 import PID from "./components/PID";
 import REF from "./components/REF";
+import SAC from "./components/SAC";
 
 
 export default function EightTen() {
@@ -63,6 +64,7 @@ export default function EightTen() {
                     <TDS />
                     <TXI />
                     <CAD />
+                    <SAC />
                     <div id="iss-loop" className="p-[8px] bg-darkgrey rounded-[4px] shadow-small mb-[32px]">
                         <p className="text-fire text-[20px] font-bold leading-[1] mb-[8px] text-[18px]">ISS LOOP - Repeat: &gt;1</p>
                         <ISS/>
