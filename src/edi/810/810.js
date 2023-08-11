@@ -64,7 +64,7 @@ export default function EightTen() {
                     <TDS />
                     <TXI />
                     <CAD />
-                    <SAC />
+                    {/* <SAC /> */}
                     <div id="iss-loop" className="p-[8px] bg-darkgrey rounded-[4px] shadow-small mb-[32px]">
                         <p className="text-fire font-bold leading-[1] mb-[8px] text-[18px]">ISS LOOP - Repeat: &gt;1</p>
                         <ISS/>
@@ -146,9 +146,11 @@ export default function EightTen() {
                         <li>
                             <HashLink to="#cad">CAD Segment</HashLink>
                         </li>
+                        {/* 
+                        removed for now, we aren't sure if we need this on invoices
                         <li>
                             <HashLink to="#sac">SAC Segment</HashLink>
-                        </li>
+                        </li> */}
                         <li>
                             <HashLink to="#iss-loop">ISS Loop</HashLink>
                             <ul className="pl-[8px] list-disc ml-[8px] text-offwhite">
