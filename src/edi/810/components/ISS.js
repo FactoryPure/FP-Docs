@@ -83,10 +83,11 @@ export default function ISS() {
                     <div>ISS06</div>
                     <div>355</div>
                     <div>Unit or Basis for Measurement Code</div>
-                    <div>X</div>
+                    <div>C</div>
                     <div>ID</div>
                     <div>2/2</div>
                     <div>CC, CI</div>
+                    <div className="col-span-full px-[8px] text-[16px] font-bold my-[8px]">If SAC04 is used, SAC05 must also be used.</div>
                 </div>
             </div>
         </div>
