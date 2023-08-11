@@ -14,6 +14,7 @@ import PID from "./components/PID";
 import QTY from "./components/QTY";
 import SE from "../headersAndTrailers/SE";
 import ST from "../headersAndTrailers/ST";
+import Example from "./components/Example";
 
 export default function EightFortySix() {
     return (
@@ -43,6 +44,7 @@ export default function EightFortySix() {
                     <SE />
                     <GE />
                     <IEA />
+                    <Example />
                 </div>
                 <div className="text-offwhite w-[30%] rounded-[4px] p-[32px] shadow-small bg-darkaccent h-fit sticky top-[32px]">
                     <h3 className="text-offwhite font-bold mb-[8px] leading-[1]">On this page</h3>
@@ -93,6 +95,9 @@ export default function EightFortySix() {
                         </li>
                         <li>
                             <HashLink to="#iea">IEA Trailer</HashLink>
+                        </li>
+                        <li>
+                            <HashLink to="#example">Example Inventory Advice</HashLink>
                         </li>
                     </ul>
                 </div>

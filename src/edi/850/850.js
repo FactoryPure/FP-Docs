@@ -19,6 +19,7 @@ import BEG from "./components/BEG";
 import CTT from "./components/CTT";
 import REF from "./components/REF";
 import SAC from "./components/SAC";
+import Example from "./components/Example";
 
 
 
@@ -61,6 +62,7 @@ export default function EightFifty() {
                     <SE />
                     <GE />
                     <IEA />
+                    <Example />
                 </div>
                 <div className="text-offwhite w-[30%] rounded-[4px] p-[32px] shadow-small bg-darkaccent h-fit sticky top-[32px]">
                     <h3 className="text-offwhite font-bold mb-[8px] leading-[1]">On this page</h3>
@@ -136,6 +138,9 @@ export default function EightFifty() {
                         </li>
                         <li>
                             <HashLink to="#iea">IEA Trailer</HashLink>
+                        </li>
+                        <li>
+                            <HashLink to="#example">Example Purchase Order</HashLink>
                         </li>
                     </ul>
                 </div>

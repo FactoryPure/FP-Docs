@@ -16,7 +16,7 @@ export default function PID() {
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>PID</div>
                     <div>Item Description</div>
-                    <div>M</div>
+                    <div>O</div>
                     <div>1</div>
                     <div>HL (Item)</div>
                     <div></div>
