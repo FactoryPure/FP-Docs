@@ -70,6 +70,26 @@ export default function BIG() {
                     <div>1/22</div>
                     <div></div>
                 </div>
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey mb-[8px]">
+                    <div>BIG05</div>
+                    <div>328</div>
+                    <div>Release Number</div>
+                    <div>O</div>
+                    <div>AN</div>
+                    <div>1/30</div>
+                    <div></div>
+                    <div className="col-span-full px-[8px] text-[14px] my-[8px] font-bold text-accent">This field is not used by FactoryPure.</div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey mb-[8px]">
+                    <div>BIG06</div>
+                    <div>327</div>
+                    <div>Change Order Sequence Number</div>
+                    <div>O</div>
+                    <div>AN</div>
+                    <div>1/8</div>
+                    <div></div>
+                    <div className="col-span-full px-[8px] text-[14px] my-[8px] font-bold text-accent">This field is not used by FactoryPure.</div>
+                </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey">
                     <div>BIG07</div>
                     <div>640</div>

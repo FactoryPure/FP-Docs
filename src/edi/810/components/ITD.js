@@ -66,7 +66,7 @@ export default function ITD() {
                         <div>ITD04</div>
                         <div>370</div>
                         <div>Terms Discount Due Date</div>
-                        <div>X</div>
+                        <div>C</div>
                         <div>DT</div>
                         <div>8/8</div>
                         <div></div>
@@ -80,7 +80,7 @@ export default function ITD() {
                         <div>ITD05</div>
                         <div>351</div>
                         <div>Terms Discount Days Due</div>
-                        <div>X</div>
+                        <div>C</div>
                         <div>N0</div>
                         <div>1/3</div>
                         <div></div>
@@ -93,7 +93,7 @@ export default function ITD() {
                     <div>ITD06</div>
                     <div>446</div>
                     <div>Terms Net Due Date</div>
-                    <div>X</div>
+                    <div>C</div>
                     <div>ID</div>
                     <div>8/8</div>
                     <div></div>
@@ -103,7 +103,7 @@ export default function ITD() {
                         <div>ITD07</div>
                         <div>386</div>
                         <div>Terms Net Days</div>
-                        <div>X</div>
+                        <div>C</div>
                         <div>N0</div>
                         <div>1/3</div>
                         <div></div>
@@ -117,7 +117,7 @@ export default function ITD() {
                         <div>ITD08</div>
                         <div>362</div>
                         <div>Terms Discount Amount</div>
-                        <div>X</div>
+                        <div>C</div>
                         <div>N2</div>
                         <div>1/10</div>
                         <div></div>
@@ -125,6 +125,36 @@ export default function ITD() {
                     <div className="col-span-8 mt-[8px]">
                         <p className="font-bold">If FactoryPure receives a Terms discount, the Terms Discount Amount (ITD08) must be used.</p>
                     </div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey mb-[8px]">
+                    <div>ITD09</div>
+                    <div>388</div>
+                    <div>Terms Deferred Due Date</div>
+                    <div>O</div>
+                    <div>DT</div>
+                    <div>8/8</div>
+                    <div></div>
+                    <div className="col-span-full px-[8px] text-[14px] my-[8px] font-bold text-accent">This field is not used by FactoryPure.</div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey mb-[8px]">
+                    <div>ITD10</div>
+                    <div>389</div>
+                    <div>Deferred Amount Due</div>
+                    <div>C</div>
+                    <div>N2</div>
+                    <div>1/10</div>
+                    <div></div>
+                    <div className="col-span-full px-[8px] text-[14px] my-[8px] font-bold text-accent">This field is not used by FactoryPure.</div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey mb-[8px]">
+                    <div>ITD11</div>
+                    <div>342</div>
+                    <div>Percent of Invoice Payable</div>
+                    <div>C</div>
+                    <div>R</div>
+                    <div>1/5</div>
+                    <div></div>
+                    <div className="col-span-full px-[8px] text-[14px] my-[8px] font-bold text-accent">This field is not used by FactoryPure.</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>ITD12</div>

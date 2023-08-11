@@ -70,56 +70,68 @@ export default function IT1() {
                     <div>1/17</div>
                     <div></div>
                 </div>
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey mb-[8px]">
+                    <div>IT105</div>
+                    <div>639</div>
+                    <div>Basis of Unit Price Code</div>
+                    <div>O</div>
+                    <div>ID</div>
+                    <div>2/2</div>
+                    <div></div>
+                    <div className="col-span-full px-[8px] text-[14px] my-[8px] font-bold text-accent">This field is not used by FactoryPure.</div>
+                </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>IT106</div>
                     <div>235</div>
                     <div>Product/Service ID Qualifer</div>
-                    <div>X</div>
+                    <div>C</div>
                     <div>ID</div>
                     <div>2/2</div>
-                    <div>CB</div>
+                    <div>SK</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>IT107</div>
                     <div>234</div>
                     <div>Product/Service ID</div>
-                    <div>X</div>
+                    <div>C</div>
                     <div>AN</div>
                     <div>1/48</div>
                     <div></div>
+                    <div class="col-span-full px-[8px] text-[16px] font-bold my-[8px]">Factory Pure's SKU</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>IT108</div>
                     <div>235</div>
                     <div>Product/Service ID Qualifer</div>
-                    <div>X</div>
+                    <div>C</div>
                     <div>ID</div>
                     <div>2/2</div>
-                    <div>VC</div>
+                    <div>SK</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>IT109</div>
                     <div>234</div>
                     <div>Product/Service ID</div>
-                    <div>X</div>
+                    <div>C</div>
                     <div>AN</div>
                     <div>1/48</div>
                     <div></div>
+                    <div class="col-span-full px-[8px] text-[16px] font-bold my-[8px]">Vendor's SKU</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>IT110</div>
                     <div>235</div>
                     <div>Product/Service ID Qualifer</div>
-                    <div>X</div>
+                    <div>C</div>
                     <div>ID</div>
                     <div>2/2</div>
-                    <div>UK</div>
+                    <div>UP</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>IT111</div>
                     <div>234</div>
                     <div>Product/Service ID</div>
-                    <div>X</div>
+                    <div>C</div>
                     <div>AN</div>
                     <div>1/48</div>
                     <div></div>

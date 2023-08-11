@@ -59,7 +59,7 @@ export default function ISS() {
                     <div>M</div>
                     <div>R</div>
                     <div>1/10</div>
-                    <div>2I</div>
+                    <div></div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>ISS04</div>
@@ -86,7 +86,7 @@ export default function ISS() {
                     <div>X</div>
                     <div>ID</div>
                     <div>2/2</div>
-                    <div>CC</div>
+                    <div>CC, CI</div>
                 </div>
             </div>
         </div>

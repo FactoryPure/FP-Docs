@@ -43,6 +43,26 @@ export default function CAD() {
                     <div>1/2</div>
                     <div>T</div>
                 </div>
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey mb-[8px]">
+                    <div>CAD02</div>
+                    <div>206</div>
+                    <div>Equipment Initial</div>
+                    <div>O</div>
+                    <div>AN</div>
+                    <div>1/4</div>
+                    <div></div>
+                    <div className="col-span-full px-[8px] text-[14px] my-[8px] font-bold text-accent">This field is not used by FactoryPure.</div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey mb-[8px]">
+                    <div>CAD03</div>
+                    <div>207</div>
+                    <div>Equipment Number</div>
+                    <div>O</div>
+                    <div>AN</div>
+                    <div>1/10</div>
+                    <div></div>
+                    <div className="col-span-full px-[8px] text-[14px] my-[8px] font-bold text-accent">This field is not used by FactoryPure.</div>
+                </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>CAD04</div>
                     <div>140</div>
@@ -65,6 +85,16 @@ export default function CAD() {
                     <div className="mt-[8px]">
                         <p>Carrier Name</p>
                     </div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey mb-[8px]">
+                    <div>CAD06</div>
+                    <div>368</div>
+                    <div>Shipment/Order Status Code</div>
+                    <div>O</div>
+                    <div>ID</div>
+                    <div>1/2</div>
+                    <div></div>
+                    <div className="col-span-full px-[8px] text-[14px] my-[8px] font-bold text-accent">This field is not used by FactoryPure.</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>CAD07</div>

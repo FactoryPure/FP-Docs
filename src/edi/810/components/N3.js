@@ -48,7 +48,7 @@ export default function N3() {
                     <div>166</div>
                     <div>Address Information</div>
                     <div>O</div>
-                    <div>ID</div>
+                    <div>AN</div>
                     <div>1/55</div>
                     <div></div>
                 </div>

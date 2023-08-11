@@ -41,13 +41,13 @@ export default function TXI() {
                     <div>M</div>
                     <div>ID</div>
                     <div>2/2</div>
-                    <div>ANY</div>
+                    <div>All Valid X12 Codes</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>TXI02</div>
                     <div>782</div>
                     <div>Monetary Amount</div>
-                    <div>X</div>
+                    <div>C</div>
                     <div>R</div>
                     <div>1/18</div>
                     <div></div>
@@ -56,7 +56,7 @@ export default function TXI() {
                     <div>TXI03</div>
                     <div>954</div>
                     <div>Percent</div>
-                    <div>X</div>
+                    <div>C</div>
                     <div>R</div>
                     <div>1/10</div>
                     <div></div>
@@ -65,7 +65,7 @@ export default function TXI() {
                     <div>TXI04</div>
                     <div>955</div>
                     <div>Tax Jurisdiction Code Qualifier</div>
-                    <div>X</div>
+                    <div>C</div>
                     <div>ID</div>
                     <div>2/2</div>
                     <div>VD</div>
@@ -74,10 +74,40 @@ export default function TXI() {
                     <div>TXI05</div>
                     <div>956</div>
                     <div>Tax Jurisdiction Code</div>
-                    <div>X</div>
+                    <div>C</div>
                     <div>AN</div>
                     <div>1/10</div>
                     <div></div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey mb-[8px]">
+                    <div>TXI06</div>
+                    <div>441</div>
+                    <div>Tax Exempt Code</div>
+                    <div>C</div>
+                    <div>ID</div>
+                    <div>1/1</div>
+                    <div></div>
+                    <div className="col-span-full px-[8px] text-[14px] my-[8px] font-bold text-accent">This field is not used by FactoryPure.</div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey mb-[8px]">
+                    <div>TXI07</div>
+                    <div>662</div>
+                    <div>Relationship Code</div>
+                    <div>O</div>
+                    <div>ID</div>
+                    <div>1/1</div>
+                    <div></div>
+                    <div className="col-span-full px-[8px] text-[14px] my-[8px] font-bold text-accent">This field is not used by FactoryPure.</div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey mb-[8px]">
+                    <div>TXI08</div>
+                    <div>828</div>
+                    <div>Dollar Basis For Percent</div>
+                    <div>O</div>
+                    <div>R</div>
+                    <div>1/9</div>
+                    <div></div>
+                    <div className="col-span-full px-[8px] text-[14px] my-[8px] font-bold text-accent">This field is not used by FactoryPure.</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>TXI09</div>
