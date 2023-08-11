@@ -74,7 +74,6 @@ export default function EightFiftySix() {
                     <SE />
                     <GE />
                     <IEA />
-                    <Example />
                 </div>
                 <div className="text-offwhite w-[30%] rounded-[4px] p-[32px] shadow-small bg-darkaccent h-fit sticky top-[32px] max-h-[calc(100vh-64px)] overflow-auto">
                     <h3 className="text-offwhite font-bold mb-[8px] leading-[1]">On this page</h3>
@@ -185,6 +184,7 @@ export default function EightFiftySix() {
                     </ul>
                 </div>
             </div>
+            <Example />
         </>
     )
 }
