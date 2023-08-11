@@ -87,7 +87,6 @@ export default function ISS() {
                     <div>ID</div>
                     <div>2/2</div>
                     <div>CC, CI</div>
-                    <div className="col-span-full px-[8px] text-[16px] font-bold my-[8px]">If SAC04 is used, SAC05 must also be used.</div>
                 </div>
             </div>
         </div>
