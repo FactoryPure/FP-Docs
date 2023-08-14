@@ -137,6 +137,7 @@ export default function PO1() {
                     <div className="col-span-full px-[8px] text-[16px] font-bold my-[8px]">Supplier model number.</div>
                 </div>
             </div>
+            <h2 className="text-offwhite border-b pb-[8px] font-bold text-[20px] leading-[1] mb-[16px]">Notes</h2>
             <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr_1fr] gap-x-[16px] mb-[32px]">
                 <div className="text-offwhite grid grid-cols-[100px_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <p>1.</p>
