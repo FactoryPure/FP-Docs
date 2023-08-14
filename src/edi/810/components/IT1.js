@@ -97,7 +97,6 @@ export default function IT1() {
                     <div>AN</div>
                     <div>1/48</div>
                     <div></div>
-                    <div class="col-span-full px-[8px] text-[16px] font-bold my-[8px]">Factory Pure's SKU</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>IT108</div>
