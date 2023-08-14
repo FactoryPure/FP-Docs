@@ -58,7 +58,7 @@ export default function EightTen() {
                         <p className="text-fire font-bold leading-[1] mb-[8px] text-[18px]">IT1 LOOP - Repeat: &gt;1</p>
                         <IT1/>
                         <div id="pid-loop" className="p-[8px] bg-grey/20 rounded-[4px] shadow-small">
-                            <p className="text-fire font-bold leading-[1] mb-[8px] text-[18px]">PID LOOP - Repeat: 1000</p>
+                            <p className="text-fire font-bold leading-[1] mb-[8px] text-[18px]">PID LOOP - Repeat: &gt;</p>
                             <PID />
                         </div>
                     </div>
