@@ -82,9 +82,8 @@ export default function CAD() {
                         <div>1/35</div>
                         <div></div>
                     </div>
-                    <div className="mt-[8px]">
-                        <p>Carrier Name</p>
-                    </div>
+                    <div className="col-span-full px-[8px] text-[16px] font-bold my-[8px]">Carrier name</div>
+
                 </div>
                 {/* <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey mb-[8px]">
                     <div>CAD06</div>
