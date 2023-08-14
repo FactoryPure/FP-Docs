@@ -42,6 +42,9 @@ export default function REF() {
                     <div>ID</div>
                     <div>2/3</div>
                     <div>BM, 2I</div>
+                    <div className="col-span-8 mt-[8px]">
+                        <p className="font-bold">At least 1 Bill of Lading is required per invoice.</p>
+                    </div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>REF02</div>
