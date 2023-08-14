@@ -37,11 +37,11 @@ export default function PO1() {
                     <div>PO101</div>
                     <div>350</div>
                     <div>Assigned Identification</div>
-                    <div>M</div>
+                    <div>O</div>
                     <div>AN</div>
                     <div>1/20</div>
                     <div></div>
-                    <div className="col-span-full px-[8px] text-[16px] font-bold my-[8px]">Line number. Typical 3 digits like '001'.</div>
+                    <div className="col-span-full px-[8px] text-[14px] my-[8px] font-bold text-accent">This field is not used by FactoryPure.</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>PO102</div>
@@ -84,39 +84,65 @@ export default function PO1() {
                     <div>PO106</div>
                     <div>235</div>
                     <div>Product ID Qualifier</div>
-                    <div>M</div>
+                    <div>C</div>
                     <div>ID</div>
                     <div>2/2</div>
-                    <div>CB</div>
+                    <div>UP</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>PO107</div>
                     <div>234</div>
                     <div>Product ID</div>
-                    <div>M</div>
+                    <div>C</div>
                     <div>AN</div>
                     <div>1/48</div>
                     <div></div>
-                    <div className="col-span-full px-[8px] text-[16px] font-bold my-[8px]">FactoryPure SKU.</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>PO108</div>
                     <div>235</div>
                     <div>Product ID Qualifier</div>
-                    <div>M</div>
+                    <div>C</div>
                     <div>ID</div>
                     <div>2/2</div>
-                    <div>SK, MN, UP</div>
+                    <div>SK</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>PO109</div>
                     <div>234</div>
                     <div>Product ID</div>
-                    <div>M</div>
+                    <div>C</div>
                     <div>AN</div>
                     <div>1/48</div>
                     <div></div>
-                    <div className="col-span-full px-[8px] text-[16px] font-bold my-[8px]">Supplier SKU, Model Name/Number, or UPC. FactoryPure and partners will agree on which to send in advance.</div>
+                    <div className="col-span-full px-[8px] text-[16px] font-bold my-[8px]">Supplier SKU.</div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>PO110</div>
+                    <div>235</div>
+                    <div>Product ID Qualifier</div>
+                    <div>C</div>
+                    <div>ID</div>
+                    <div>2/2</div>
+                    <div>MN</div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>PO111</div>
+                    <div>234</div>
+                    <div>Product ID</div>
+                    <div>C</div>
+                    <div>AN</div>
+                    <div>1/48</div>
+                    <div></div>
+                    <div className="col-span-full px-[8px] text-[16px] font-bold my-[8px]">Supplier model number.</div>
+                </div>
+            </div>
+            <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr_1fr] gap-x-[16px] mb-[32px]">
+                <div className="text-offwhite grid grid-cols-[100px_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <p>1.</p>
+                    <p>
+                        At least one combination of PO106+PO107, PO108+PO109, or PO110+PO111 must be present
+                    </p>
                 </div>
             </div>
         </div>
