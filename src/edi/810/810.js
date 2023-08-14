@@ -24,6 +24,7 @@ import SE from "../headersAndTrailers/SE";
 import PID from "./components/PID";
 import REF from "./components/REF";
 import SAC from "./components/SAC";
+import Example from "./components/Example";
 
 
 export default function EightTen() {
@@ -171,9 +172,13 @@ export default function EightTen() {
                         <li>
                             <HashLink to="#iea">IEA Segment</HashLink>
                         </li>
+                        <li>
+                            <HashLink to="#example">Example Invoice</HashLink>
+                        </li>
                     </ul>
                 </div>
             </div>
+            <Example />
         </>
     )
 }
