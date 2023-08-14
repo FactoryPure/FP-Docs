@@ -17,7 +17,7 @@ export default function CTT() {
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>CTT</div>
-                    <div>Transaction Totlas</div>
+                    <div>Transaction Totals</div>
                     <div>M</div>
                     <div>1</div>
                     <div></div>

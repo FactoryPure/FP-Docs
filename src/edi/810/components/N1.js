@@ -41,7 +41,7 @@ export default function N1() {
                     <div>M</div>
                     <div>ID</div>
                     <div>2/3</div>
-                    <div>ST</div>
+                    <div>ST, SF</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>N102</div>
@@ -52,7 +52,7 @@ export default function N1() {
                     <div>1/60</div>
                     <div></div>
                 </div>
-                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                {/* Not used any more <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>N103</div>
                     <div>66</div>
                     <div>Identification Code Qualifier</div>
@@ -69,7 +69,7 @@ export default function N1() {
                     <div>AN</div>
                     <div>1/60</div>
                     <div></div>
-                </div>
+                </div> */}
             </div>
         </div>
     )

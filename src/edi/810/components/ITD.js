@@ -94,7 +94,7 @@ export default function ITD() {
                     <div>446</div>
                     <div>Terms Net Due Date</div>
                     <div>C</div>
-                    <div>ID</div>
+                    <div>DT</div>
                     <div>8/8</div>
                     <div></div>
                 </div>

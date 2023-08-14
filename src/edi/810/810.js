@@ -13,7 +13,7 @@ import N1 from "./components/N1";
 import N3 from "./components/N3";
 import N4 from "./components/N4";
 import ITD from "./components/ITD";
-import FOB from "./components/FOB";
+import FOB from "../headersAndTrailers/FOB";
 import IT1 from "./components/IT1";
 import TDS from "./components/TDS";
 import TXI from "./components/TXI";
@@ -54,7 +54,7 @@ export default function EightTen() {
                     <ITD />
                     <FOB />
                     <div id="it1-loop" className="p-[8px] bg-darkgrey rounded-[4px] shadow-small mb-[32px]">
-                        <p className="text-fire font-bold leading-[1] mb-[8px] text-[18px]">IT1 LOOP - Repeat: 200000</p>
+                        <p className="text-fire font-bold leading-[1] mb-[8px] text-[18px]">IT1 LOOP - Repeat: &gt;1</p>
                         <IT1/>
                         <div id="pid-loop" className="p-[8px] bg-grey/20 rounded-[4px] shadow-small">
                             <p className="text-fire font-bold leading-[1] mb-[8px] text-[18px]">PID LOOP - Repeat: 1000</p>
@@ -158,6 +158,9 @@ export default function EightTen() {
                                     <HashLink to="#iss">ISS Segment</HashLink>
                                 </li>
                             </ul>
+                        </li>
+                        <li>
+                            <HashLink to="#ctt">CTT Segment</HashLink>
                         </li>
                         <li>
                             <HashLink to="#se">SE Segment</HashLink>

@@ -34,7 +34,7 @@ export default function BIG() {
                     <div>Min/max</div>
                     <div>Codes</div>
                 </div>
-                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey mb-[8px]">
                     <div>BIG01</div>
                     <div>373</div>
                     <div>Date</div>
@@ -42,7 +42,7 @@ export default function BIG() {
                     <div>DT</div>
                     <div>8/8</div>
                     <div></div>
-                    <div className="col-span-8 mt-[8px]">
+                    <div className="col-span-7 mt-[8px]">
                         <p className="font-bold">Invoice date</p>
                     </div>
                 </div>
@@ -63,7 +63,7 @@ export default function BIG() {
                     <div>DT</div>
                     <div>8/8</div>
                     <div></div>
-                    <div className="col-span-8 mt-[8px]">
+                    <div className="col-span-7 mt-[8px]">
                         <p className="font-bold">Purchase order date</p>
                     </div>
                 </div>

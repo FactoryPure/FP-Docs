@@ -86,7 +86,7 @@ export default function CAD() {
                         <p>Carrier Name</p>
                     </div>
                 </div>
-                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey mb-[8px]">
+                {/* <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] border-b border-darkgrey mb-[8px]">
                     <div>CAD06</div>
                     <div>368</div>
                     <div>Shipment/Order Status Code</div>
@@ -113,7 +113,7 @@ export default function CAD() {
                     <div>AN</div>
                     <div>1/30</div>
                     <div></div>
-                </div>
+                </div> */}
             </div>
         </div>
     )

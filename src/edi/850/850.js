@@ -12,7 +12,7 @@ import MSG from "./components/MSG";
 import N1 from "./components/N1";
 import N3 from "./components/N3";
 import N4 from "./components/N4";
-import FOB from "./components/FOB";
+import FOB from "../headersAndTrailers/FOB";
 import TD5 from "./components/TD5";
 import PO1 from "./components/PO1";
 import BEG from "./components/BEG";

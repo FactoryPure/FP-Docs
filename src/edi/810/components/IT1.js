@@ -59,7 +59,7 @@ export default function IT1() {
                     <div>M</div>
                     <div>ID</div>
                     <div>2/2</div>
-                    <div></div>
+                    <div>EA</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>IT104</div>
@@ -77,7 +77,7 @@ export default function IT1() {
                     <div>O</div>
                     <div>ID</div>
                     <div>2/2</div>
-                    <div></div>
+                    <div>PE</div>
                     <div className="col-span-full px-[8px] text-[14px] my-[8px] font-bold text-accent">This field is not used by FactoryPure.</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
@@ -87,7 +87,7 @@ export default function IT1() {
                     <div>C</div>
                     <div>ID</div>
                     <div>2/2</div>
-                    <div>SK</div>
+                    <div>UP</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>IT107</div>
@@ -125,7 +125,7 @@ export default function IT1() {
                     <div>C</div>
                     <div>ID</div>
                     <div>2/2</div>
-                    <div>UP</div>
+                    <div>MN</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>IT111</div>
