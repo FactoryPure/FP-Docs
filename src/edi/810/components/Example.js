@@ -20,7 +20,7 @@ export default function Example() {
                 IT1*001*1*EA*1234.56*PE***SK*VENDOR-SKU~<br/>
                 PID*F****Inverter generator~<br/>
                 TDS*135802~<br/>
-                TXI*CG*123.46*10*VD*TEXAS****12-4567890~<br/>
+                TXI*CG*123.46*10*VD*TX****12-4567890~<br/>
                 CAD*T***AACT*AAA Cooper~<br/>
                 ISS*1*EA*215*LB*16268*CI~<br/>
                 CTT*1~<br/>
