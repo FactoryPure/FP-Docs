@@ -75,7 +75,7 @@ export default function EightTen() {
                     <GE />
                     <IEA />
                 </div>
-                <div className="text-offwhite w-[30%] rounded-[4px] p-[32px] shadow-small bg-darkaccent h-fit sticky top-[32px]">
+                <div className="text-offwhite w-[30%] rounded-[4px] p-[32px] shadow-small bg-darkaccent h-fit sticky top-[32px] max-h-[calc(100vh-64px)] overflow-auto">
                     <h3 className="text-offwhite font-bold mb-[8px] leading-[1]">On this page</h3>
                     <ul className="pl-[8px] list-disc ml-[8px] text-offwhite">
                         <li>
