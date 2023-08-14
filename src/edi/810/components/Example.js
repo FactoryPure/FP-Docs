@@ -7,7 +7,7 @@ export default function Example() {
                 GS*PO*VENDOREDIID*FACTORYPUREEDIP*20230811*1145*1*X*004010~<br/>
                 ST*810*0001~<br/>
                 BIG*20230811*99999*20230811*99999***DI~<br/>
-                CUR*SE*USD<br/>
+                CUR*SE*USD~<br/>
                 REF*BM*123456789~<br/>
                 N1*SF*Vendor Warehouse~<br/>
                 N3*123 St~<br/>
