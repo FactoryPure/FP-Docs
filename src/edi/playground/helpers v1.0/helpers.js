@@ -30,3 +30,135 @@ export const getElements = (line, separator) => {
     const segmentType = elements[0]
     return Object.fromEntries(elements.map((el, index) => [`${segmentType}` + `0${index}`.slice(-2), el]))
 }
+
+export const validateEDIParserResult = (object, model, map, documentType) => {
+    if (!object || !model || !documentType || !map) {
+        return [null, ["Validator must include object, model, map, and documentType!"]]
+    }
+  
+    const errors = []
+    const conditionals = {}
+    try {
+        check(object, model, map, documentType, errors, conditionals)
+    } catch (err) {
+        console.error(err)
+        errors.push("Invalid input!")
+        return [null, errors]
+    }
+    
+    const unSatisfiedConditionals = Object.entries(conditionals).filter(([key, val]) => val.status === "NOT SATISFIED")
+    for (let condition of unSatisfiedConditionals) {
+        const [key, information] = condition
+        const { segment, positions } = information
+        errors.push({
+            segment,
+            position: `${Array.from(positions).join(", ")}`,
+            message: `Must include at least one of ${Array.from(positions).map(p => `${segment}0${p}`).join(", ")}`
+        })
+    }
+  
+    return [object, errors]
+}
+  
+function check(object, model, map, path, errors, conditionals) {
+    // BASE CASE
+    if (typeof model !== "object") {
+        // CONDITIONAL CHECKER
+        if (model.substring(0, 1) === "C") {
+            const type = model.substring(1);
+            const currentElement = getCurrentElementParent(path)
+            const { segment, position } = getSegmentAndElement(map, path)
+            if (!conditionals[currentElement]) {
+                conditionals[currentElement] = {
+                    segment,
+                    positions: new Set([position]),
+                    elementList: [],
+                    status: "NOT SATISFIED"
+                }
+            }
+            conditionals[currentElement].elementList.push(model)
+            conditionals[currentElement].positions.add(position)
+            if ((object || object === false || object === 0) && typeof object === type) {
+                conditionals[currentElement].status = "SATISFIED"
+            }
+            return
+      }
+      // REGULAR CHECKER
+      const required = model.substring(0, 1) === "!";
+      const type = model.substring(1);
+      if (required && object !== false && object !== 0 && !object) {
+            const { segment, position } = getSegmentAndElement(map, path)
+            errors.push({
+                segment,
+                position,
+                message: `Required field ${path} is missing from parsed EDI document.`
+            });
+      } else if ((object || object === false || object === 0) && typeof object !== type) {
+        const { segment, position } = getSegmentAndElement(map, path)
+        errors.push({
+            segment,
+            position,
+            message: `Field ${path} must be of type ${type}.`
+        })
+      }
+      return
+    }
+  
+    // ARRAY CASE
+    if (Array.isArray(model)) {
+        return check(object, model[0], map, `${path}`, errors, conditionals)
+    }
+  
+    // OBJECT CASE
+    const keys = Object.keys(model)
+    for (let key of keys) {
+        const modelField = model[key]
+        const objectField = object[key]
+        if (Array.isArray(modelField)) {
+            if (!Array.isArray(objectField)) {
+                const { segment, position } = getSegmentAndElement(map, `${path}.${key}`)
+                errors.push({
+                    segment,
+                    element,
+                    message: `Required array ${path}.${key} is missing from parsed EDI document.`
+                })
+            } else {
+                for (let i = 0; i < objectField.length; i++) {
+                    const arrayObjectField = objectField[i]
+                    check(arrayObjectField, modelField, map, `${path}.${key}[${i}]`, errors, conditionals)
+                }
+            }
+        } else if (typeof modelField === "object") {
+            if (typeof objectField !== "object") {
+                const { segment, position } = getSegmentAndElement(map, `${path}.${key}`)
+                errors.push({
+                    segment,
+                    position,
+                    message: `Required object ${path}.${key} is missing from parsed EDI document.`
+                })
+            } else {
+                check(objectField, modelField, map, `${path}.${key}`, errors, conditionals)
+            }
+        } else {
+            check(objectField, modelField, map, `${path}.${key}`, errors, conditionals)
+        }
+    }
+}
+  
+function getSegmentAndElement(map, path) {
+    const pathArray = path.split(".").slice(1)
+    let mapVal = JSON.parse(JSON.stringify(map))
+    for (let pathKey of pathArray) {
+        if (pathKey.includes("[")) {
+            mapVal = mapVal[pathKey.split("[")[0]][0]
+        } else {
+            mapVal = mapVal[pathKey]
+        }
+    }
+    return mapVal
+}
+  
+function getCurrentElementParent(path) {
+    const pathArray = path.split(".")
+    return pathArray[pathArray.length - 2]
+}
