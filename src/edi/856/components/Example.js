@@ -12,7 +12,7 @@ export default function Example() {
                 TD5*B*2*AACT*T*AAA Cooper~<br/>
                 REF*BM*123456789~<br/>
                 DTM*011*20230811~<br/>
-                N1*ST*Vendor Warehouse~<br/>
+                N1*SF*Vendor Warehouse~<br/>
                 N3*123 St~<br/>
                 N4*CITY*TX*78233*US~<br/>
                 N1*ST*Customer Name~<br/>
