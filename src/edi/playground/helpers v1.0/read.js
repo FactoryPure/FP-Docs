@@ -446,93 +446,100 @@ export const read850 = (data) => {
     const { elementDelimiter, lineTerminator } = getDelimiters(data)
     let currentShippingParty = ""
     const lines = getSegments(data, lineTerminator)
-    for (let line of lines) { 
-        const elements = getElements(line, elementDelimiter)
-        const segment = Object.values(elements)[0]
-        if (segment === "ISA") {
-            purchaseOrder.senderID = elements.ISA06
-            purchaseOrder.receiverID = elements.ISA08
-            purchaseOrder.createdAt = new Date(Date.UTC(
-                `20` + elements.ISA09.slice(0,2), 
-                parseInt(elements.ISA09.slice(2,4).replaceAll("0", "")) - 1,
-                parseInt(elements.ISA09.slice(4,6).replaceAll("0", "")), 
-                parseInt(elements.ISA10.slice(0,2).replaceAll("0", "")),
-                parseInt(elements.ISA10.slice(2,4).replaceAll("0", ""))
-            )).toISOString()
-            purchaseOrder.isTest = elements.ISA15 === "T"
-            purchaseOrder.ISAControlNumber = elements.ISA13
-        }
-        if (segment === "GS") {
-            purchaseOrder.GSControlNumber = elements.GS06
-        }
-        if (segment === "ST") {
-            purchaseOrder.STControlNumber = elements.ST02
-        }
-        if (segment === "BEG") {
-            purchaseOrder.purpose = purposeMap[elements.BEG01]
-            purchaseOrder.purchaseOrderNumber = elements.BEG03
-        }
-        if (segment === "REF") {
-            purchaseOrder.carrierInfo.accountNumber = elements.REF02
-        }
-        if (segment === "SAC" && elements.SAC02 === "D980") {
-            purchaseOrder.carrierInfo.insuranceCost = (parseFloat(elements.SAC05) / 100).toFixed(2)
-        }
-        if (segment === "MSG") {
-            purchaseOrder.note = elements.MSG01
-        }
-        if (segment === "N1") {
-            currentShippingParty = elements.N101
-        }
-        if (currentShippingParty === "ST") {
+    const errorLocation = {}
+    try {
+        for (let line of lines) { 
+            const elements = getElements(line, elementDelimiter)
+            const segment = Object.values(elements)[0]
+            errorLocation.segment = segment
+            errorLocation.element = ""
+            if (segment === "ISA") {
+                purchaseOrder.senderID = elements.ISA06
+                purchaseOrder.receiverID = elements.ISA08
+                purchaseOrder.createdAt = new Date(Date.UTC(
+                    `20` + elements.ISA09.slice(0,2), 
+                    parseInt(elements.ISA09.slice(2,4).replaceAll("0", "")) - 1,
+                    parseInt(elements.ISA09.slice(4,6).replaceAll("0", "")), 
+                    parseInt(elements.ISA10.slice(0,2).replaceAll("0", "")),
+                    parseInt(elements.ISA10.slice(2,4).replaceAll("0", ""))
+                )).toISOString()
+                purchaseOrder.isTest = elements.ISA15 === "T"
+                purchaseOrder.ISAControlNumber = elements.ISA13
+            }
+            if (segment === "GS") {
+                purchaseOrder.GSControlNumber = elements.GS06
+            }
+            if (segment === "ST") {
+                purchaseOrder.STControlNumber = elements.ST02
+            }
+            if (segment === "BEG") {
+                purchaseOrder.purpose = purposeMap[elements.BEG01]
+                purchaseOrder.purchaseOrderNumber = elements.BEG03
+            }
+            if (segment === "REF") {
+                purchaseOrder.carrierInfo.accountNumber = elements.REF02
+            }
+            if (segment === "SAC" && elements.SAC02 === "D980") {
+                purchaseOrder.carrierInfo.insuranceCost = (parseFloat(elements.SAC05) / 100).toFixed(2)
+            }
+            if (segment === "MSG") {
+                purchaseOrder.note = elements.MSG01
+            }
             if (segment === "N1") {
-                purchaseOrder.shipTo.name = elements.N102
+                currentShippingParty = elements.N101
             }
-            if (segment === "N3") {
-                purchaseOrder.shipTo.address1 = elements.N301
-                purchaseOrder.shipTo.address2 = elements.N302 || ""
+            if (currentShippingParty === "ST") {
+                if (segment === "N1") {
+                    purchaseOrder.shipTo.name = elements.N102
+                }
+                if (segment === "N3") {
+                    purchaseOrder.shipTo.address1 = elements.N301
+                    purchaseOrder.shipTo.address2 = elements.N302 || ""
+                }
+                if (segment === "N4") {
+                    purchaseOrder.shipTo.city = elements.N401
+                    purchaseOrder.shipTo.state = elements.N402
+                    purchaseOrder.shipTo.zip = elements.N403
+                    purchaseOrder.shipTo.country = elements.N404
+                }
             }
-            if (segment === "N4") {
-                purchaseOrder.shipTo.city = elements.N401
-                purchaseOrder.shipTo.state = elements.N402
-                purchaseOrder.shipTo.zip = elements.N403
-                purchaseOrder.shipTo.country = elements.N404
+            if (currentShippingParty === "SF") {
+                if (segment === "N1") {
+                    purchaseOrder.shipFrom.name = elements.N102
+                }
+                if (segment === "N3") {
+                    purchaseOrder.shipFrom.address1 = elements.N301
+                    purchaseOrder.shipFrom.address2 = elements.N302 || ""
+                }
+                if (segment === "N4") {
+                    purchaseOrder.shipFrom.city = elements.N401
+                    purchaseOrder.shipFrom.state = elements.N402
+                    purchaseOrder.shipFrom.zip = elements.N403
+                    purchaseOrder.shipFrom.country = elements.N404
+                }
+            }
+            if (segment === "FOB") {
+                purchaseOrder.carrierInfo.deliveryAddressType = addressTypeMap[elements.FOB02]
+                purchaseOrder.carrierInfo.withLiftGate = elements.FOB03 === "WITHLIFTGATE"
+            }
+            if (segment === "TD5") {
+                purchaseOrder.carrierInfo.SCACCode = elements.TD503
+                purchaseOrder.carrierInfo.carrierName = elements.TD505
+            }
+            if (segment === "PO1") {
+                addLineItem({
+                    quantity: parseInt(elements.PO102),
+                    price: parseFloat(elements.PO104),
+                    upc: elements.PO107 || "",
+                    sku: elements.PO109 || "",
+                    modelNumber: elements.PO111 || ""
+                })
             }
         }
-        if (currentShippingParty === "SF") {
-            if (segment === "N1") {
-                purchaseOrder.shipFrom.name = elements.N102
-            }
-            if (segment === "N3") {
-                purchaseOrder.shipFrom.address1 = elements.N301
-                purchaseOrder.shipFrom.address2 = elements.N302 || ""
-            }
-            if (segment === "N4") {
-                purchaseOrder.shipFrom.city = elements.N401
-                purchaseOrder.shipFrom.state = elements.N402
-                purchaseOrder.shipFrom.zip = elements.N403
-                purchaseOrder.shipFrom.country = elements.N404
-            }
-        }
-        if (segment === "FOB") {
-            purchaseOrder.carrierInfo.deliveryAddressType = addressTypeMap[elements.FOB02]
-            purchaseOrder.carrierInfo.withLiftGate = elements.FOB03 === "WITHLIFTGATE"
-        }
-        if (segment === "TD5") {
-            purchaseOrder.carrierInfo.SCACCode = elements.TD503
-            purchaseOrder.carrierInfo.carrierName = elements.TD505
-        }
-        if (segment === "PO1") {
-            addLineItem({
-                quantity: parseInt(elements.PO102),
-                price: parseFloat(elements.PO104),
-                upc: elements.PO107 || "",
-                sku: elements.PO109 || "",
-                modelNumber: elements.PO111 || ""
-            })
-        }
+        return purchaseOrder
+    } catch (err) {
+        return { error: err.message, segment: errorLocation.segment, position: errorLocation.position };
     }
-    return purchaseOrder
 }
 export const read856 = (data) => {
     const { elementDelimiter, lineTerminator } = getDelimiters(data)
@@ -573,140 +580,147 @@ export const read856 = (data) => {
     let currentHLID = null
     let currentHLParentID = null
     let currentShippingParty = null
-    for (let line of lines) {
-        const elements = getElements(line, elementDelimiter)
-        const segment = Object.values(elements)[0]
-        if (segment === "ISA") {
-            asn.senderID = elements.ISA06
-            asn.receiverID = elements.ISA08
-            asn.createdAt = new Date(Date.UTC(
-                `20` + elements.ISA09.slice(0,2), 
-                parseInt(elements.ISA09.slice(2,4).replaceAll("0", "")) - 1,
-                parseInt(elements.ISA09.slice(4,6).replaceAll("0", "")), 
-                parseInt(elements.ISA10.slice(0,2).replaceAll("0", "")),
-                parseInt(elements.ISA10.slice(2,4).replaceAll("0", ""))
-                
-            )).toISOString()
-            asn.isTest = elements.ISA15 === "T"
-            asn.ISAControlNumber = elements.ISA13
-        }
-        if (segment === "GS") {
-            asn.GSControlNumber = elements.GS06
-        }
-        if (segment === "ST") {
-            asn.STControlNumber = elements.ST02
-        }
-        if (segment === "HL") {
-            currentHLID = elements.HL01
-            currentHLParentID = elements.HL02
-            currentHLCode = elements.HL03
-        }
-        if (segment === "REF" && elements.REF01 === "BM") {
-            asn.shipment.BOL = elements.REF02
-        }
-
-        // SHIPMENT LEVEL
-
-        if (segment === "TD1") {
-            asn.shipment.packages = parseInt(elements.TD102)
-            // asn.shipment.weight = elements.TD107
-            // asn.shipment.units = elements.TD108 
-        }
-        if (segment === "TD5") {
-            asn.shipment.SCAC = elements.TD503
-            asn.shipment.transportMethod = elements.TD504
-        }
-        if (segment === "N1") {
-            currentShippingParty = elements.N101
-        }
-        if (currentShippingParty === "ST") {
+    const errorLocation = {}
+    try {
+        for (let line of lines) {
+            const elements = getElements(line, elementDelimiter)
+            const segment = Object.values(elements)[0]
+            errorLocation.segment = segment
+            errorLocation.element = ""
+            if (segment === "ISA") {
+                asn.senderID = elements.ISA06
+                asn.receiverID = elements.ISA08
+                asn.createdAt = new Date(Date.UTC(
+                    `20` + elements.ISA09.slice(0,2), 
+                    parseInt(elements.ISA09.slice(2,4).replaceAll("0", "")) - 1,
+                    parseInt(elements.ISA09.slice(4,6).replaceAll("0", "")), 
+                    parseInt(elements.ISA10.slice(0,2).replaceAll("0", "")),
+                    parseInt(elements.ISA10.slice(2,4).replaceAll("0", ""))
+                    
+                )).toISOString()
+                asn.isTest = elements.ISA15 === "T"
+                asn.ISAControlNumber = elements.ISA13
+            }
+            if (segment === "GS") {
+                asn.GSControlNumber = elements.GS06
+            }
+            if (segment === "ST") {
+                asn.STControlNumber = elements.ST02
+            }
+            if (segment === "HL") {
+                currentHLID = elements.HL01
+                currentHLParentID = elements.HL02
+                currentHLCode = elements.HL03
+            }
+            if (segment === "REF" && elements.REF01 === "BM") {
+                asn.shipment.BOL = elements.REF02
+            }
+    
+            // SHIPMENT LEVEL
+    
+            if (segment === "TD1") {
+                asn.shipment.packages = parseInt(elements.TD102)
+                // asn.shipment.weight = elements.TD107
+                // asn.shipment.units = elements.TD108 
+            }
+            if (segment === "TD5") {
+                asn.shipment.SCAC = elements.TD503
+                asn.shipment.transportMethod = elements.TD504
+            }
             if (segment === "N1") {
-                asn.shipment.customer = {
-                    name: elements.N102,
+                currentShippingParty = elements.N101
+            }
+            if (currentShippingParty === "ST") {
+                if (segment === "N1") {
+                    asn.shipment.customer = {
+                        name: elements.N102,
+                    }
+                }
+                if (segment === "N3") {
+                    asn.shipment.customer.address1 = elements.N301
+                    asn.shipment.customer.address2 = elements.N302
+                }
+                if (segment === "N4") {
+                    asn.shipment.customer.city = elements.N401
+                    asn.shipment.customer.state = elements.N402
+                    asn.shipment.customer.zip = elements.N403
+                }
+            } else if (currentShippingParty === "SF") {
+                if (segment === "N1") {
+                    asn.shipment.shippedFrom = {
+                        name: elements.N102,
+                    }
+                }
+                if (segment === "N3") {
+                    asn.shipment.shippedFrom.address1 = elements.N301
+                    asn.shipment.shippedFrom.address2 = elements.N302
+                }
+                if (segment === "N4") {
+                    asn.shipment.shippedFrom.city = elements.N401
+                    asn.shipment.shippedFrom.state = elements.N402
+                    asn.shipment.shippedFrom.zip = elements.N403
                 }
             }
-            if (segment === "N3") {
-                asn.shipment.customer.address1 = elements.N301
-                asn.shipment.customer.address2 = elements.N302
-            }
-            if (segment === "N4") {
-                asn.shipment.customer.city = elements.N401
-                asn.shipment.customer.state = elements.N402
-                asn.shipment.customer.zip = elements.N403
-            }
-        } else if (currentShippingParty === "SF") {
-            if (segment === "N1") {
-                asn.shipment.shippedFrom = {
-                    name: elements.N102,
+            
+    
+            // ORDER LEVEL
+    
+            if (segment === "PRF") {
+                asn.order = {
+                    purchaseOrder: elements.PRF01,
+                    createdAt: elements.PRF04
+                        ? new Date(Date.UTC(elements.PRF04.slice(0, 4), parseInt(elements.PRF04.slice(4, 6)) - 1, elements.PRF04.slice(6, 8))).toISOString()
+                        : ''
                 }
             }
-            if (segment === "N3") {
-                asn.shipment.shippedFrom.address1 = elements.N301
-                asn.shipment.shippedFrom.address2 = elements.N302
+    
+            // PACK LEVEL
+    
+            if (segment === "REF" && elements.REF01 === "2I") {
+                if (currentHLCode !== "P") {
+                    asn.shipment.trackingNumber.add(elements.REF02)
+                } else {
+                    if (!asn.packages[currentHLID]) {
+                        asn.packages[currentHLID] = {
+                            trackingNumber: "",
+                            lineItems: {}
+                        }
+                    }
+                    asn.packages[currentHLID].trackingNumber = elements.REF02
+                }
             }
-            if (segment === "N4") {
-                asn.shipment.shippedFrom.city = elements.N401
-                asn.shipment.shippedFrom.state = elements.N402
-                asn.shipment.shippedFrom.zip = elements.N403
-            }
-        }
-        
-
-        // ORDER LEVEL
-
-        if (segment === "PRF") {
-            asn.order = {
-                purchaseOrder: elements.PRF01,
-                createdAt: elements.PRF04
-                    ? new Date(Date.UTC(elements.PRF04.slice(0, 4), parseInt(elements.PRF04.slice(4, 6)) - 1, elements.PRF04.slice(6, 8))).toISOString()
-                    : ''
-            }
-        }
-
-        // PACK LEVEL
-
-        if (segment === "REF" && elements.REF01 === "2I") {
-            if (currentHLCode !== "P") {
-                asn.shipment.trackingNumber.add(elements.REF02)
-            } else {
-                if (!asn.packages[currentHLID]) {
-                    asn.packages[currentHLID] = {
+    
+            // ITEM LEVEL
+    
+            if (segment === "LIN") {
+                if (!asn.packages[currentHLParentID]) {
+                    asn.packages[currentHLParentID] = {
                         trackingNumber: "",
                         lineItems: {}
                     }
                 }
-                asn.packages[currentHLID].trackingNumber = elements.REF02
-            }
-        }
-
-        // ITEM LEVEL
-
-        if (segment === "LIN") {
-            if (!asn.packages[currentHLParentID]) {
-                asn.packages[currentHLParentID] = {
-                    trackingNumber: "",
-                    lineItems: {}
+                if (!asn.packages[currentHLParentID].lineItems[currentHLID]) {
+                    asn.packages[currentHLParentID].lineItems[currentHLID] = {}
                 }
+                asn.packages[currentHLParentID].lineItems[currentHLID].upc = elements.LIN03
+                asn.packages[currentHLParentID].lineItems[currentHLID].sku = elements.LIN05
+                asn.packages[currentHLParentID].lineItems[currentHLID].modelNumber = elements.LIN07
+    
             }
-            if (!asn.packages[currentHLParentID].lineItems[currentHLID]) {
-                asn.packages[currentHLParentID].lineItems[currentHLID] = {}
+            if (segment === "SN1") {
+                asn.packages[currentHLParentID].lineItems[currentHLID].quantity = parseInt(elements.SN102)
+                asn.packages[currentHLParentID].lineItems[currentHLID].units = elements.SN103
             }
-            asn.packages[currentHLParentID].lineItems[currentHLID].upc = elements.LIN03
-            asn.packages[currentHLParentID].lineItems[currentHLID].sku = elements.LIN05
-            asn.packages[currentHLParentID].lineItems[currentHLID].modelNumber = elements.LIN07
-
+            if (segment === "PID") {
+                asn.packages[currentHLParentID].lineItems[currentHLID].description = elements.PID05
+            }
         }
-        if (segment === "SN1") {
-            asn.packages[currentHLParentID].lineItems[currentHLID].quantity = parseInt(elements.SN102)
-            asn.packages[currentHLParentID].lineItems[currentHLID].units = elements.SN103
-        }
-        if (segment === "PID") {
-            asn.packages[currentHLParentID].lineItems[currentHLID].description = elements.PID05
-        }
+        const parsedPackages = Object.values(asn.packages).map(pack => ({ ...pack, lineItems: Object.values(pack.lineItems) }))
+        asn.packages = parsedPackages
+        return asn
+    } catch (err) {
+        return { error: err.message, segment: errorLocation.segment, position: errorLocation.position };
     }
-    const parsedPackages = Object.values(asn.packages).map(pack => ({ ...pack, lineItems: Object.values(pack.lineItems) }))
-    asn.packages = parsedPackages
-    return asn
 }
 export function read997 (data) {
     const { elementDelimiter, lineTerminator } = getDelimiters(data)
