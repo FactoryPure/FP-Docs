@@ -73,29 +73,29 @@ export default function Playground ({}) {
             </h1>
             <h2 className="text-offwhite font-bold text-[24px] leading-[1] mb-[8px]">Version: 4010</h2>
             <h2 className="text-offwhite font-bold text-[24px] leading-[1] mb-[32px]">Release: 1.0</h2>
-
-            <div className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkaccent flex flex-col gap-[32px]">
-
-                <div className="border-b-[1px] border-offwhite pb-[32px]">
+            <div className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkaccent flex gap-[32px]">
+                <div className="pb-[32px] w-1/2">
                     <h3 className="capitalize font-bold text-[24px] mb-[8px]">Input</h3>
-                    {fileOutput.errors.length > 0 && <div>
-                        <h3 className="capitalize font-bold text-[24px] mb-[8px]">Errors</h3>
-                        {fileOutput.errors.map(e => 
-                            <div className="py-[8px]">
-                                {e.segment && e.position && <p className="text-lightred">SEGMENT: {e.segment}:{e.position}</p>}
-                                <p className="text-[lightpink]">{e.message}</p>
-                            </div>
-                        )}
-                    </div>}
                     <label className="font-bold capitalize">Raw Text</label>
-                    <textarea placeholder="Paste your sample file here" className="w-[100%] h-[500px] bg-darkness font-bai text-[16px] p-[8px] border-[1px] border-darkness focus:border-accent outline-none rounded" value={fileInput} onChange={({target}) => {setFileInput(target.value)}}></textarea>
+                    <textarea placeholder="Paste your sample file here" className="w-full h-[500px] bg-darkness font-bai text-[16px] p-[8px] border-[1px] border-darkness focus:border-accent outline-none rounded" value={fileInput} onChange={({target}) => {setFileInput(target.value)}}></textarea>
                 </div>
                 
-                <div className="flex flex-col gap-[16px]">
+                <div className="flex flex-col gap-[16px] w-1/2">
                     <h3 className="capitalize font-bold text-[24px] mb-[8px]">Output</h3>
-
-                    <div className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkness">
-                        {fileOutput.javascriptObject ? <pre>{safePrinter(fileOutput.javascriptObject)}</pre> : fileOutput.outputMessage}
+                    <div className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkness h-[500px] overflow-auto">
+                        {fileOutput.errors && fileOutput.errors.length > 0
+                            ? 
+                                <>
+                                    {fileOutput.errors.map(e => 
+                                        <div className="py-[8px]">
+                                            {e.segment && e.position && <p className="text-lightred">SEGMENT: {e.segment}:{e.position}</p>}
+                                            <p className="text-[lightpink]">{e.message}</p>
+                                        </div>
+                                    )}
+                                </>
+                            : <p className="text-[lime] font-medium mb-[16px] text-[18px] tracking-[2px] mt-[-16px] ml-[-16px]">✓ Valid EDI</p>
+                        }
+                        {fileOutput.javascriptObject ? <pre>JSON Created: {safePrinter(fileOutput.javascriptObject)}</pre> : fileOutput.outputMessage}
                     </div>
                 </div>
             </div>
