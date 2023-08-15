@@ -7,7 +7,7 @@ export default function SenderReceiverIds() {
             <p className="text-offwhite mb-[8px] ml-[8px] font-bold">FACTORYPUREEDIT</p> 
             <p className="text-offwhite mb-[8px]">In Production, we use the sender ID:</p>
             <p className="text-offwhite mb-[8px] ml-[8px] font-bold">FACTORYPUREEDIP.</p>
-            <p className="text-offwhite mb-[32px]">ID will be the same on ISA and GS segments.</p>
+            <p className="text-offwhite">ID will be the same on ISA and GS segments.</p>
         </div>
     )
 }

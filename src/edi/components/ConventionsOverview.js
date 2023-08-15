@@ -32,7 +32,7 @@ export default function ConventionsOverview() {
             <p className="text-offwhite mb-[16px]">We will always send a functional acknowledgement, if you do not receive one then you can assume that the message was not received.</p>
             <p className="text-fire font-bold leading-[1] mb-[16px] text-[18px]">Message Expectations</p>
             <p className="text-offwhite mb-[8px]">We will only send and receive one functional group and one transaction set per message.</p>
-            <p className="text-offwhite mb-[8px]">On advanced shipping notices, please only send one order and only include the items that have been shippped. Tracking numbers are required and each pack level must include one tracking number.</p>
+            <p className="text-offwhite">On advanced shipping notices, please only send one order and only include the items that have been shippped. Tracking numbers are required and each pack level must include one tracking number.</p>
         </div>
     )
 }

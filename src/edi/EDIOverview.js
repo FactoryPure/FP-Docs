@@ -3,15 +3,17 @@ import AS2Overview from "./components/AS2Overview";
 import ConventionsOverview from "./components/ConventionsOverview";
 import ImplementationLinks from "./components/ImplementationLinks";
 import SenderReceiverIds from "./components/SenderReceiverIds";
+import PlaygroundOverview from "./playground/PlaygroundOverview";
 export default function EDIOverview() {
     return <section>
         <h1 className="text-[32px] font-bold text-offwhite leading-[1] mb-[32px]">FactoryPure EDI</h1>
         <div className="flex gap-[32px]">
-            <div className="w-[65%] p-[32px] bg-darkaccent rounded-[4px] shadow-small">
+            <div className="w-[65%] p-[32px] bg-darkaccent rounded-[4px] shadow-small flex flex-col gap-[32px]">
                 <AS2Overview />
                 <ConventionsOverview />
                 <SenderReceiverIds />
                 <ImplementationLinks />
+                <PlaygroundOverview />
             </div>
             <div className="w-[35%] p-[32px] bg-darkaccent rounded-[4px] shadow-small sticky top-[32px] h-fit">
                 <h3 className="text-offwhite font-bold mb-[8px] leading-[1]">On this page</h3>

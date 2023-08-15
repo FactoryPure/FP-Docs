@@ -8,6 +8,7 @@ import EightFifty from "../edi/850/850";
 import EightFiftySix from "../edi/856/856";
 import NineNineSeven from "../edi/997/997";
 import EDIOverview from "../edi/EDIOverview";
+import Playground from "../edi/playground/Playground";
 
 export default function Router() {
     return (
@@ -16,6 +17,7 @@ export default function Router() {
                 <Route index={true} element={ <Hero /> } />
                 <Route path="edi">
                     <Route index={true} element={ <EDIOverview /> } />
+                    <Route path="playground" element={ <Playground />} />
                     <Route path="810" element={ <EightTen /> } />
                     <Route path="846" element={ <EightFortySix /> } />
                     <Route path="850" element={ <EightFifty /> } />
