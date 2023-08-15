@@ -79,13 +79,13 @@ export default function Playground ({}) {
                     <label className="font-bold capitalize">Raw Text</label>
                     <textarea placeholder="Paste your sample file here" className="w-full h-[500px] bg-darkness font-bai text-[16px] p-[8px] border-[1px] border-darkness focus:border-accent outline-none rounded" value={fileInput} onChange={({target}) => {setFileInput(target.value)}}></textarea>
                 </div>
-                
                 <div className="flex flex-col gap-[16px] w-1/2">
                     <h3 className="capitalize font-bold text-[24px] mb-[8px]">Output</h3>
                     <div className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkness h-[500px] overflow-auto">
                         {fileOutput.errors && fileOutput.errors.length > 0
                             ? 
                                 <>
+                                    <p className="text-[red] font-bold mb-[16px] text-[18px] tracking-[2px] mt-[-16px] ml-[-16px]">&times; Invalid EDI</p>
                                     {fileOutput.errors.map(e => 
                                         <div className="py-[8px]">
                                             {e.segment && e.position && <p className="text-lightred">SEGMENT: {e.segment}:{e.position}</p>}
