@@ -18,7 +18,7 @@ const safePrinter = (object) => {
 export default function Playground ({}) {
     const [fileInput, setFileInput] = useState();
     const [fileOutput, setFileOutput] = useState({outputMessage: "", errors: []});
-
+    const [currentTransactionType, setCurrentTransactionType] = useState("")
     const fileReader = {
         "810": (fileContents) => read810(fileContents),
         "846": (data) => read846(data),
@@ -45,6 +45,7 @@ export default function Playground ({}) {
         if (typeof fileInput === "string" && fileInput.length >= 105) {
             const fileContents = fileInput;
             const transactionType = getTransactionType(fileInput);
+            setCurrentTransactionType(transactionType)
             if (!fileReader[transactionType]) { 
                 setFileOutput({ outputMessage: "Nothing could be returned.", errors: [{message: "ISA, GS, or ST Header is malformed. Cannot detect transaction type. Please check your file again."}]})
             } else {
@@ -85,7 +86,7 @@ export default function Playground ({}) {
                         {fileOutput.errors && fileOutput.errors.length > 0
                             ? 
                                 <>
-                                    <p className="text-[red] font-bold mb-[16px] text-[18px] tracking-[2px] mt-[-16px] ml-[-16px]">&times; Invalid EDI</p>
+                                    <p className="text-[red] font-bold mb-[16px] text-[18px] tracking-[2px] mt-[-16px] ml-[-16px]">&times; Invalid EDI {currentTransactionType || ""}</p>
                                     {fileOutput.errors.map(e => 
                                         <div className="py-[8px]">
                                             {e.segment && e.position && <p className="text-lightred">SEGMENT: {e.segment}:{e.position}</p>}
@@ -93,9 +94,12 @@ export default function Playground ({}) {
                                         </div>
                                     )}
                                 </>
-                            : <p className="text-[lime] font-medium mb-[16px] text-[18px] tracking-[2px] mt-[-16px] ml-[-16px]">✓ Valid EDI</p>
+                            : 
+                                <>
+                                    {fileOutput.javascriptObject && <p className="text-[lime] font-medium mb-[16px] text-[18px] tracking-[2px] mt-[-16px] ml-[-16px]">✓ Valid EDI {currentTransactionType || ""}</p>}
+                                </>
                         }
-                        {fileOutput.javascriptObject ? <pre>JSON Created: {safePrinter(fileOutput.javascriptObject)}</pre> : fileOutput.outputMessage}
+                        {fileOutput.javascriptObject ? <pre>{currentTransactionType || "JSON"} Created: {safePrinter(fileOutput.javascriptObject)}</pre> : fileOutput.outputMessage}
                     </div>
                 </div>
             </div>
