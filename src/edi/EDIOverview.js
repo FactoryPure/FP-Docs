@@ -13,7 +13,7 @@ export default function EDIOverview() {
                 <ConventionsOverview />
                 <SenderReceiverIds />
                 <ImplementationLinks />
-                <PlaygroundOverview />
+                {/* <PlaygroundOverview /> */}
             </div>
             <div className="w-[35%] p-[32px] bg-darkaccent rounded-[4px] shadow-small sticky top-[32px] h-fit">
                 <h3 className="text-offwhite font-bold mb-[8px] leading-[1]">On this page</h3>
