@@ -110,88 +110,84 @@ export const map810 = {
         }
   }
   export const model810 = {
-      currency: "a",
-      entity: "a",
-      vendor: 'a',
-      ISAControlNumber: '000003438',
-      GSControlNumber: '1320',
-      STCode: '810',
-      STControlNumber: '1004',
-      invoice_date: '20101204',
-      invoice_number: '217224',
-      isTest: false,
-      purchase_order_date: '20101204',
-      purchase_order_number: 'P792940',
-      bill_of_lading_number: [],
-      tracking_number: [],
-      notes: [],
-      ship_from: {
-        name: 'Vendor Warehouse',
-        address: '123 St',
-        city: 'City',
-        state: 'TX',
-        zip: '78233',
-        country: 'US'
+      currency: "!string",
+      entity: "!string",
+      vendor: '!string',
+      ISAControlNumber: '!string',
+      GSControlNumber: '!string',
+      STCode: '!string',
+      STControlNumber: '!string',
+      invoice_date: '!string',
+      invoice_number: '!string',
+      isTest: '!boolean',
+      purchase_order_date: '!string',
+      purchase_order_number: '!string',
+      "?bill_of_lading_number": ["?string"],
+      "?tracking_number": ["?string"],
+      "?notes": ["?string"],
+      "?ship_from": {
+        name: '!string',
+        address: '!string',
+        city: '!string',
+        state: '!string',
+        zip: '!string',
+        country: '!string'
       },
       ship_to: {
-          name: 'Gabe Bigelow',
+          name: '!string',
           // N103/04 no longer used
           // set_by: '92',
           // set_by_id: '00001',
-          address: '100 Madison Street',
-          city: 'Gould',
-          state: 'AR',
-          country: "USA",
-          zip: '71643'
+          address: '!string',
+          city: '!string',
+          state: '!string',
+          country: "!string",
+          zip: '!string'
       },
       shipping_terms: {
-          shipping_payment: "Collect",
-          delivery_location: "Home",
-          description: 'This is the description',
+          shipping_payment: "!string",
+          delivery_location: "!string",
+          description: '?string',
           // FOB04/05 not used anymore - Incoterms: 'Ex Works'
       },
       invoice_terms: { 
-          effective_date: '20101204',
-          conditionals: [
-              {
-                  discount: {
-                      total: "0",
-                      conditionals: [
-                          ["days_due", "due_date"]
-                      ]
-                  }
-              },
-              ["days_due", "due_date"],
-          ]
+        effective_date: '!string',
+        "?discount": {
+          total: "!string",
+          days_due: "Cstring", 
+          due_date: "Cstring"
+        },
+        days_due: "Cstring", 
+        due_date: "Cstring"
       },
-      total: '21740',
+      total: '!string',
       shipment: {
-          items: '2',
-          weight: '123',
-          weight_unit: 'Kilogram',
-          volume: '10000',
-          volume_unit: 'Cubic Centimeter'
+          items: '!string',
+          weight: '!string',
+          weight_unit: '!string',
+          volume: '!string',
+          volume_unit: '!string'
       },
       taxes: {
-          'Federal Value-added Tax (GST) on Goods': { amount: '10000', percent: '', defined_by: 'VD' }
+          'Federal Value-added Tax (GST) on Goods': { amount: 'Cstring', percent: 'Cstring', defined_by: '?string' }
       },
-      jurisdiction: 'OH',
+      jurisdiction: '!string',
       carrier: {
-          type: "Best Way (Shippers option)",
-          SCAC: 'RNLO',
-          name: 'R & L Carriers',
+          type: "?string",
+          SCAC: '!string',
+          name: '!string',
         //  tracking_number: '624534672'
       },
-      unique_items: '8',
+      unique_items: '!string',
       line_items: [
           {
-              quantity: '4',
-              measurement: 'EA',
-              price: '8.60',
-              description: "A",
-              conditionals: [
-                ["vendor_sku", "upc", "model_number"]
-              ]
+              quantity: '!string',
+              measurement: '?string',
+              price: '!string',
+              description: "!string",
+              vendor_sku: "Cstring",
+              upc: "Cstring",
+              model_number: "Cstring"
           }
       ]
   }
@@ -206,6 +202,8 @@ export const map810 = {
     createdAt: { position: 4, segment: "BIA" },
     periodOrReferenceNumber: { position: 3, segment: "BIA" },
     lineItems: {
+      position: 0, 
+      segment: "LIN/PID/CTP/LDT/QTY",
       upc: { position: 3, segment: "LIN" },
       sku: { position: 5, segment: "LIN" },
       modelNumber: { position: 7, segment: "LIN" },
@@ -216,19 +214,22 @@ export const map810 = {
     }
   }
   export const model846 = {
-    senderID: "a",
-    receiverID: "a",
-    ISAControlNumber: "a",
-    GSControlNumber: "a",
-    STControlNumber: "a",
-    isTest: false,
-    createdAt: "a",
-    periodOrReferenceNumber: "a",
+    senderID: "!string",
+    receiverID: "!string",
+    ISAControlNumber: "!string",
+    GSControlNumber: "!string",
+    STControlNumber: "!string",
+    isTest: "!boolean",
+    createdAt: "!string",
+    periodOrReferenceNumber: "!string",
     lineItems: [
       {
-        sku: "a",
-        description: "a",
-        availableQuantity: 0
+        upc: "Cstring",
+        sku: "Cstring",
+        modelNumber: "Cstring",
+        description: "?string",
+        availableQuantity: "!number",
+        leadTime: "?number"
       }
     ]
   };
@@ -245,6 +246,8 @@ export const map810 = {
     createdAt: { position: 5, segment: "BEG" },
     note: { position: 1, segment: "MSG" },
     carrierInfo: {
+      position: 0, 
+      segment: "REF/TD5/SAC/FOB",
       accountNumber: { position: 2, segment: "REF" },
       SCACCode: { position: 3, segment: "TD5" },
       carrierName: { position: 5, segment: "TD5" },
@@ -253,6 +256,8 @@ export const map810 = {
       withLiftGate: { position: 3, segment: "FOB"}
     },
     shipFrom: {
+      position: 0, 
+      segment: "N1/N3/N4",
       name: { position: 2, segment: "N1"},
       address1: { position: 1, segment: "N3"},
       address2: { position: 2, segment: "N3"},
@@ -262,6 +267,8 @@ export const map810 = {
       country: { position: 4, segment: "N4"}
     },
     shipTo: {
+      position: 0, 
+      segment: "N1/N3/N4",
       name: { position: 2, segment: "N1"},
       address1: { position: 1, segment: "N3"},
       address2: { position: 2, segment: "N3"},
@@ -270,53 +277,55 @@ export const map810 = {
       zip: { position: 3, segment: "N4"},
       country: { position: 4, segment: "N4"}
     },
-    lineItems: [
-      {
+    lineItems: {
+        position: 0, 
+        segment: "PO1",
         quantity: { position: 2, segment: "PO1" },
         price: { position: 4, segment: "PO1" },
-        UPC: { position: 7, segment: "PO1" },
-        SKU: { position: 9, segment: "PO1" },
+        upc: { position: 7, segment: "PO1" },
+        sku: { position: 9, segment: "PO1" },
         modelNumber: { position: 11, segment: "PO1" }
-      }
-    ]
+    }
   }
   export const model850 = {
-    senderID: 'a',
-    receiverID: 'a',
-    ISAControlNumber: 'a',
-    GSControlNumber: 'a',
-    STControlNumber: 'a',
-    isTest: false,
-    purpose: 'a',
-    purchaseOrderNumber: 'a',
-    createdAt: 'a',
+    senderID: '!string',
+    receiverID: '!string',
+    ISAControlNumber: '!string',
+    GSControlNumber: '!string',
+    STControlNumber: '!string',
+    isTest: '!boolean',
+    purpose: '!string',
+    purchaseOrderNumber: '!string',
+    createdAt: '!string',
     carrierInfo: {
-      accountNumber: 'a',
-      SCACCode: 'a',
-      carrierName: 'a',
-      deliveryAddressType: 'a',
+      accountNumber: '!string',
+      SCACCode: '!string',
+      carrierName: '!string',
+      deliveryAddressType: '!string',
     },
     shipFrom: {
-      name: 'a',
-      address1: 'a',
-      city: 'a',
-      state: 'a',
-      zip: 'a',
+      name: '!string',
+      address1: '!string',
+      address2: '?string',
+      city: '!string',
+      state: '!string',
+      zip: '!string',
     },
     shipTo: {
-      name: 'a',
-      address1: 'a',
-      city: 'a',
-      state: 'a',
-      zip: 'a',
+      name: '!string',
+      address1: '!string',
+      address2: '?string',
+      city: '!string',
+      state: '!string',
+      zip: '!string',
     },
     lineItems: [
       {
-        quantity: 1,
-        price: "1234",
-        conditionals: [
-          "upc", "sku", "modelNumber"
-        ]
+        quantity: "!number",
+        price: "!number",
+        upc: "Cstring", 
+        sku: "Cstring", 
+        modelNumber: "Cstring"
       }
     ]
   }
@@ -330,14 +339,14 @@ export const map810 = {
     isTest: { position: 15, segment: "ISA" },
     createdAt: { position: 3, segment: "BSN" },
     shipment: {
-      position: 1,
+      position: 0,
       segment: "HL",
       packages: { position: 2, segment: "TD1" },
       SCAC: { position: 3, segment: "TD5" },
       transportMethod: { position: 4, segment: "TD5" },
       customer: {
-        position: 1,
-        segment: "N1",
+        position: 0,
+        segment: "N1/N3/N4",
         name: { position: 2, segment: "N1" },
         address1: { position: 1, segment: "N3" },
         address2: { position: 2, segment: "N3" },
@@ -346,8 +355,8 @@ export const map810 = {
         zip: { position: 3, segment: "N4" }
       },
       shippedFrom: {
-        position: 1,
-        segment: "N1",
+        position: 0,
+        segment: "N1/N3/N4",
         name: { position: 2, segment: "N1" },
         address1: { position: 1, segment: "N3" },
         address2: { position: 2, segment: "N3" },
@@ -357,18 +366,18 @@ export const map810 = {
       }
     },
     order: {
-      position: 1,
+      position: 0,
       segment: "HL",
       purchaseOrder: { position: 1, segment: "PRF" },
       createdAt: { position: 4, segment: "PRF" }
     },
     packages: {
-      position: 1,
+      position: 0,
       segment: "HL",
       trackingNumber: { position: 2, segment: "REF" },
       lineItems: {
-        position: 1,
-        segment: "LIN",
+        position: 0,
+        segment: "SN1/LIN",
         quantity: { position: 2, segment: "SN1" },
         units: { position: 3, segment: "SN1" },
         upc: { position: 3, segment: "LIN" },
@@ -378,55 +387,113 @@ export const map810 = {
     }
   };
   export const model856 = {
-    senderID: "a",
-    receiverID: "a",
-    ISAControlNumber: "a",
-    GSControlNumber: "a",
-    STControlNumber: "s",
-    isTest: false,
-    createdAt: "a",
+    senderID: "!string",
+    receiverID: "!string",
+    ISAControlNumber: "!string",
+    GSControlNumber: "!string",
+    STControlNumber: "!string",
+    isTest: "!boolean",
+    createdAt: "!string",
     shipment: {
-        packages: 0,
-        SCAC: "a",
-        transportMethod: "a",
-        contact: {
-            name: "a",
-            phone: "a",
-            email: "a"
-        },
+        packages: "!number",
+        SCAC: "!string",
+        transportMethod: "!string",
         customer: {
-            address1: "a",
-            city: "a",
-            state: "a",
-            zip: "a"
+            name: "!string",
+            address1: "!string",
+            address2: "?string",
+            city: "!string",
+            state: "!string",
+            zip: "!string",
+            country: "?string"
         },
         shippedFrom: {
-          address1: "a",
-          city: "a",
-          state: "a",
-          zip: "a"
+          name: "!string",
+          address1: "!string",
+          address2: "?string",
+          city: "!string",
+          state: "!string",
+          zip: "!string",
+          country: "?string"
         }
     },
     order: {
-      purchaseOrder: "a",
-      createdAt: "a"
+      purchaseOrder: "!string",
+      createdAt: "!string"
     },
     packages: [
       {
-        trackingNumber: "a",
+        trackingNumber: "!string",
         lineItems: [
           {
-            quantity: 0,
-            units: "EA",
-            conditionals: [
-              ["upc", "sku", "modelNumber"]
-            ]
+            quantity: "!number",
+            units: "?string",
+            upc: "Cstring",
+            sku: "Cstring",
+            modelNumber: "Cstring"
           }
         ]
       }
     ]
   }
-  
+
+  export const map997 = {
+    senderID: { position: 6, segment: "ISA" },
+    receiverID: { position: 8, segment: "ISA" },
+    ISAControlNumber: { position: 13, segment: "ISA" },
+    GSControlNumber: { position: 6, segment: "GS" },
+    STControlNumber: { position: 2, segment: "ST" },
+    isTest: { position: 15, segment: "ISA" },
+    createdAt: { position: 3, segment: "BSN" },
+    acknowledgedGroupType: { position: 1, segment: "AK1" },
+    acknowledgedGroupCode: { position: 1, segment: "AK1" },
+    acknowledgedGroupControlNumber: { position: 2, segment: "AK1" },
+    acknowledgedTransactionSets: [
+      {
+        type: { position: 1, segment: "AK2" },
+        controlNumber: { position: 2, segment: "AK2" },
+        accepted: { position: 1, segment: "AK5" },
+      },
+    ],
+    functionalGroupAccepted: "!boolean",
+  };
+  export const model997 = {
+    senderID: "!string",
+    receiverID: "!string",
+    ISAControlNumber: "!string",
+    GSControlNumber: "!string",
+    STControlNumber: "!string",
+    isTest: "!boolean",
+    createdAt: "!string",
+    acknowledgedGroupType: "!string",
+    acknowledgedGroupCode: "!string",
+    acknowledgedGroupControlNumber: "!string",
+    acknowledgedTransactionSets: [
+      {
+        type: "!string",
+        controlNumber: "!string",
+        accepted: "!boolean",
+      },
+    ],
+    functionalGroupAccepted: "!boolean",
+    totalTransactionSets: "?number",
+    receivedTransactionSets: "?number",
+    acceptedTransactionSets: "?number"
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 export function testAgainstModel (object, model, modelMap, pathHead) {
     const errorHolder = [];

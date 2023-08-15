@@ -2,13 +2,13 @@ import { NavLink } from "react-router-dom"
 import BackButton from "../components/BackButton"
 import { scrollToTop } from "../../helpers"
 import { useEffect, useState } from "react";
-import { read810, read846, read856, read997 } from "./helpers v1.0/read";
-import { getTransactionType, syncCatcher } from "./helpers v1.0/helpers";
-import { map810, map846, map856, model810, model846, model856, testAgainstModel } from "./helpers v1.0/models";
+import { read810, read846, read850, read856, read997 } from "./helpers v1.0/read";
+import { getTransactionType, syncCatcher, validateEDIParserResult } from "./helpers v1.0/helpers";
+import { map810, map846, map850, map856, map997, model810, model846, model850, model856, model997, testAgainstModel } from "./helpers v1.0/models";
 
 
 function renderJavascriptObject (object) {
-    const initialKeys = Object.keys(object);
+    const initialKeys = Object.keys(object || {});
 
 
     function renderObject (arg) {
@@ -20,7 +20,6 @@ function renderJavascriptObject (object) {
 
     function navigateObj(arg, depth) {
         const keys = Object.keys(arg);
-        console.log(keys);
         return keys.map(key => {
             if (typeof arg[key] === "object") {
                 return <ul className={`${initialKeys.includes(key) ? "" : "pl-[32px]"} py-[4px] text-offwhite`}>{key}: {Array.isArray(arg[key]) ? "[" : "{"}<br/>{navigateObj(arg[key])}{Array.isArray(arg[key]) ? "]" : "}"},</ul>
@@ -29,7 +28,6 @@ function renderJavascriptObject (object) {
             }
         })
     }
-    console.log(object);
 
     return (
         <ul>
@@ -47,18 +45,23 @@ export default function Playground ({}) {
     const fileReader = {
         "810": (fileContents) => read810(fileContents),
         "846": (data) => read846(data),
+        "850": (data) => read850(data),
         "856": (data) => read856(data),
         "997": (fileContents) => read997(fileContents),
     }
     const models = {
         "810": model810,
         "846": model846,
-        "856": model856
+        "850": model850,
+        "856": model856,
+        "997": model997
     }
     const maps = {
         "810": map810,
         "846": map846,
-        "856": map856
+        "850": map850,
+        "856": map856,
+        "997": map997
     }
     
     useEffect(() => { 
@@ -66,74 +69,28 @@ export default function Playground ({}) {
             const fileContents = fileInput;
             const transactionType = getTransactionType(fileInput);
             if (!fileReader[transactionType]) { 
-                setFileOutput({ outputMessage: "Nothing could be returned.", errors: [{message: "ISA Header is malformed. Cannot detect transaction type. Please check your file again."}]})
+                setFileOutput({ outputMessage: "Nothing could be returned.", errors: [{message: "ISA, GS, or ST Header is malformed. Cannot detect transaction type. Please check your file again."}]})
             } else {
                 const parsedFile = fileReader[transactionType](fileContents.replaceAll("\n", "").replaceAll("\r", ""));
-                // console.log(parsedFile);
-                // console.log(transactionType);
                 if (parsedFile.error) {
                     setFileOutput({
                         outputMessage: "A catastrophic error occurred. Please refer to the documentation and restructure your file.",
                         errors: [{message: parsedFile.error, segment: parsedFile.segment, position: parsedFile.position}]
                     })
                 } else {
-                    // console.log(parsedFile);
-                    const [returnedFile, errors] = testAgainstModel(parsedFile, models[transactionType], maps[transactionType], transactionType);
+                    const [returnedFile, errors] = validateEDIParserResult(parsedFile, models[transactionType], maps[transactionType], transactionType)
                     setFileOutput({
                         javascriptObject: JSON.stringify(returnedFile),
                         errors: errors
                     })
-                    // console.log("\n\n");
-                    // console.log(returnedFile);
-                    // console.log(errors);
                 }
             }
-            // switch (transactionType) {
-            //     case "810":
-            //         const [invoice, err810] = syncCatcher(() => read810(fileContents));
-            //         if (err810) {
-            //             console.error(err810);
-            //             break;
-            //         }
-            //         const [testedInvoice, validate810Errors] = testAgainstModel(invoice, model810, map810);
-            //         //returned997 = await service.handle810(testedInvoice.senderID, testedInvoice.receiverID, testedInvoice, validate810Errors)
-            //         break
-            //     case "846":
-            //         const [inventoryAdvice, err846] = syncCatcher(() => read846(fileContents))
-            //         if (err846) {
-            //             console.error(err846)
-            //             break
-            //         }
-            //         const [testedInventoryAdvice, validate846Errors] = testAgainstModel(inventoryAdvice, model846, map846)
-            //         //returned997 = await service.handle846(testedInventoryAdvice.senderID, testedInventoryAdvice.receiverID, testedInventoryAdvice, validate846Errors)
-            //         break
-            //     case "856":
-            //         const [ASN, err856] = syncCatcher(() => read856(fileContents)) 
-            //         if (err856) {
-            //             console.error(err856)
-            //             break
-            //         }
-            //         const [testedASN, validate856Errors] = testAgainstModel(ASN, model856, map856)
-            //         //returned997 = await service.handle856(testedASN.senderID, testedASN.receiverID, testedASN, validate856Errors)
-            //         break
-            //     case "997":
-            //         const [parsed997, err997] = syncCatcher(() => read997(fileContents))
-            //         if (err997) {
-            //             console.error(err856)
-            //             break
-            //         } else {
-            //             console.log(parsed997)
-            //         }
-            //         break
-            //     default: 
-            //         console.log("No readable message")
-            // }
         }
     }, [fileInput]);
 
     return (
         <div>
-            <BackButton/>
+            <BackButton previousLink={"/edi"}/>
             <h1 className="text-offwhite font-bold text-[32px] leading-[1] mb-[16px]">
                 EDI Playground
             </h1>
@@ -161,7 +118,7 @@ export default function Playground ({}) {
                     <h3 className="capitalize font-bold text-[24px] mb-[8px]">Output</h3>
 
                     <div className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkness">
-                        {fileOutput.javascriptObject? renderJavascriptObject(JSON.parse(fileOutput.javascriptObject)) : fileOutput.outputMessage}
+                        {fileOutput.javascriptObject ? renderJavascriptObject(JSON.parse(fileOutput.javascriptObject)) : fileOutput.outputMessage}
                     </div>
                     
                 </div>

@@ -148,7 +148,6 @@ export function read810 (fileContents) {
         let taxRef;
 
         for (let row = 0; row < rows.length; row++) {
-            // console.log(row+1 + " " + rows[row])
             const elements = rows[row].split(elementSeparator);
             let segmentName;
                 
@@ -158,7 +157,6 @@ export function read810 (fileContents) {
                 if (el === 0) segmentName = elements[el];
                 let elementName = segmentName + String(el).padStart(2, 0)
                 errorLocation = {segment: segmentName, position: el};
-                // console.log("   " + elementName + ": " + elements[el]);
                 
                 if (elementName === "ISA06") invoice810.vendor = vendorMap[elements[el].trim()] || elements[el];
                 if (elementName === "ISA06") invoice810.senderID = elements[el];
@@ -292,19 +290,6 @@ export function read810 (fileContents) {
         }
         invoice810.line_items = Object.values(lineItems);
 
-        // console.log("{")
-        // Object.keys(invoice810).forEach(k => {
-        //     if (typeof invoice810[k] !== "object") console.log(`    ${k}: ${invoice810[k]}`)
-        //     else {
-        //         console.log("    " + k + ": {")
-        //         Object.keys(invoice810[k]).forEach(p => {
-        //             console.log(`        ${p}: ${JSON.stringify(invoice810[k][p])}`)
-        //         })
-        //         console.log("    }")
-        //     }
-        // })
-        // console.log("}");
-
         return invoice810;
     } catch (err) {
         return { error: err.message, segment: errorLocation.segment, position: errorLocation.position };
@@ -361,7 +346,7 @@ export const read846 = (data) => {
                         sku: "",
                         description: "",
                         unitCost: null,
-                        leadTime: "",
+                        leadTime: 0,
                         availableQuantity: 0
                     }
                 }
@@ -376,7 +361,7 @@ export const read846 = (data) => {
                 currentLineItem.unitCost = elements.CTP03
             }
             if (segment === "LDT") {
-                currentLineItem.leadTime = elements.LDT02
+                currentLineItem.leadTime = parseInt(elements.LDT02)
             }
             if (segment === "QTY") {
                 currentLineItem.availableQuantity = parseInt(elements.QTY02 || 0)
@@ -389,12 +374,165 @@ export const read846 = (data) => {
             }
         }
         
-        console.log(inventoryAdvice);
-        console.log("reader version above")
         return inventoryAdvice
     } catch (err) {
         return { error: err.message, segment: errorLocation.segment, position: errorLocation.position };
     }
+}
+
+export const read850 = (data) => {
+    const purchaseOrder = {
+        senderID: "",
+        receiverID: "",
+        ISAControlNumber: "",
+        GSControlNumber: "",
+        STControlNumber: "",
+        isTest: false,
+        purpose: "",
+        purchaseOrderNumber: "",
+        createdAt: "",
+        note: "",
+        carrierInfo: {
+            accountNumber: "",
+            SCACCode: "",
+            carrierName: "",
+            insuranceCost: 0,
+            deliveryAddressType: "",
+            withLiftGate: false
+        },
+        shipFrom: {
+            name: "",
+            address1: "",
+            address2: "",
+            city: "",
+            state: "",
+            zip: ""
+        },
+        shipTo: {
+            name: "",
+            address1: "",
+            address2: "",
+            city: "",
+            state: "",
+            zip: ""
+        },
+        lineItems: []
+    }
+    const addLineItem = ({
+        quantity,
+        price,
+        upc,
+        sku,
+        modelNumber
+    }) => {
+        purchaseOrder.lineItems.push({
+            quantity,
+            price,
+            upc,
+            sku,
+            modelNumber
+        })
+    }
+    const purposeMap = {
+        "00": "ORIGINAL",
+        "01": "CHANGE",
+        "05": "CANCEL"
+    }
+    const addressTypeMap = {
+        "H": "Home Address",
+        "BS": "Place of Business",
+        "TM": "Terminal"
+    }
+    const { elementDelimiter, lineTerminator } = getDelimiters(data)
+    let currentShippingParty = ""
+    const lines = getSegments(data, lineTerminator)
+    for (let line of lines) { 
+        const elements = getElements(line, elementDelimiter)
+        const segment = Object.values(elements)[0]
+        if (segment === "ISA") {
+            purchaseOrder.senderID = elements.ISA06
+            purchaseOrder.receiverID = elements.ISA08
+            purchaseOrder.createdAt = new Date(Date.UTC(
+                `20` + elements.ISA09.slice(0,2), 
+                parseInt(elements.ISA09.slice(2,4).replaceAll("0", "")) - 1,
+                parseInt(elements.ISA09.slice(4,6).replaceAll("0", "")), 
+                parseInt(elements.ISA10.slice(0,2).replaceAll("0", "")),
+                parseInt(elements.ISA10.slice(2,4).replaceAll("0", ""))
+            )).toISOString()
+            purchaseOrder.isTest = elements.ISA15 === "T"
+            purchaseOrder.ISAControlNumber = elements.ISA13
+        }
+        if (segment === "GS") {
+            purchaseOrder.GSControlNumber = elements.GS06
+        }
+        if (segment === "ST") {
+            purchaseOrder.STControlNumber = elements.ST02
+        }
+        if (segment === "BEG") {
+            purchaseOrder.purpose = purposeMap[elements.BEG01]
+            purchaseOrder.purchaseOrderNumber = elements.BEG03
+        }
+        if (segment === "REF") {
+            purchaseOrder.carrierInfo.accountNumber = elements.REF02
+        }
+        if (segment === "SAC" && elements.SAC02 === "D980") {
+            purchaseOrder.carrierInfo.insuranceCost = (parseFloat(elements.SAC05) / 100).toFixed(2)
+        }
+        if (segment === "MSG") {
+            purchaseOrder.note = elements.MSG01
+        }
+        if (segment === "N1") {
+            currentShippingParty = elements.N101
+        }
+        if (currentShippingParty === "ST") {
+            if (segment === "N1") {
+                purchaseOrder.shipTo.name = elements.N102
+            }
+            if (segment === "N3") {
+                purchaseOrder.shipTo.address1 = elements.N301
+                purchaseOrder.shipTo.address2 = elements.N302 || ""
+            }
+            if (segment === "N4") {
+                purchaseOrder.shipTo.city = elements.N401
+                purchaseOrder.shipTo.state = elements.N402
+                purchaseOrder.shipTo.zip = elements.N403
+                purchaseOrder.shipTo.country = elements.N404
+            }
+        }
+        if (currentShippingParty === "SF") {
+            if (segment === "N1") {
+                purchaseOrder.shipFrom.name = elements.N102
+            }
+            if (segment === "N3") {
+                purchaseOrder.shipFrom.address1 = elements.N301
+                purchaseOrder.shipFrom.address2 = elements.N302 || ""
+            }
+            if (segment === "N4") {
+                purchaseOrder.shipFrom.city = elements.N401
+                purchaseOrder.shipFrom.state = elements.N402
+                purchaseOrder.shipFrom.zip = elements.N403
+                purchaseOrder.shipFrom.country = elements.N404
+            }
+        }
+        if (segment === "FOB") {
+            purchaseOrder.carrierInfo.deliveryAddressType = addressTypeMap[elements.FOB02]
+            purchaseOrder.carrierInfo.withLiftGate = elements.FOB03 === "WITHLIFTGATE"
+        }
+        if (segment === "TD5") {
+            purchaseOrder.carrierInfo.SCACCode = elements.TD503
+            purchaseOrder.carrierInfo.carrierName = elements.TD505
+        }
+        if (segment === "PO1") {
+            addLineItem({
+                quantity: parseInt(elements.PO102),
+                price: parseFloat(elements.PO104),
+                upc: elements.PO107 || "",
+                sku: elements.PO109 || "",
+                modelNumber: elements.PO111 || ""
+            })
+        }
+    }
+    return purchaseOrder
 }
 export const read856 = (data) => {
     const { elementDelimiter, lineTerminator } = getDelimiters(data)
@@ -412,11 +550,6 @@ export const read856 = (data) => {
             weight: 0,
             SCAC: "",
             transportMethod: "",
-            contact: {
-                name: "",
-                phone: "",
-                email: ""
-            },
             customer: {
                 address1: "",
                 address2: "",
@@ -475,7 +608,7 @@ export const read856 = (data) => {
         // SHIPMENT LEVEL
 
         if (segment === "TD1") {
-            asn.shipment.packages = elements.TD102
+            asn.shipment.packages = parseInt(elements.TD102)
             // asn.shipment.weight = elements.TD107
             // asn.shipment.units = elements.TD108 
         }
@@ -564,7 +697,7 @@ export const read856 = (data) => {
 
         }
         if (segment === "SN1") {
-            asn.packages[currentHLParentID].lineItems[currentHLID].quantity = elements.SN102
+            asn.packages[currentHLParentID].lineItems[currentHLID].quantity = parseInt(elements.SN102)
             asn.packages[currentHLParentID].lineItems[currentHLID].units = elements.SN103
         }
         if (segment === "PID") {
@@ -575,14 +708,25 @@ export const read856 = (data) => {
     asn.packages = parsedPackages
     return asn
 }
-export function read997 (fileContents, eSeparator, subESeparator, SegSeparator, file) {
-    const contents = fileContents // || fs.readFileSync(file, 'utf8');
-    const elementSeparator = eSeparator || contents.substr(103,1);
-    const subelementSeparator = subESeparator || contents.substr(104,1);
-    const segmentSeparator = SegSeparator || contents.substr(105,1);
-    const rows = contents.split(segmentSeparator).map(l => l.replace("\n", "").replace("\r", ""));
-
-    const ack997 = {};
+export function read997 (data) {
+    const { elementDelimiter, lineTerminator } = getDelimiters(data)
+    const lines = getSegments(data, lineTerminator)
+    const functionalAcknowledgement = {
+        senderID: "",
+        receiverID: "",
+        ISAControlNumber: "",
+        GSControlNumber: "",
+        STControlNumber: "",
+        isTest: false,
+        createdAt: "",
+        acknowledgedGroupType: "",
+        acknowledgedGroupCode: "",
+        acknowledgedGroupControlNumber: "",
+        acknowledgedTransactionSets: [],
+        totalTransactionSets: "",
+        receivedTransactionSets: "",
+        acceptedTransactionSets: ""
+    }
 
     const setMap = {
         "IN": "Invoice Information (810,819)",
@@ -600,45 +744,58 @@ export function read997 (fileContents, eSeparator, subESeparator, SegSeparator, 
         // "W": "Rejected, Assurance Failed Validity Tests",
         // "X": "Rejected, Content After Decryption Could Not Be Analyzed"
     }
-
-    for (let row = 0; row < rows.length; row++) {
-        // console.log(row+1 + " " + rows[row])
-        const elements = rows[row].split(elementSeparator);
-        let segmentName;
-
-        for (let el = 0; el < elements.length; el++) {
-            if (el === 0) segmentName = elements[el];
-            let elementName = segmentName + String(el).padStart(2, 0)
-            console.log("   " + elementName + ": " + elements[el]);
-            
-            if (elementName === "AK101") ack997.group_type = setMap[elements[el]];
-            if (elementName === "AK101") ack997.group_code = elements[el];
-            if (elementName === "AK102") ack997.group_control_number = elements[el];
-            
-            if (elementName === "AK201") ack997.transaction_set_type = elements[el];
-            if (elementName === "AK202") ack997.transaction_set_control_number = elements[el];
-
-            if (elementName === "AK501") ack997.st_accepted = statusMap[elements[el]];
-
-            if (elementName === "AK901") ack997.gs_accepted = statusMap[elements[el]];
-            if (elementName === "AK902") ack997.sets_in_group = elements[el];
-            if (elementName === "AK903") ack997.sets_received = elements[el];
-            if (elementName === "AK904") ack997.sets_accepted = elements[el];
+    let currentTransactionSet = {}
+    const errorLocation = {}
+    try {
+        for (let line of lines) {
+            const elements = getElements(line, elementDelimiter)
+            const segment = Object.values(elements)[0]
+            errorLocation.segment = segment
+            errorLocation.element = ""
+            if (segment === "ISA") {
+                functionalAcknowledgement.senderID = elements.ISA06
+                functionalAcknowledgement.receiverID = elements.ISA08
+                functionalAcknowledgement.createdAt = new Date(Date.UTC(
+                    `20` + elements.ISA09.slice(0,2), 
+                    parseInt(elements.ISA09.slice(2,4).replaceAll("0", "")) - 1,
+                    parseInt(elements.ISA09.slice(4,6).replaceAll("0", "")), 
+                    parseInt(elements.ISA10.slice(0,2).replaceAll("0", "")),
+                    parseInt(elements.ISA10.slice(2,4).replaceAll("0", ""))
+                )).toISOString()
+                functionalAcknowledgement.isTest = elements.ISA15 === "T"
+                functionalAcknowledgement.ISAControlNumber = elements.ISA13
+            }
+            if (segment === "GS") {
+                functionalAcknowledgement.GSControlNumber = elements.GS06
+            }
+            if (segment === "ST") {
+                functionalAcknowledgement.STControlNumber = elements.ST02
+            }
+            if (segment === "AK1") {
+                functionalAcknowledgement.acknowledgedGroupType = setMap[elements.AK101]
+                functionalAcknowledgement.acknowledgedGroupCode = elements.AK101
+                functionalAcknowledgement.acknowledgedGroupControlNumber = elements.AK102
+            }
+            if (segment === "AK2") {
+                currentTransactionSet.type = elements.AK201
+                currentTransactionSet.controlNumber = elements.AK202
+            }
+            if (segment === "AK5") {
+                currentTransactionSet.accepted = statusMap[elements.AK501]
+                functionalAcknowledgement.acknowledgedTransactionSets.push({...currentTransactionSet})
+                currentTransactionSet = {}
+            }
+            if (segment === "AK9") {
+                functionalAcknowledgement.functionalGroupAccepted = statusMap[elements.AK901]
+                functionalAcknowledgement.totalTransactionSets = elements.AK902 || ""
+                functionalAcknowledgement.receivedTransactionSets = elements.AK903 || ""
+                functionalAcknowledgement.acceptedTransactionSets = elements.AK904 || ""
+    
+            }
         }
+    } catch (err) {
+        return { error: err.message, segment: errorLocation.segment, position: errorLocation.position };
     }
 
-    console.log("{")
-    Object.keys(ack997).forEach(k => {
-        if (typeof ack997[k] !== "object") console.log(`    ${k}: ${ack997[k]}`)
-        else {
-            console.log("    " + k + ": {")
-            Object.keys(ack997[k]).forEach(p => {
-                console.log(`        ${p}: ${JSON.stringify(ack997[k][p])}`)
-            })
-            console.log("    }")
-        }
-    })
-    console.log("}");
-
-    return ack997;
+    return functionalAcknowledgement;
 }
