@@ -19,7 +19,7 @@ export default function Example() {
                 N4*CITY*TX*78704*US~<br/>
                 FOB*CC*H*WITHLIFTGATE~<br/>
                 TD5*B*2*AACT*T*AAA Cooper~<br/>
-                PO1*001*1*EA*1234.56*PE*CB*FACTORYPURE-SKU*SK*VENDOR-SKU~<br/>
+                PO1*001*1*EA*1234.56*PE***SK*VENDOR-SKU~<br/>
                 CTT*1~<br/>
                 SE*17*0001~<br/>
                 GE*1*1~<br/>
