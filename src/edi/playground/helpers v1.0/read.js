@@ -1,7 +1,7 @@
 import { getDelimiters, getElements, getSegments } from "./helpers.js"
 
 export function read810 (fileContents) {
-    let errorLocation = "";
+    let errorLocation = {};
     try {
         const contents = fileContents;
         const elementSeparator = contents.substr(103,1);
@@ -311,80 +311,90 @@ export function read810 (fileContents) {
     }
 }
 export const read846 = (data) => {
-    const { elementDelimiter, lineTerminator } = getDelimiters(data)
-    const lines = getSegments(data, lineTerminator)
-    const inventoryAdvice = {
-        senderID: "",
-        receiverID: "",
-        ISAControlNumber: "",
-        GSControlNumber: "",
-        STControlNumber: "",
-        isTest: false,
-        createdAt: "",
-        periodOrReferenceNumber: "",
-        lineItems: []
-    }
-    let currentLineItem = {}
-    for (let line of lines) { 
-        const elements = getElements(line, elementDelimiter)
-        const segment = Object.values(elements)[0]
-        if (segment === "ISA") {
-            inventoryAdvice.senderID = elements.ISA06
-            inventoryAdvice.receiverID = elements.ISA08
-            inventoryAdvice.createdAt = new Date(Date.UTC(
-                `20` + elements.ISA09.slice(0,2), 
-                parseInt(elements.ISA09.slice(2,4).replaceAll("0", "")) - 1,
-                parseInt(elements.ISA09.slice(4,6).replaceAll("0", "")), 
-                parseInt(elements.ISA10.slice(0,2).replaceAll("0", "")),
-                parseInt(elements.ISA10.slice(2,4).replaceAll("0", ""))
-            )).toISOString()
-            inventoryAdvice.isTest = elements.ISA15 === "T"
-            inventoryAdvice.ISAControlNumber = elements.ISA13
+    let errorLocation = {};
+    try {
+        const { elementDelimiter, lineTerminator } = getDelimiters(data)
+        const lines = getSegments(data, lineTerminator)
+        const inventoryAdvice = {
+            senderID: "",
+            receiverID: "",
+            ISAControlNumber: "",
+            GSControlNumber: "",
+            STControlNumber: "",
+            isTest: false,
+            createdAt: "",
+            periodOrReferenceNumber: "",
+            lineItems: []
         }
-        if (segment === "GS") {
-            inventoryAdvice.GSControlNumber = elements.GS06
-        }
-        if (segment === "ST") {
-            inventoryAdvice.STControlNumber = elements.ST02
-        }
-        if (segment === "BIA") {
-            inventoryAdvice.periodOrReferenceNumber = elements.BIA03
-        }
-        if (segment === "LIN") {
-            if (currentLineItem && Object.values(currentLineItem).length) {
-                inventoryAdvice.lineItems.push({...currentLineItem})
-                currentLineItem = {
-                    sku: "",
-                    description: "",
-                    unitCost: null,
-                    leadTime: "",
-                    availableQuantity: 0
-                }
+        let currentLineItem = {}
+        for (let line of lines) { 
+            const elements = getElements(line, elementDelimiter)
+            const segment = Object.values(elements)[0]
+            errorLocation.segment = segment;
+            errorLocation.element = ""
+            if (segment === "ISA") {
+                inventoryAdvice.senderID = elements.ISA06
+                inventoryAdvice.receiverID = elements.ISA08
+                inventoryAdvice.createdAt = new Date(Date.UTC(
+                    `20` + elements.ISA09.slice(0,2), 
+                    parseInt(elements.ISA09.slice(2,4).replaceAll("0", "")) - 1,
+                    parseInt(elements.ISA09.slice(4,6).replaceAll("0", "")), 
+                    parseInt(elements.ISA10.slice(0,2).replaceAll("0", "")),
+                    parseInt(elements.ISA10.slice(2,4).replaceAll("0", ""))
+                )).toISOString()
+                inventoryAdvice.isTest = elements.ISA15 === "T"
+                inventoryAdvice.ISAControlNumber = elements.ISA13
             }
-            currentLineItem.upc = elements.LIN03
-            currentLineItem.sku = elements.LIN05
-            currentLineItem.modelNumber = elements.LIN07
+            if (segment === "GS") {
+                inventoryAdvice.GSControlNumber = elements.GS06
+            }
+            if (segment === "ST") {
+                inventoryAdvice.STControlNumber = elements.ST02
+            }
+            if (segment === "BIA") {
+                inventoryAdvice.periodOrReferenceNumber = elements.BIA03
+            }
+            if (segment === "LIN") {
+                if (currentLineItem && Object.values(currentLineItem).length) {
+                    inventoryAdvice.lineItems.push({...currentLineItem})
+                    currentLineItem = {
+                        sku: "",
+                        description: "",
+                        unitCost: null,
+                        leadTime: "",
+                        availableQuantity: 0
+                    }
+                }
+                currentLineItem.upc = elements.LIN03
+                currentLineItem.sku = elements.LIN05
+                currentLineItem.modelNumber = elements.LIN07
+            }
+            if (segment === "PID") {
+                currentLineItem.description = elements.PID05
+            }
+            if (segment === "CTP") {
+                currentLineItem.unitCost = elements.CTP03
+            }
+            if (segment === "LDT") {
+                currentLineItem.leadTime = elements.LDT02
+            }
+            if (segment === "QTY") {
+                currentLineItem.availableQuantity = parseInt(elements.QTY02 || 0)
+            }
+            if (segment === "CTT") {
+                if (currentLineItem && Object.values(currentLineItem).length) {
+                    inventoryAdvice.lineItems.push({...currentLineItem})
+                    currentLineItem = {}
+                }        
+            }
         }
-        if (segment === "PID") {
-            currentLineItem.description = elements.PID05
-        }
-        if (segment === "CTP") {
-            currentLineItem.unitCost = elements.CTP03
-        }
-        if (segment === "LDT") {
-            currentLineItem.leadTime = elements.LDT02
-        }
-        if (segment === "QTY") {
-            currentLineItem.availableQuantity = parseInt(elements.QTY02 || 0)
-        }
-        if (segment === "CTT") {
-            if (currentLineItem && Object.values(currentLineItem).length) {
-                inventoryAdvice.lineItems.push({...currentLineItem})
-                currentLineItem = {}
-            }        
-        }
+        
+        console.log(inventoryAdvice);
+        console.log("reader version above")
+        return inventoryAdvice
+    } catch (err) {
+        return { error: err.message, segment: errorLocation.segment, position: errorLocation.position };
     }
-    return inventoryAdvice
 }
 export const read856 = (data) => {
     const { elementDelimiter, lineTerminator } = getDelimiters(data)
@@ -400,7 +410,6 @@ export const read856 = (data) => {
         shipment: {
             packages: 0,
             weight: 0,
-            units: "",
             SCAC: "",
             transportMethod: "",
             contact: {
@@ -424,8 +433,6 @@ export const read856 = (data) => {
             }
         },
         order: {
-            purchaseOrder: "",
-            createdAt: ""
         },
         packages: {}
     }

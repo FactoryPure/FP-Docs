@@ -7,9 +7,42 @@ import { getTransactionType, syncCatcher } from "./helpers v1.0/helpers";
 import { map810, map846, map856, model810, model846, model856, testAgainstModel } from "./helpers v1.0/models";
 
 
+function renderJavascriptObject (object) {
+    const initialKeys = Object.keys(object);
+
+
+    function renderObject (arg) {
+        if (typeof arg === "object") {
+            return <ul></ul>
+        }
+    }
+
+
+    function navigateObj(arg, depth) {
+        const keys = Object.keys(arg);
+        console.log(keys);
+        return keys.map(key => {
+            if (typeof arg[key] === "object") {
+                return <ul className={`${initialKeys.includes(key) ? "" : "pl-[32px]"} py-[4px] text-offwhite`}>{key}: {Array.isArray(arg[key]) ? "[" : "{"}<br/>{navigateObj(arg[key])}{Array.isArray(arg[key]) ? "]" : "}"},</ul>
+            } else {
+                return <li className={`${initialKeys.includes(key) ? "" : "pl-[32px]"} py-[4px]`}>{key}: {typeof arg[key] === "boolean" ? JSON.stringify(arg[key]) : arg[key]},</li>
+            }
+        })
+    }
+    console.log(object);
+
+    return (
+        <ul>
+            {
+                navigateObj(object)// keys.map(key => <li>{key}</li>)
+            }
+        </ul>
+    )
+}
+
 export default function Playground ({}) {
     const [fileInput, setFileInput] = useState();
-    const [fileOutput, setFileOutput] = useState({javascriptObject: "aaa", errors: []});
+    const [fileOutput, setFileOutput] = useState({outputMessage: "", errors: []});
 
     const fileReader = {
         "810": (fileContents) => read810(fileContents),
@@ -27,32 +60,32 @@ export default function Playground ({}) {
         "846": map846,
         "856": map856
     }
-    console.log(fileOutput);
     
     useEffect(() => { 
         if (typeof fileInput === "string" && fileInput.length >= 105) {
             const fileContents = fileInput;
             const transactionType = getTransactionType(fileInput);
             if (!fileReader[transactionType]) { 
-                setFileOutput({ javascriptObject: "Nothing could be returned.", errors: [{message: "ISA Header is malformed. Cannot detect transaction type. Please check your file again."}]})
+                setFileOutput({ outputMessage: "Nothing could be returned.", errors: [{message: "ISA Header is malformed. Cannot detect transaction type. Please check your file again."}]})
             } else {
-                const parsedFile = fileReader[transactionType](fileContents);
-                console.log(parsedFile);
+                const parsedFile = fileReader[transactionType](fileContents.replaceAll("\n", "").replaceAll("\r", ""));
+                // console.log(parsedFile);
+                // console.log(transactionType);
                 if (parsedFile.error) {
                     setFileOutput({
-                        javascriptObject: "A catastrophic error occurred. Please refer to the documentation and restructure your file.",
+                        outputMessage: "A catastrophic error occurred. Please refer to the documentation and restructure your file.",
                         errors: [{message: parsedFile.error, segment: parsedFile.segment, position: parsedFile.position}]
                     })
                 } else {
-                    console.log(parsedFile);
-                    const [returnedFile, errors] = testAgainstModel(parsedFile, models[transactionType], maps[transactionType]);
+                    // console.log(parsedFile);
+                    const [returnedFile, errors] = testAgainstModel(parsedFile, models[transactionType], maps[transactionType], transactionType);
                     setFileOutput({
                         javascriptObject: JSON.stringify(returnedFile),
                         errors: errors
                     })
-                    console.log("\n\n");
-                    console.log(returnedFile);
-                    console.log(errors);
+                    // console.log("\n\n");
+                    // console.log(returnedFile);
+                    // console.log(errors);
                 }
             }
             // switch (transactionType) {
@@ -98,9 +131,6 @@ export default function Playground ({}) {
         }
     }, [fileInput]);
 
-
-
-
     return (
         <div>
             <BackButton/>
@@ -114,15 +144,6 @@ export default function Playground ({}) {
 
                 <div className="border-b-[1px] border-offwhite pb-[32px]">
                     <h3 className="capitalize font-bold text-[24px] mb-[8px]">Input</h3>
-                    <label className="font-bold capitalize">Raw Text</label>
-                    <textarea placeholder="Paste your sample file here" className="w-[100%] h-[500px] bg-darkness font-bai text-[16px] p-[8px] border-[1px] border-darkness focus:border-accent outline-none rounded" value={fileInput} onChange={({target}) => {setFileInput(target.value)}}></textarea>
-                </div>
-                
-                <div className="flex flex-col gap-[16px]">
-                    <h3 className="capitalize font-bold text-[24px] mb-[8px]">Output</h3>
-                    <div className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkness flex flex-col gap-[32px]">
-                        <p>{fileOutput.javascriptObject}</p>
-                    </div>
                     {fileOutput.errors.length > 0 && <div>
                         <h3 className="capitalize font-bold text-[24px] mb-[8px]">Errors</h3>
                         {fileOutput.errors.map(e => 
@@ -132,9 +153,19 @@ export default function Playground ({}) {
                             </div>
                         )}
                     </div>}
+                    <label className="font-bold capitalize">Raw Text</label>
+                    <textarea placeholder="Paste your sample file here" className="w-[100%] h-[500px] bg-darkness font-bai text-[16px] p-[8px] border-[1px] border-darkness focus:border-accent outline-none rounded" value={fileInput} onChange={({target}) => {setFileInput(target.value)}}></textarea>
+                </div>
+                
+                <div className="flex flex-col gap-[16px]">
+                    <h3 className="capitalize font-bold text-[24px] mb-[8px]">Output</h3>
+
+                    <div className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkness">
+                        {fileOutput.javascriptObject? renderJavascriptObject(JSON.parse(fileOutput.javascriptObject)) : fileOutput.outputMessage}
+                    </div>
+                    
                 </div>
             </div>
-
         </div>
     ) 
 }

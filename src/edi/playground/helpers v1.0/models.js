@@ -1,4 +1,6 @@
 export const map810 = {
+    currency: {position: "2", segment: "CUR"},
+    entity: {position: 1, segment: "CUR"},
     vendor: {position: 6, segment: "ISA"},
     ISAControlNumber: {position: 13, segment: "ISA"},
     GSControlNumber: {position: 6, segment: "GS"},
@@ -39,12 +41,16 @@ export const map810 = {
         zip: {position: 3, segment: "N4"},
     },
     shipping_terms: {
+        position: 1,
+        segment: "FOB",
         shipping_payment: {position: 1, segment: "FOB"},
         delivery_location: {position: 2, segment: "FOB"},
         description: {position: 3, segment: "FOB"},
         // FOB04/05 not used anymore - Incoterms: {position: 5, segment: "FOB"},
     },
-    invoice_terms: { 
+    invoice_terms: {
+        position: 1,
+        segment: "ITD",
         effective_date: {position: 2, segment: "ITD"},
         discount: {
             position: 1,
@@ -55,11 +61,13 @@ export const map810 = {
             total: {position: 8, segment: "ITD"},
         },
         due_date: {position: 6, segment: "ITD"},
-        days_due: {position: 7, segment: "ITD"}
+        days_due: {position: 7, segment: "ITD"},
+        description: {position: 12, segment: "ITD"}
     },
     total: {position: 1, segment: "TDS"},
+    transaction_type: {position: 7, segment: "BIG"},
     shipment: {
-        position: 1,
+        position: 1, 
         segment: "ISS",
         items: {position: 1, segment: "ISS"},
         weight: {position: 3, segment: "ISS"},
@@ -100,243 +108,333 @@ export const map810 = {
             model_number: {position: 11, segment: "IT1"},
             description: {position: 5, segment: "PID"},
         }
-}
-export const model810 = {
-    vendor: ' ',
-    ISAControlNumber: '000003438',
-    GSControlNumber: '1320',
-    STCode: '810',
-    STControlNumber: '1004',
-    invoice_date: '20101204',
-    invoice_number: '217224',
-    isTest: false,
-    purchase_order_date: '20101204',
-    purchase_order_number: 'P792940',
-    bill_of_lading_number: [],
-    tracking_number: [],
-    notes: [],
-    ship_from: {
-    name: 'Vendor Warehouse',
-    address: '123 St',
-    city: 'City',
-    state: 'TX',
-    zip: '78233',
-    country: 'US'
-    },
-    ship_to: {
-        name: 'Gabe Bigelow',
-        // N103/04 no longer used
-        // set_by: '92',
-        // set_by_id: '00001',
-        address: '100 Madison Street',
-        city: 'Gould',
-        state: 'AR',
-        country: "USA",
-        zip: '71643'
-    },
-    shipping_terms: {
-        shipping_payment: "Collect",
-        delivery_location: "Home",
-        description: 'This is the description',
-        // FOB04/05 not used anymore - Incoterms: 'Ex Works'
-    },
-    invoice_terms: { 
-        effective_date: '20101204',
-        conditionals: [
-            {
-                discount: {
-                    total: "0",
-                    conditionals: [
-                        ["days_due", "due_date"]
-                    ]
-                }
-            },
-            ["days_due", "due_date"],
-        ]
-    },
-    total: '21740',
-    shipment: {
-        items: '2',
-        weight: '123',
-        weight_unit: 'Kilogram',
-        volume: '10000',
-        volume_unit: 'Cubic Centimeter'
-    },
-    taxes: {
-        'Federal Value-added Tax (GST) on Goods': { amount: '10000', percent: '', defined_by: 'VD' }
-    },
-    jurisdiction: 'OH',
-    carrier: {
-        type: "Best Way (Shippers option)",
-        SCAC: 'RNLO',
-        name: 'R & L Carriers',
-    //  tracking_number: '624534672'
-    },
-    unique_items: '8',
-    line_items: [
-        {
-        description: "a",
-        quantity: '4',
-        measurement: 'EA',
-        price: '8.60',
-        conditionals: [
-            ["vendor_sku", "upc", "model_number"]
-        ]
-        }
-    ]
-}
-
-export const map846 = {
-senderID: { position: 6, segment: "ISA" },
-receiverID: { position: 8, segment: "ISA" },
-ISAControlNumber: { position: 13, segment: "ISA" },
-GSControlNumber: { position: 6, segment: "GS" },
-STControlNumber: { position: 2, segment: "ST" },
-isTest: { position: 15, segment: "ISA" },
-createdAt: { position: 4, segment: "BIA" },
-periodOrReferenceNumber: { position: 3, segment: "BIA" },
-lineItems: {
-    upc: { position: 3, segment: "LIN" },
-    sku: { position: 5, segment: "LIN" },
-    modelNumber: { position: 7, segment: "LIN" },
-    description: { position: 5, segment: "PID" },
-    unitCost: { position: 3, segment: "CTP" },
-    leadTime: { position: 2, segment: "LDT" },
-    availableQuantity: { position: 2, segment: "QTY" }
-}
-}
-export const model846 = {
-senderID: "a",
-receiverID: "a",
-ISAControlNumber: "a",
-GSControlNumber: "a",
-STControlNumber: "a",
-isTest: false,
-createdAt: "a",
-periodOrReferenceNumber: "a",
-lineItems: [
-    {
-    sku: "a",
-    description: "a",
-    availableQuantity: 0
-    }
-]
-};
-
-export const map856 = {
-senderID: { position: 6, segment: "ISA" },
-receiverID: { position: 8, segment: "ISA" },
-ISAControlNumber: { position: 13, segment: "ISA" },
-GSControlNumber: { position: 6, segment: "GS" },
-STControlNumber: { position: 2, segment: "ST" },
-isTest: { position: 15, segment: "ISA" },
-createdAt: { position: 3, segment: "BSN" },
-shipment: {
-    position: 1,
-    segment: "HL",
-    packages: { position: 2, segment: "TD1" },
-    SCAC: { position: 3, segment: "TD5" },
-    transportMethod: { position: 4, segment: "TD5" },
-    customer: {
-    position: 1,
-    segment: "N1",
-    name: { position: 2, segment: "N1" },
-    address1: { position: 1, segment: "N3" },
-    address2: { position: 2, segment: "N3" },
-    city: { position: 1, segment: "N4" },
-    state: { position: 2, segment: "N4" },
-    zip: { position: 3, segment: "N4" }
-    },
-    shippedFrom: {
-    position: 1,
-    segment: "N1",
-    name: { position: 2, segment: "N1" },
-    address1: { position: 1, segment: "N3" },
-    address2: { position: 2, segment: "N3" },
-    city: { position: 1, segment: "N4" },
-    state: { position: 2, segment: "N4" },
-    zip: { position: 3, segment: "N4" }
-    }
-},
-order: {
-    position: 1,
-    segment: "HL",
-    purchaseOrder: { position: 1, segment: "PRF" },
-    createdAt: { position: 4, segment: "PRF" }
-},
-packages: {
-    position: 1,
-    segment: "HL",
-    trackingNumber: { position: 2, segment: "REF" },
-    lineItems: {
-    position: 1,
-    segment: "LIN",
-    quantity: { position: 2, segment: "SN1" },
-    units: { position: 3, segment: "SN1" },
-    upc: { position: 3, segment: "LIN" },
-    sku: { position: 5, segment: "LIN" },
-    modelNumber: { position: 7, segment: "LIN" }
-    }
-}
-};
-
-export const model856 = {
-senderID: "a",
-receiverID: "a",
-ISAControlNumber: "a",
-GSControlNumber: "a",
-STControlNumber: "s",
-isTest: false,
-createdAt: "a",
-shipment: {
-    packages: 0,
-    SCAC: "a",
-    transportMethod: "a",
-    contact: {
-        name: "a",
-        phone: "a",
-        email: "a"
-    },
-    customer: {
-        address1: "a",
-        city: "a",
-        state: "a",
-        zip: "a"
-    },
-    shippedFrom: {
-        address1: "a",
-        city: "a",
-        state: "a",
-        zip: "a"
-    }
-},
-order: {
-    purchaseOrder: "a",
-    createdAt: "a"
-},
-packages: [
-    {
-    trackingNumber: "a",
-    lineItems: [
-        {
-        quantity: 0,
-        units: "EA",
-        conditionals: [
-            ["upc", "sku", "modelNumber"]
-        ]
-        }
-    ]
-    }
-]
-}
+  }
+  export const model810 = {
+      currency: "a",
+      entity: "a",
+      vendor: 'a',
+      ISAControlNumber: '000003438',
+      GSControlNumber: '1320',
+      STCode: '810',
+      STControlNumber: '1004',
+      invoice_date: '20101204',
+      invoice_number: '217224',
+      isTest: false,
+      purchase_order_date: '20101204',
+      purchase_order_number: 'P792940',
+      bill_of_lading_number: [],
+      tracking_number: [],
+      notes: [],
+      ship_from: {
+        name: 'Vendor Warehouse',
+        address: '123 St',
+        city: 'City',
+        state: 'TX',
+        zip: '78233',
+        country: 'US'
+      },
+      ship_to: {
+          name: 'Gabe Bigelow',
+          // N103/04 no longer used
+          // set_by: '92',
+          // set_by_id: '00001',
+          address: '100 Madison Street',
+          city: 'Gould',
+          state: 'AR',
+          country: "USA",
+          zip: '71643'
+      },
+      shipping_terms: {
+          shipping_payment: "Collect",
+          delivery_location: "Home",
+          description: 'This is the description',
+          // FOB04/05 not used anymore - Incoterms: 'Ex Works'
+      },
+      invoice_terms: { 
+          effective_date: '20101204',
+          conditionals: [
+              {
+                  discount: {
+                      total: "0",
+                      conditionals: [
+                          ["days_due", "due_date"]
+                      ]
+                  }
+              },
+              ["days_due", "due_date"],
+          ]
+      },
+      total: '21740',
+      shipment: {
+          items: '2',
+          weight: '123',
+          weight_unit: 'Kilogram',
+          volume: '10000',
+          volume_unit: 'Cubic Centimeter'
+      },
+      taxes: {
+          'Federal Value-added Tax (GST) on Goods': { amount: '10000', percent: '', defined_by: 'VD' }
+      },
+      jurisdiction: 'OH',
+      carrier: {
+          type: "Best Way (Shippers option)",
+          SCAC: 'RNLO',
+          name: 'R & L Carriers',
+        //  tracking_number: '624534672'
+      },
+      unique_items: '8',
+      line_items: [
+          {
+              quantity: '4',
+              measurement: 'EA',
+              price: '8.60',
+              description: "A",
+              conditionals: [
+                ["vendor_sku", "upc", "model_number"]
+              ]
+          }
+      ]
+  }
   
-export function testAgainstModel (object, model, modelMap) {
+  export const map846 = {
+    senderID: { position: 6, segment: "ISA" },
+    receiverID: { position: 8, segment: "ISA" },
+    ISAControlNumber: { position: 13, segment: "ISA" },
+    GSControlNumber: { position: 6, segment: "GS" },
+    STControlNumber: { position: 2, segment: "ST" },
+    isTest: { position: 15, segment: "ISA" },
+    createdAt: { position: 4, segment: "BIA" },
+    periodOrReferenceNumber: { position: 3, segment: "BIA" },
+    lineItems: {
+      upc: { position: 3, segment: "LIN" },
+      sku: { position: 5, segment: "LIN" },
+      modelNumber: { position: 7, segment: "LIN" },
+      description: { position: 5, segment: "PID" },
+      unitCost: { position: 3, segment: "CTP" },
+      leadTime: { position: 2, segment: "LDT" },
+      availableQuantity: { position: 2, segment: "QTY" }
+    }
+  }
+  export const model846 = {
+    senderID: "a",
+    receiverID: "a",
+    ISAControlNumber: "a",
+    GSControlNumber: "a",
+    STControlNumber: "a",
+    isTest: false,
+    createdAt: "a",
+    periodOrReferenceNumber: "a",
+    lineItems: [
+      {
+        sku: "a",
+        description: "a",
+        availableQuantity: 0
+      }
+    ]
+  };
+  
+  export const map850 = {
+    senderID: { position: 6, segment: "ISA" },
+    receiverID: { position: 8, segment: "ISA" },
+    ISAControlNumber: { position: 13, segment: "ISA" },
+    GSControlNumber: { position: 6, segment: "GS" },
+    STControlNumber: { position: 2, segment: "ST" },
+    isTest: { position: 15, segment: "ISA" },
+    purpose: { position: 1, segment: "BEG" },
+    purchaseOrderNumber: { position: 3, segment: "BEG" },
+    createdAt: { position: 5, segment: "BEG" },
+    note: { position: 1, segment: "MSG" },
+    carrierInfo: {
+      accountNumber: { position: 2, segment: "REF" },
+      SCACCode: { position: 3, segment: "TD5" },
+      carrierName: { position: 5, segment: "TD5" },
+      insuranceCost: { position: 5, segment: "SAC" },
+      deliveryAddressType: { position: 2, segment: "FOB"},
+      withLiftGate: { position: 3, segment: "FOB"}
+    },
+    shipFrom: {
+      name: { position: 2, segment: "N1"},
+      address1: { position: 1, segment: "N3"},
+      address2: { position: 2, segment: "N3"},
+      city: { position: 1, segment: "N4"},
+      state: { position: 2, segment: "N4"},
+      zip: { position: 3, segment: "N4"},
+      country: { position: 4, segment: "N4"}
+    },
+    shipTo: {
+      name: { position: 2, segment: "N1"},
+      address1: { position: 1, segment: "N3"},
+      address2: { position: 2, segment: "N3"},
+      city: { position: 1, segment: "N4"},
+      state: { position: 2, segment: "N4"},
+      zip: { position: 3, segment: "N4"},
+      country: { position: 4, segment: "N4"}
+    },
+    lineItems: [
+      {
+        quantity: { position: 2, segment: "PO1" },
+        price: { position: 4, segment: "PO1" },
+        UPC: { position: 7, segment: "PO1" },
+        SKU: { position: 9, segment: "PO1" },
+        modelNumber: { position: 11, segment: "PO1" }
+      }
+    ]
+  }
+  export const model850 = {
+    senderID: 'a',
+    receiverID: 'a',
+    ISAControlNumber: 'a',
+    GSControlNumber: 'a',
+    STControlNumber: 'a',
+    isTest: false,
+    purpose: 'a',
+    purchaseOrderNumber: 'a',
+    createdAt: 'a',
+    carrierInfo: {
+      accountNumber: 'a',
+      SCACCode: 'a',
+      carrierName: 'a',
+      deliveryAddressType: 'a',
+    },
+    shipFrom: {
+      name: 'a',
+      address1: 'a',
+      city: 'a',
+      state: 'a',
+      zip: 'a',
+    },
+    shipTo: {
+      name: 'a',
+      address1: 'a',
+      city: 'a',
+      state: 'a',
+      zip: 'a',
+    },
+    lineItems: [
+      {
+        quantity: 1,
+        price: "1234",
+        conditionals: [
+          "upc", "sku", "modelNumber"
+        ]
+      }
+    ]
+  }
+  
+  export const map856 = {
+    senderID: { position: 6, segment: "ISA" },
+    receiverID: { position: 8, segment: "ISA" },
+    ISAControlNumber: { position: 13, segment: "ISA" },
+    GSControlNumber: { position: 6, segment: "GS" },
+    STControlNumber: { position: 2, segment: "ST" },
+    isTest: { position: 15, segment: "ISA" },
+    createdAt: { position: 3, segment: "BSN" },
+    shipment: {
+      position: 1,
+      segment: "HL",
+      packages: { position: 2, segment: "TD1" },
+      SCAC: { position: 3, segment: "TD5" },
+      transportMethod: { position: 4, segment: "TD5" },
+      customer: {
+        position: 1,
+        segment: "N1",
+        name: { position: 2, segment: "N1" },
+        address1: { position: 1, segment: "N3" },
+        address2: { position: 2, segment: "N3" },
+        city: { position: 1, segment: "N4" },
+        state: { position: 2, segment: "N4" },
+        zip: { position: 3, segment: "N4" }
+      },
+      shippedFrom: {
+        position: 1,
+        segment: "N1",
+        name: { position: 2, segment: "N1" },
+        address1: { position: 1, segment: "N3" },
+        address2: { position: 2, segment: "N3" },
+        city: { position: 1, segment: "N4" },
+        state: { position: 2, segment: "N4" },
+        zip: { position: 3, segment: "N4" }
+      }
+    },
+    order: {
+      position: 1,
+      segment: "HL",
+      purchaseOrder: { position: 1, segment: "PRF" },
+      createdAt: { position: 4, segment: "PRF" }
+    },
+    packages: {
+      position: 1,
+      segment: "HL",
+      trackingNumber: { position: 2, segment: "REF" },
+      lineItems: {
+        position: 1,
+        segment: "LIN",
+        quantity: { position: 2, segment: "SN1" },
+        units: { position: 3, segment: "SN1" },
+        upc: { position: 3, segment: "LIN" },
+        sku: { position: 5, segment: "LIN" },
+        modelNumber: { position: 7, segment: "LIN" }
+      }
+    }
+  };
+  export const model856 = {
+    senderID: "a",
+    receiverID: "a",
+    ISAControlNumber: "a",
+    GSControlNumber: "a",
+    STControlNumber: "s",
+    isTest: false,
+    createdAt: "a",
+    shipment: {
+        packages: 0,
+        SCAC: "a",
+        transportMethod: "a",
+        contact: {
+            name: "a",
+            phone: "a",
+            email: "a"
+        },
+        customer: {
+            address1: "a",
+            city: "a",
+            state: "a",
+            zip: "a"
+        },
+        shippedFrom: {
+          address1: "a",
+          city: "a",
+          state: "a",
+          zip: "a"
+        }
+    },
+    order: {
+      purchaseOrder: "a",
+      createdAt: "a"
+    },
+    packages: [
+      {
+        trackingNumber: "a",
+        lineItems: [
+          {
+            quantity: 0,
+            units: "EA",
+            conditionals: [
+              ["upc", "sku", "modelNumber"]
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  
+  
+export function testAgainstModel (object, model, modelMap, pathHead) {
     const errorHolder = [];
   
     function checkArrayObjectsForUndefined (object, pathName, model) {
       // console.log("\n");
       // console.log(pathName)
-      let modelPath = pathName.filter(p => p !== "invoice");
+      let modelPath = pathName.filter(p => p !== pathHead);
       let modelSection = model;
       while (modelPath.length) {
         modelSection = modelSection[modelPath.splice(0,1)];
@@ -349,7 +447,7 @@ export function testAgainstModel (object, model, modelMap) {
               checkConditionals(object[i], pathName, model);
             }
             for (let key of missingKeys) {
-              let curPath = pathName.filter(p => p !== "invoice");
+              let curPath = pathName.filter(p => p !== pathHead);
               let curObject = modelMap[curPath.splice(0,1)];
               while (curPath.length) {
                 curObject = curObject[curPath.splice(0,1)];
@@ -357,8 +455,8 @@ export function testAgainstModel (object, model, modelMap) {
               curObject = curObject[key];
   
               errorHolder.push({
-                position: curObject.position,
-                segment: curObject.segment,
+                position: curObject.position || "",
+                segment: curObject.segment || "",
                 message: `${pathName.join(".")}[${i}] malformed: must include ${missingKeys.join(" and ")}`
               });
             }
@@ -368,8 +466,8 @@ export function testAgainstModel (object, model, modelMap) {
     }
     function checkForUndefined (object, pathName) {
         const keys = Object.keys(object);
-        let curPath = pathName.filter(p => p !== "invoice");
-        let curObject = modelMap[curPath.splice(0,1)];
+        let curPath = pathName.filter(p => p !== pathHead);
+        let curObject = modelMap[curPath.splice(0,1)] || modelMap;
         while (curPath.length) {
           curObject = curObject[curPath.splice(0,1)];
         }
@@ -384,10 +482,14 @@ export function testAgainstModel (object, model, modelMap) {
         if (keys.some(p => (object[p] === undefined || object[p] === "") && object[p] !== 0)) {
             keys.forEach(p => {
                 if ((object[p] === undefined || object[p] === "") && object[p] !== 0) {
-                  console.log("EEEEEEEEEEE")
-                  errorHolder.push({
-                    position: curObject.position,
-                    segment: curObject.segment,
+                    
+                  curObject ? errorHolder.push({
+                    position: curObject.position || curObject[p].position || "",
+                    segment: curObject.segment || curObject[p].segment || "",
+                    message: `${pathName.join(".")} malformed: must include ${p}`
+                  }) : errorHolder.push({
+                    position: "",
+                    segment: "",
                     message: `${pathName.join(".")} malformed: must include ${p}`
                   });
                   //errorHolder.push(`${pathName.join(".")}.${p} is not defined.`);
@@ -396,14 +498,14 @@ export function testAgainstModel (object, model, modelMap) {
         }
     }
     function checkConditionals (object, pathName, model) {
-        const modelPath = pathName.filter(n => n !== "invoice");
+        const modelPath = pathName.filter(n => n !== pathHead);
         let modelSection = model;
         while (modelPath.length > 0) {
             modelSection = modelSection[modelPath.splice(0,1).join("")]
         };
         if (!modelSection) {
             modelSection = model;
-            const modelPath = pathName.filter(n => n !== "invoice");
+            const modelPath = pathName.filter(n => n !== pathHead);
             while (modelPath.length > 1) {
                 modelSection = modelSection[modelPath.splice(0, 1).join("")];
             }
@@ -417,8 +519,7 @@ export function testAgainstModel (object, model, modelMap) {
         const missingProps = Object.keys(modelSection).filter(key => key !== "conditionals" && !Object.keys(object).includes(key));
         if (missingProps.length) {
           for (let key of missingProps) {
-            console.log(modelSection);
-            let curPath = pathName.filter(p => p !== "invoice");
+            let curPath = pathName.filter(p => p !== pathHead & p !== "undefined");
             let curObject = modelMap[curPath.splice(0,1)] || modelMap;
             while (curPath.length) {
               curObject = curObject[curPath.splice(0,1)];
@@ -426,8 +527,8 @@ export function testAgainstModel (object, model, modelMap) {
             curObject = curObject[key];
   
             errorHolder.push({
-              position: curObject.position,
-              segment: curObject.segment,
+              position: curObject.position || "",
+              segment: curObject.segment || "",
               message: `${pathName.join(".")} malformed: must include ${key}`
             });
           }
@@ -438,15 +539,15 @@ export function testAgainstModel (object, model, modelMap) {
             for (let condition of modelSection.conditionals) {
                 if (Array.isArray(condition) && !condition.some(key => Object.keys(object).includes(key))) {
                   for (let c of condition) {
-                    let curPath = pathName.filter(p => p !== "invoice");
+                    let curPath = pathName.filter(p => p !== pathHead);
                     let curObject = modelMap[curPath.splice(0,1)];
                     while (curPath.length) {
                       curObject = curObject[curPath.splice(0,1)];
                     }
                     curObject = curObject[c];
                     errorHolder.push({
-                      position: curObject.position,
-                      segment: curObject.segment,
+                      position: curObject.position || "",
+                      segment: curObject.segment || "",
                       message: `${pathName.join(".")} missing conditional: ${c}. Must include ${condition.join(" OR ")}`
                     });
                   }
@@ -458,7 +559,7 @@ export function testAgainstModel (object, model, modelMap) {
         }
     }
     
-    function navigateObj (object, pathName = ["invoice"]) {
+    function navigateObj (object, pathName = [pathHead]) {
         if (typeof object === "object" && Array.isArray(object)) checkArrayObjectsForUndefined(object, pathName, model);
         if (typeof object === "object" && !Array.isArray(object)) {
             checkForUndefined(object, pathName);
