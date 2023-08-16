@@ -455,7 +455,10 @@ export const map810 = {
         accepted: { position: 1, segment: "AK5" },
       },
     ],
-    functionalGroupAccepted: "!boolean",
+    functionalGroupAccepted: { position: 1, segment: "AK9" },
+    totalTransactionSets: { position: 2, segment: "AK9" },
+    receivedTransactionSets: { position: 3, segment: "AK9" },
+    acceptedTransactionSets: { position: 4, segment: "AK9" }
   };
   export const model997 = {
     senderID: "!string",
