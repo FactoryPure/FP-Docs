@@ -35,7 +35,7 @@ export const getElements = (line, separator) => {
     return Object.fromEntries(elements.map((el, index) => [`${segmentType}` + `0${index}`.slice(-2), el]))
 }
 
-export function validateEDIParserResult(object, model, map, documentType) {
+export const validateEDIParserResult = (object, model, map, documentType) => {
     if (!object || !model || !documentType || !map) {
         return [{}, [{
             segment: "UNKNOWN",
@@ -60,37 +60,38 @@ export function validateEDIParserResult(object, model, map, documentType) {
     const unSatisfiedConditionals = Object.entries(conditionals).filter(([key, val]) => val.status === "NOT SATISFIED")
     for (let condition of unSatisfiedConditionals) {
         const [key, information] = condition
-        const { segment, positions } = information
+        const { segment, positions, elementList } = information
         errors.push({
             segment,
             position: `${Array.from(positions).join(", ")}`,
-            message: `Must include at least one of ${Array.from(positions).map(p => `${segment}0${p}`).join(", ")}`
+            message: `Must include at least one of ${Array.from(elementList).join(", ")}`
         })
     }
   
     return [object, errors]
-}
+  }
   
-function check(object, model, map, path, errors, conditionals) {
+  function check(object, model, map, path, errors, conditionals) {
     // BASE CASE
     if (typeof model !== "object") {
         // CONDITIONAL CHECKER
         if (model.substring(0, 1) === "C") {
-            const type = model.substring(1);
-            const currentElement = getCurrentElementParent(path)
+            const type = model.substring(1)
+            const currentElement = path.split(".").slice(-1)[0]
+            const currentElementParent = path.split(".").slice(-2)[0]
             const { segment, position } = getSegmentAndElement(map, path)
-            if (!conditionals[currentElement]) {
-                conditionals[currentElement] = {
+            if (!conditionals[currentElementParent]) {
+                conditionals[currentElementParent] = {
                     segment,
                     positions: new Set([position]),
                     elementList: [],
                     status: "NOT SATISFIED"
                 }
             }
-            conditionals[currentElement].elementList.push(model)
-            conditionals[currentElement].positions.add(position)
+            conditionals[currentElementParent].elementList.push(currentElement)
+            conditionals[currentElementParent].positions.add(position)
             if ((object || object === false || object === 0) && typeof object === type) {
-                conditionals[currentElement].status = "SATISFIED"
+                conditionals[currentElementParent].status = "SATISFIED"
             } else if ((object || object === false || object === 0) && typeof object !== type) {
                 errors.push({
                     segment,
@@ -101,7 +102,7 @@ function check(object, model, map, path, errors, conditionals) {
             return
         }
         // REGULAR CHECKER
-        const required = model.substring(0, 1) === "!";
+        const required = model.substring(0, 1) === "!"
         const type = model.substring(1);
         if (required && object !== false && object !== 0 && !object) {
             const { segment, position } = getSegmentAndElement(map, path)
@@ -167,9 +168,9 @@ function check(object, model, map, path, errors, conditionals) {
             check(objectField, modelField, map, `${path}.${key}`, errors, conditionals)
         }
     }
-}
+  }
   
-function getSegmentAndElement(map, path) {
+  function getSegmentAndElement(map, path) {
     const pathArray = path.split(".").slice(1)
     let mapVal = JSON.parse(JSON.stringify(map))
     for (let pathKey of pathArray) {
@@ -180,9 +181,4 @@ function getSegmentAndElement(map, path) {
         }
     }
     return mapVal
-}
-
-function getCurrentElementParent(path) {
-    const pathArray = path.split(".")
-    return pathArray[pathArray.length - 2]
-}
+  }

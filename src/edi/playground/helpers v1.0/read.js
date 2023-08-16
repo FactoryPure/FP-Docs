@@ -1,7 +1,7 @@
 import { getDelimiters, getElements, getSegments } from "./helpers.js"
 
 export function read810 (fileContents) {
-    let errorLocation = {};
+    const errorLocation = {};
     try {
         const contents = fileContents;
         const elementSeparator = contents.substr(103,1);
@@ -146,7 +146,6 @@ export function read810 (fileContents) {
 
         let dateRef;
         let taxRef;
-
         for (let row = 0; row < rows.length; row++) {
             const elements = rows[row].split(elementSeparator);
             let segmentName;
@@ -156,7 +155,8 @@ export function read810 (fileContents) {
             for (let el = 0; el < elements.length; el++) {
                 if (el === 0) segmentName = elements[el];
                 let elementName = segmentName + String(el).padStart(2, 0)
-                errorLocation = {segment: segmentName, position: el};
+                errorLocation.segment = segmentName
+                errorLocation.position = el
                 
                 if (elementName === "ISA06") invoice810.vendor = vendorMap[elements[el].trim()] || elements[el];
                 if (elementName === "ISA06") invoice810.senderID = elements[el];
@@ -296,7 +296,7 @@ export function read810 (fileContents) {
     }
 }
 export const read846 = (data) => {
-    let errorLocation = {};
+    const errorLocation = {};
     try {
         const { elementDelimiter, lineTerminator } = getDelimiters(data)
         const lines = getSegments(data, lineTerminator)

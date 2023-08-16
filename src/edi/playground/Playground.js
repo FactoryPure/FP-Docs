@@ -89,7 +89,7 @@ export default function Playground ({}) {
                                     <p className="text-[red] font-bold mb-[16px] text-[18px] tracking-[2px] mt-[-16px] ml-[-16px]">&times; Invalid EDI {currentTransactionType || ""}</p>
                                     {fileOutput.errors.map(e => 
                                         <div className="py-[8px]">
-                                            {e.segment && e.position && <p className="text-lightred">POSITION: {e.segment}{`0${e.position}`.slice(-2)}</p>}
+                                            {e.segment && e.position && <p className="text-lightred">SEGMENT: {e.segment}, ELEMENTS: {e.position && e.position.toString().split(",").map(p => `${e.segment}` + `0${p.trim()}`.slice(-2)).join(", ")}</p>}
                                             <p className="text-[lightpink]">{e.message}</p>
                                         </div>
                                     )}
