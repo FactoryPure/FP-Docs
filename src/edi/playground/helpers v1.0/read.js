@@ -801,9 +801,9 @@ export function read997 (data) {
             }
             if (segment === "AK9") {
                 functionalAcknowledgement.functionalGroupAccepted = statusMap[elements.AK901]
-                functionalAcknowledgement.totalTransactionSets = elements.AK902 || ""
-                functionalAcknowledgement.receivedTransactionSets = elements.AK903 || ""
-                functionalAcknowledgement.acceptedTransactionSets = elements.AK904 || ""
+                functionalAcknowledgement.totalTransactionSets = parseInt(elements.AK902) || 0
+                functionalAcknowledgement.receivedTransactionSets = parseInt(elements.AK903) || 0
+                functionalAcknowledgement.acceptedTransactionSets = parseInt(elements.AK904) || 0
     
             }
         }
