@@ -353,6 +353,7 @@ export const read846 = (data) => {
                 currentLineItem.upc = elements.LIN03
                 currentLineItem.sku = elements.LIN05
                 currentLineItem.modelNumber = elements.LIN07
+                currentLineItem.locationId = elements.LIN09
             }
             if (segment === "PID") {
                 currentLineItem.description = elements.PID05
@@ -743,7 +744,7 @@ export function read997 (data) {
     }
 
     const setMap = {
-        "IN": "Invoice Information (810,819)",
+        "IN": "Invoice Information (810)",
         "IB": "Inventory Inquiry/Advice (846)",
         "PO": "Purchase Order (850)",
         "SH": "Ship Notice/Manifest (856)"
@@ -804,7 +805,6 @@ export function read997 (data) {
                 functionalAcknowledgement.totalTransactionSets = parseInt(elements.AK902) || 0
                 functionalAcknowledgement.receivedTransactionSets = parseInt(elements.AK903) || 0
                 functionalAcknowledgement.acceptedTransactionSets = parseInt(elements.AK904) || 0
-    
             }
         }
     } catch (err) {

@@ -122,7 +122,7 @@ export default function LIN() {
                 <div className="text-offwhite grid grid-cols-[100px_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <p>1.</p>
                     <p>
-                        At least one combination of LIN03+LIN04, LIN05+LIN06, or LIN07+LIN08 must be present
+                        At least one combination of LIN02+LIN03, LIN04+LIN05, or LIN06+LIN07 must be present
                     </p>
                 </div>
             </div>
