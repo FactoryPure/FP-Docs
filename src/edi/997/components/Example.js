@@ -9,7 +9,7 @@ export default function Example() {
                 AK1*IB*1~<br/>
                 AK2*846*0001~<br/>
                 AK5*A~<br/>
-                AK9*A~<br/>
+                AK9*A*1*1*1~<br/>
                 SE*6*0001~<br/>
                 GE*1*1~<br/>
                 IEA*1*000000001~<br/>

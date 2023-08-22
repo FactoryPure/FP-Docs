@@ -170,7 +170,8 @@ export const validateEDIParserResult = (object, model, map, documentType) => {
     }
   }
   
-  function getSegmentAndElement(map, path) {
+function getSegmentAndElement(map, path) {
+    console.log(map, path)
     const pathArray = path.split(".").slice(1)
     let mapVal = JSON.parse(JSON.stringify(map))
     for (let pathKey of pathArray) {
@@ -181,4 +182,4 @@ export const validateEDIParserResult = (object, model, map, documentType) => {
         }
     }
     return mapVal
-  }
+}
