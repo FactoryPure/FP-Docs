@@ -188,6 +188,7 @@ export const read846 = (data) => {
             const segment = Object.values(elements)[0]
             errorLocation = segment
             if (segment === "ISA") {
+                inventoryAdvice.vendor = EDIMaps.vendorMap[elements.ISA06.trim()] || elements.ISA06.trim()
                 inventoryAdvice.senderID = elements.ISA06
                 inventoryAdvice.receiverID = elements.ISA08
                 inventoryAdvice.createdAt = new Date(Date.UTC(
@@ -204,6 +205,7 @@ export const read846 = (data) => {
                 inventoryAdvice.GSControlNumber = elements.GS06
             }
             if (segment === "ST") {
+                inventoryAdvice.STCode = elements.ST01
                 inventoryAdvice.STControlNumber = elements.ST02
             }
             if (segment === "BIA") {
@@ -261,6 +263,7 @@ export const read850 = (data) => {
             const segment = Object.values(elements)[0]
             errorLocation = segment
             if (segment === "ISA") {
+                purchaseOrder.vendor = EDIMaps.vendorMap[elements.ISA06.trim()] || elements.ISA06.trim()
                 purchaseOrder.senderID = elements.ISA06
                 purchaseOrder.receiverID = elements.ISA08
                 purchaseOrder.createdAt = new Date(Date.UTC(
@@ -277,6 +280,7 @@ export const read850 = (data) => {
                 purchaseOrder.GSControlNumber = elements.GS06
             }
             if (segment === "ST") {
+                purchaseOrder.STCode = elements.ST01
                 purchaseOrder.STControlNumber = elements.ST02
             }
             if (segment === "BEG") {
@@ -370,6 +374,7 @@ export const read856 = (data) => {
             const segment = Object.values(elements)[0]
             errorLocation = segment
             if (segment === "ISA") {
+                asn.vendor = EDIMaps.vendorMap[elements.ISA06.trim()] || elements.ISA06.trim()
                 asn.senderID = elements.ISA06
                 asn.receiverID = elements.ISA08
                 asn.createdAt = new Date(Date.UTC(
@@ -387,6 +392,7 @@ export const read856 = (data) => {
                 asn.GSControlNumber = elements.GS06
             }
             if (segment === "ST") {
+                asn.STCode = elements.ST01
                 asn.STControlNumber = elements.ST02
             }
             if (segment === "HL") {
@@ -518,6 +524,7 @@ export function read997 (data) {
             const segment = Object.values(elements)[0]
             errorLocation = segment
             if (segment === "ISA") {
+                functionalAcknowledgement.vendor = EDIMaps.vendorMap[elements.ISA06.trim()] || elements.ISA06.trim()
                 functionalAcknowledgement.senderID = elements.ISA06
                 functionalAcknowledgement.receiverID = elements.ISA08
                 functionalAcknowledgement.createdAt = new Date(Date.UTC(
@@ -534,6 +541,7 @@ export function read997 (data) {
                 functionalAcknowledgement.GSControlNumber = elements.GS06
             }
             if (segment === "ST") {
+                functionalAcknowledgement.STCode = elements.ST01
                 functionalAcknowledgement.STControlNumber = elements.ST02
             }
             if (segment === "AK1") {

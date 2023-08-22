@@ -1,7 +1,7 @@
 export const map810 = {
+  vendor: { position: 6, segment: "ISA" },
   currency: { position: "2", segment: "CUR" },
   entity: { position: 1, segment: "CUR" },
-  vendor: { position: 6, segment: "ISA" },
   ISAControlNumber: { position: 13, segment: "ISA" },
   GSControlNumber: { position: 6, segment: "GS" },
   STCode: { position: 1, segment: "ST" },
@@ -105,9 +105,9 @@ export const map810 = {
 }
 
 export const model810 = {
+  vendor: "!string",
   currency: "!string",
   entity: "!string",
-  vendor: "!string",
   ISAControlNumber: "!string",
   GSControlNumber: "!string",
   STCode: "!string",
@@ -189,6 +189,7 @@ export const model810 = {
 }
 
 export const map846 = {
+  vendor: { position: 6, segment: "ISA" },
   senderID: { position: 6, segment: "ISA" },
   receiverID: { position: 8, segment: "ISA" },
   ISAControlNumber: { position: 13, segment: "ISA" },
@@ -213,6 +214,7 @@ export const map846 = {
 }
 
 export const model846 = {
+  vendor: "!string",
   senderID: "!string",
   receiverID: "!string",
   ISAControlNumber: "!string",
@@ -236,6 +238,7 @@ export const model846 = {
 }
 
 export const map850 = {
+  vendor: { position: 6, segment: "ISA" },
   senderID: { position: 6, segment: "ISA" },
   receiverID: { position: 8, segment: "ISA" },
   ISAControlNumber: { position: 13, segment: "ISA" },
@@ -291,6 +294,7 @@ export const map850 = {
 }
 
 export const model850 = {
+  vendor: "!string",
   senderID: "!string",
   receiverID: "!string",
   ISAControlNumber: "!string",
@@ -335,6 +339,7 @@ export const model850 = {
 }
 
 export const map856 = {
+  vendor: { position: 6, segment: "ISA" },
   senderID: { position: 6, segment: "ISA" },
   receiverID: { position: 8, segment: "ISA" },
   ISAControlNumber: { position: 13, segment: "ISA" },
@@ -393,6 +398,7 @@ export const map856 = {
 }
 
 export const model856 = {
+  vendor: "!string",
   senderID: "!string",
   receiverID: "!string",
   ISAControlNumber: "!string",
@@ -445,6 +451,7 @@ export const model856 = {
 }
 
 export const map997 = {
+  vendor: { position: 6, segment: "ISA" },
   senderID: { position: 6, segment: "ISA" },
   receiverID: { position: 8, segment: "ISA" },
   ISAControlNumber: { position: 13, segment: "ISA" },
@@ -468,6 +475,7 @@ export const map997 = {
 };
 
 export const model997 = {
+  vendor: "!string",
   senderID: "!string",
   receiverID: "!string",
   ISAControlNumber: "!string",
