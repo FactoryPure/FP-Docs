@@ -311,7 +311,7 @@ export const model850 = {
     carrierName: "!string",
     deliveryAddressType: "!string",
   },
-  shipFrom: {
+  "?shipFrom": {
     name: "!string",
     address1: "!string",
     address2: "?string",
@@ -354,7 +354,7 @@ export const map856 = {
     packages: { position: 2, segment: "TD1" },
     SCAC: { position: 3, segment: "TD5" },
     transportMethod: { position: 4, segment: "TD5" },
-    customer: {
+    shipTo: {
       position: 0,
       segment: "N1/N3/N4",
       name: { position: 2, segment: "N1" },
@@ -364,7 +364,7 @@ export const map856 = {
       state: { position: 2, segment: "N4" },
       zip: { position: 3, segment: "N4" },
     },
-    shippedFrom: {
+    shipFrom: {
       position: 0,
       segment: "N1/N3/N4",
       name: { position: 2, segment: "N1" },
@@ -411,7 +411,7 @@ export const model856 = {
     packages: "!number",
     SCAC: "!string",
     transportMethod: "!string",
-    customer: {
+    shipTo: {
       name: "!string",
       address1: "!string",
       address2: "?string",
@@ -420,7 +420,7 @@ export const model856 = {
       zip: "!string",
       country: "?string",
     },
-    shippedFrom: {
+    shipFrom: {
       name: "!string",
       address1: "!string",
       address2: "?string",

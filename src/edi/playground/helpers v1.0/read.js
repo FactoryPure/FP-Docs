@@ -6,11 +6,7 @@ export function read810 (data) {
     const lines = getSegments(data, lineTerminator)
 
     const invoice = {
-        notes: [],
-        trackingNumbers: [],
-        BOLNumbers: [],
         shipTo: {},
-        shipFrom: {},
         shippingTerms: {},
         invoiceTerms: {},
         lineItems: [],
@@ -56,6 +52,9 @@ export function read810 (data) {
                 invoice.transactionType = elements.BIG07; // DI DEBIT INVOICE
             }
             if (segment === "NTE") {
+                if (!invoice.notes) {
+                    invoice.notes = []
+                }
                 invoice.notes.push(elements.NTE02)
             }
             if (segment === "CUR") {
@@ -64,8 +63,14 @@ export function read810 (data) {
             }
             if (segment === "REF") {
                 if (elements.REF01 === "BM") {
+                    if (!invoice.BOLNumbers) {
+                        invoice.BOLNumbers = []
+                    }
                     invoice.BOLNumbers.push(elements.REF02)
                 } else if (elements.REF01 === "2I") {
+                    if (!invoice.trackingNumbers) {
+                        invoice.trackingNumbers = []
+                    }
                     invoice.trackingNumbers.push(elements.REF02)
                 }
             }
@@ -78,7 +83,7 @@ export function read810 (data) {
                 }
                 if (segment === "N3") {
                     invoice.shipTo.address1 = elements.N301
-                    invoice.shipTo.address2 = elements.N302 || ""
+                    invoice.shipTo.address2 = elements.N302
                 }
                 if (segment === "N4") {
                     invoice.shipTo.city = elements.N401
@@ -89,11 +94,14 @@ export function read810 (data) {
             }
             if (currentShippingParty === "SF") {
                 if (segment === "N1") {
+                    if (!invoice.shipFrom) {
+                        invoice.shipFrom = {}
+                    }
                     invoice.shipFrom.name = elements.N102
                 }
                 if (segment === "N3") {
                     invoice.shipFrom.address1 = elements.N301
-                    invoice.shipFrom.address2 = elements.N302 || ""
+                    invoice.shipFrom.address2 = elements.N302
                 }
                 if (segment === "N4") {
                     invoice.shipFrom.city = elements.N401
@@ -249,7 +257,6 @@ export const read846 = (data) => {
 export const read850 = (data) => {
     const purchaseOrder = {
         carrierInfo: {},
-        shipFrom: {},
         shipTo: {},
         lineItems: []
     }
@@ -305,7 +312,7 @@ export const read850 = (data) => {
                 }
                 if (segment === "N3") {
                     purchaseOrder.shipTo.address1 = elements.N301
-                    purchaseOrder.shipTo.address2 = elements.N302 || ""
+                    purchaseOrder.shipTo.address2 = elements.N302
                 }
                 if (segment === "N4") {
                     purchaseOrder.shipTo.city = elements.N401
@@ -316,11 +323,14 @@ export const read850 = (data) => {
             }
             if (currentShippingParty === "SF") {
                 if (segment === "N1") {
+                    if (!purchaseOrder.shipFrom) {
+                        purchaseOrder.shipFrom = {}
+                    }
                     purchaseOrder.shipFrom.name = elements.N102
                 }
                 if (segment === "N3") {
                     purchaseOrder.shipFrom.address1 = elements.N301
-                    purchaseOrder.shipFrom.address2 = elements.N302 || ""
+                    purchaseOrder.shipFrom.address2 = elements.N302
                 }
                 if (segment === "N4") {
                     purchaseOrder.shipFrom.city = elements.N401
@@ -341,9 +351,9 @@ export const read850 = (data) => {
                 purchaseOrder.lineItems.push({
                     quantity: parseInt(elements.PO102),
                     price: parseFloat(elements.PO104),
-                    upc: elements.PO107 || "",
-                    sku: elements.PO109 || "",
-                    modelNumber: elements.PO111 || ""
+                    upc: elements.PO107,
+                    sku: elements.PO109,
+                    modelNumber: elements.PO111
                 })
             }
         }
@@ -405,69 +415,63 @@ export const read856 = (data) => {
             }
     
             // SHIPMENT LEVEL
-    
-            if (segment === "TD1") {
-                asn.shipment.packages = parseInt(elements.TD102)
-                // asn.shipment.weight = elements.TD107
-                // asn.shipment.units = elements.TD108 
-            }
-            if (segment === "TD5") {
-                asn.shipment.SCAC = elements.TD503
-                asn.shipment.transportMethod = elements.TD504
-            }
-            if (segment === "N1") {
-                currentShippingParty = elements.N101
-            }
-            if (currentShippingParty === "ST") {
+            if (currentHLCode === "S") {
+                if (segment === "TD1") {
+                    asn.shipment.packages = parseInt(elements.TD102)
+                    // asn.shipment.weight = elements.TD107
+                    // asn.shipment.units = elements.TD108 
+                }
+                if (segment === "TD5") {
+                    asn.shipment.SCAC = elements.TD503
+                    asn.shipment.transportMethod = elements.TD504
+                }
                 if (segment === "N1") {
-                    asn.shipment.customer = {
-                        name: elements.N102,
+                    currentShippingParty = elements.N101
+                }
+                if (currentShippingParty === "ST") {
+                    if (segment === "N1") {
+                        asn.shipment.shipTo.name = elements.N102
+                    }
+                    if (segment === "N3") {
+                        asn.shipment.shipTo.address1 = elements.N301
+                        asn.shipment.shipTo.address2 = elements.N302
+                    }
+                    if (segment === "N4") {
+                        asn.shipment.shipTo.city = elements.N401
+                        asn.shipment.shipTo.state = elements.N402
+                        asn.shipment.shipTo.zip = elements.N403
+                    }
+                } else if (currentShippingParty === "SF") {
+                    if (segment === "N1") {
+                        asn.shipment.shipFrom.name = elements.N102
+                    }
+                    if (segment === "N3") {
+                        asn.shipment.shipFrom.address1 = elements.N301
+                        asn.shipment.shipFrom.address2 = elements.N302
+                    }
+                    if (segment === "N4") {
+                        asn.shipment.shipFrom.city = elements.N401
+                        asn.shipment.shipFrom.state = elements.N402
+                        asn.shipment.shipFrom.zip = elements.N403
                     }
                 }
-                if (segment === "N3") {
-                    asn.shipment.customer.address1 = elements.N301
-                    asn.shipment.customer.address2 = elements.N302
-                }
-                if (segment === "N4") {
-                    asn.shipment.customer.city = elements.N401
-                    asn.shipment.customer.state = elements.N402
-                    asn.shipment.customer.zip = elements.N403
-                }
-            } else if (currentShippingParty === "SF") {
-                if (segment === "N1") {
-                    asn.shipment.shippedFrom = {
-                        name: elements.N102,
-                    }
-                }
-                if (segment === "N3") {
-                    asn.shipment.shippedFrom.address1 = elements.N301
-                    asn.shipment.shippedFrom.address2 = elements.N302
-                }
-                if (segment === "N4") {
-                    asn.shipment.shippedFrom.city = elements.N401
-                    asn.shipment.shippedFrom.state = elements.N402
-                    asn.shipment.shippedFrom.zip = elements.N403
-                }
             }
-            
     
             // ORDER LEVEL
-    
-            if (segment === "PRF") {
-                asn.order = {
-                    purchaseOrder: elements.PRF01,
-                    createdAt: elements.PRF04
-                        ? new Date(Date.UTC(elements.PRF04.slice(0, 4), parseInt(elements.PRF04.slice(4, 6)) - 1, elements.PRF04.slice(6, 8))).toISOString()
-                        : ''
+            if (currentHLCode === "O") {
+                if (segment === "PRF") {
+                    asn.order = {
+                        purchaseOrder: elements.PRF01,
+                        createdAt: elements.PRF04
+                            ? new Date(Date.UTC(elements.PRF04.slice(0, 4), parseInt(elements.PRF04.slice(4, 6)) - 1, elements.PRF04.slice(6, 8))).toISOString()
+                            : ''
+                    }
                 }
             }
     
             // PACK LEVEL
-    
-            if (segment === "REF" && elements.REF01 === "2I") {
-                if (currentHLCode !== "P") {
-                    asn.shipment.trackingNumber.add(elements.REF02)
-                } else {
+            if (currentHLCode === "P") {
+                if (segment === "REF" && elements.REF01 === "2I") {
                     if (!asn.packages[currentHLID]) {
                         asn.packages[currentHLID] = {
                             trackingNumber: "",
@@ -479,28 +483,22 @@ export const read856 = (data) => {
             }
     
             // ITEM LEVEL
-    
-            if (segment === "LIN") {
-                if (!asn.packages[currentHLParentID]) {
-                    asn.packages[currentHLParentID] = {
-                        trackingNumber: "",
-                        lineItems: {}
+            if (currentHLCode === "I" && asn.packages[currentHLParentID]) {
+                if (segment === "LIN") {
+                    if (!asn.packages[currentHLParentID].lineItems[currentHLID]) {
+                        asn.packages[currentHLParentID].lineItems[currentHLID] = {}
                     }
+                    asn.packages[currentHLParentID].lineItems[currentHLID].upc = elements.LIN03
+                    asn.packages[currentHLParentID].lineItems[currentHLID].sku = elements.LIN05
+                    asn.packages[currentHLParentID].lineItems[currentHLID].modelNumber = elements.LIN07
                 }
-                if (!asn.packages[currentHLParentID].lineItems[currentHLID]) {
-                    asn.packages[currentHLParentID].lineItems[currentHLID] = {}
+                if (segment === "SN1" && asn.packages[currentHLParentID].lineItems[currentHLID]) {
+                    asn.packages[currentHLParentID].lineItems[currentHLID].quantity = parseInt(elements.SN102)
+                    asn.packages[currentHLParentID].lineItems[currentHLID].units = elements.SN103
                 }
-                asn.packages[currentHLParentID].lineItems[currentHLID].upc = elements.LIN03
-                asn.packages[currentHLParentID].lineItems[currentHLID].sku = elements.LIN05
-                asn.packages[currentHLParentID].lineItems[currentHLID].modelNumber = elements.LIN07
-    
-            }
-            if (segment === "SN1") {
-                asn.packages[currentHLParentID].lineItems[currentHLID].quantity = parseInt(elements.SN102)
-                asn.packages[currentHLParentID].lineItems[currentHLID].units = elements.SN103
-            }
-            if (segment === "PID") {
-                asn.packages[currentHLParentID].lineItems[currentHLID].description = elements.PID05
+                if (segment === "PID" && asn.packages[currentHLParentID].lineItems[currentHLID]) {
+                    asn.packages[currentHLParentID].lineItems[currentHLID].description = elements.PID05
+                }
             }
         }
         const parsedPackages = Object.values(asn.packages).map(pack => ({ ...pack, lineItems: Object.values(pack.lineItems) }))
