@@ -1,4 +1,5 @@
 export const vendorMap = {
+    "12/2625221452": "Westinghouse",
     "SENDERID": "SENDERID",
     "TESTINGHOUSE": "WESTINGHOUSE"
 }

@@ -29,10 +29,10 @@ export function read810 (data) {
                 invoice.receiverID = elements.ISA08
                 invoice.createdAt = new Date(Date.UTC(
                     `20` + elements.ISA09.slice(0,2), 
-                    parseInt(elements.ISA09.slice(2,4).replaceAll("0", "")) - 1,
-                    parseInt(elements.ISA09.slice(4,6).replaceAll("0", "")), 
-                    parseInt(elements.ISA10.slice(0,2).replaceAll("0", "")),
-                    parseInt(elements.ISA10.slice(2,4).replaceAll("0", ""))
+                    parseInt(elements.ISA09.slice(2,4)) - 1,
+                    parseInt(elements.ISA09.slice(4,6)), 
+                    parseInt(elements.ISA10.slice(0,2)),
+                    parseInt(elements.ISA10.slice(2,4))
                 )).toISOString()
                 invoice.isTest = elements.ISA15 === "T"
                 invoice.ISAControlNumber = elements.ISA13
@@ -201,10 +201,10 @@ export const read846 = (data) => {
                 inventoryAdvice.receiverID = elements.ISA08
                 inventoryAdvice.createdAt = new Date(Date.UTC(
                     `20` + elements.ISA09.slice(0,2), 
-                    parseInt(elements.ISA09.slice(2,4).replaceAll("0", "")) - 1,
-                    parseInt(elements.ISA09.slice(4,6).replaceAll("0", "")), 
-                    parseInt(elements.ISA10.slice(0,2).replaceAll("0", "")),
-                    parseInt(elements.ISA10.slice(2,4).replaceAll("0", ""))
+                    parseInt(elements.ISA09.slice(2,4)) - 1,
+                    parseInt(elements.ISA09.slice(4,6)), 
+                    parseInt(elements.ISA10.slice(0,2)),
+                    parseInt(elements.ISA10.slice(2,4))
                 )).toISOString()
                 inventoryAdvice.isTest = elements.ISA15 === "T"
                 inventoryAdvice.ISAControlNumber = elements.ISA13
@@ -275,10 +275,10 @@ export const read850 = (data) => {
                 purchaseOrder.receiverID = elements.ISA08
                 purchaseOrder.createdAt = new Date(Date.UTC(
                     `20` + elements.ISA09.slice(0,2), 
-                    parseInt(elements.ISA09.slice(2,4).replaceAll("0", "")) - 1,
-                    parseInt(elements.ISA09.slice(4,6).replaceAll("0", "")), 
-                    parseInt(elements.ISA10.slice(0,2).replaceAll("0", "")),
-                    parseInt(elements.ISA10.slice(2,4).replaceAll("0", ""))
+                    parseInt(elements.ISA09.slice(2,4)) - 1,
+                    parseInt(elements.ISA09.slice(4,6)), 
+                    parseInt(elements.ISA10.slice(0,2)),
+                    parseInt(elements.ISA10.slice(2,4))
                 )).toISOString()
                 purchaseOrder.isTest = elements.ISA15 === "T"
                 purchaseOrder.ISAControlNumber = elements.ISA13
@@ -389,10 +389,10 @@ export const read856 = (data) => {
                 asn.receiverID = elements.ISA08
                 asn.createdAt = new Date(Date.UTC(
                     `20` + elements.ISA09.slice(0,2), 
-                    parseInt(elements.ISA09.slice(2,4).replaceAll("0", "")) - 1,
-                    parseInt(elements.ISA09.slice(4,6).replaceAll("0", "")), 
-                    parseInt(elements.ISA10.slice(0,2).replaceAll("0", "")),
-                    parseInt(elements.ISA10.slice(2,4).replaceAll("0", ""))
+                    parseInt(elements.ISA09.slice(2,4)) - 1,
+                    parseInt(elements.ISA09.slice(4,6)), 
+                    parseInt(elements.ISA10.slice(0,2)),
+                    parseInt(elements.ISA10.slice(2,4))
                     
                 )).toISOString()
                 asn.isTest = elements.ISA15 === "T"
@@ -527,10 +527,10 @@ export function read997 (data) {
                 functionalAcknowledgement.receiverID = elements.ISA08
                 functionalAcknowledgement.createdAt = new Date(Date.UTC(
                     `20` + elements.ISA09.slice(0,2), 
-                    parseInt(elements.ISA09.slice(2,4).replaceAll("0", "")) - 1,
-                    parseInt(elements.ISA09.slice(4,6).replaceAll("0", "")), 
-                    parseInt(elements.ISA10.slice(0,2).replaceAll("0", "")),
-                    parseInt(elements.ISA10.slice(2,4).replaceAll("0", ""))
+                    parseInt(elements.ISA09.slice(2,4)) - 1,
+                    parseInt(elements.ISA09.slice(4,6)), 
+                    parseInt(elements.ISA10.slice(0,2)),
+                    parseInt(elements.ISA10.slice(2,4))
                 )).toISOString()
                 functionalAcknowledgement.isTest = elements.ISA15 === "T"
                 functionalAcknowledgement.ISAControlNumber = elements.ISA13
