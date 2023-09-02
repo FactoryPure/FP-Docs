@@ -112,7 +112,7 @@ export function read810 (data) {
             }
             if (segment === "ITD") {
                 invoice.invoiceTerms.effectiveDate = elements.ITD02 === "3" ? invoice.invoiceDate : null
-                invoice.invoiceTerms.dueDate = elements.ITD06
+                invoice.invoiceTerms.dueDate = elements.ITD06 || invoice.invoiceDate
                 invoice.invoiceTerms.daysDue = elements.ITD07
                 invoice.invoiceTerms.description = elements.ITD12
                 if (elements.ITD08) {

@@ -1,3 +1,19 @@
+import { taxMap } from "./EDICodeMaps"
+
+const taxMappingObject = Object.fromEntries(Object.entries(taxMap).map(([key, val]) => [key, {
+  position: 1,
+  segment: "TXI",
+  amount: { position: 2, segment: "TXI" },
+  percent: { position: 3, segment: "TXI" },
+  definedBy: { position: 4, segment: "TXI" },
+}]))
+
+const taxModelObject = Object.fromEntries(Object.entries(taxMap).map(([key, val]) => [`?${key}`, {
+  amount: "Cstring",
+  percent: "Cstring",
+  definedBy: "?string",
+}]))
+
 export const map810 = {
   vendor: { position: 6, segment: "ISA" },
   currency: { position: "2", segment: "CUR" },
@@ -74,13 +90,7 @@ export const map810 = {
   taxes: {
     position: 1,
     segment: "TXI",
-    "Federal Value-added Tax (GST) on Goods": {
-      position: 1,
-      segment: "TXI",
-      amount: { position: 2, segment: "TXI" },
-      percent: { position: 3, segment: "TXI" },
-      definedBy: { position: 4, segment: "TXI" },
-    },
+    ...taxMappingObject
   },
   jurisdiction: { position: 5, segment: "TXI" },
   carrier: {
@@ -158,15 +168,11 @@ export const model810 = {
     items: "!string",
     weight: "!string",
     weightUnit: "!string",
-    volume: "!string",
-    volumeUnit: "!string",
+    volume: "?string",
+    volumeUnit: "?string",
   },
   taxes: {
-    "Federal Value-added Tax (GST) on Goods": {
-      amount: "Cstring",
-      percent: "Cstring",
-      definedBy: "?string",
-    },
+    ...taxModelObject
   },
   jurisdiction: "!string",
   carrier: {
