@@ -118,7 +118,7 @@ export function read810 (data) {
                 if (elements.ITD08) {
                     invoice.invoiceTerms.discount = {}
                     invoice.invoiceTerms.discount.percent = elements.ITD03
-                    invoice.invoiceTerms.discount.dueDate = elements.ITD04
+                    invoice.invoiceTerms.discount.dueDate = elements.ITD04 || invoice.invoiceDate
                     invoice.invoiceTerms.discount.daysDue = elements.ITD05
                     invoice.invoiceTerms.discount.total = elements.ITD08
                 }
