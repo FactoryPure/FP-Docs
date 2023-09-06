@@ -174,7 +174,7 @@ export const model810 = {
   taxes: {
     ...taxModelObject
   },
-  jurisdiction: "!string",
+  jurisdiction: "?string",
   carrier: {
     type: "?string",
     SCAC: "!string",
