@@ -235,7 +235,7 @@ export const model846 = {
       upc: "Cstring",
       sku: "Cstring",
       modelNumber: "Cstring",
-      locationId: "!string",
+      locationId: "?string",
       description: "?string",
       availableQuantity: "!number",
       leadTime: "?number",
