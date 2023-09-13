@@ -1,4 +1,4 @@
-import { getDelimiters, getElements, getSegments } from "./helpers.js"
+import { getDelimiters, getElements, getSegments, trimLeadingZeros } from "./helpers.js"
 import * as EDIMaps from "./EDICodeMaps"
 
 export function read810 (data) {
@@ -225,7 +225,7 @@ export const read846 = (data) => {
                     currentLineItem = {}
                 }
                 currentLineItem.upc = elements.LIN03
-                currentLineItem.sku = elements.LIN05
+                currentLineItem.sku = trimLeadingZeros(elements.LIN05)
                 currentLineItem.modelNumber = elements.LIN07
                 currentLineItem.locationId = elements.LIN09
             }
@@ -489,7 +489,7 @@ export const read856 = (data) => {
                         asn.packages[currentHLParentID].lineItems[currentHLID] = {}
                     }
                     asn.packages[currentHLParentID].lineItems[currentHLID].upc = elements.LIN03
-                    asn.packages[currentHLParentID].lineItems[currentHLID].sku = elements.LIN05
+                    asn.packages[currentHLParentID].lineItems[currentHLID].sku = trimLeadingZeros(elements.LIN05)
                     asn.packages[currentHLParentID].lineItems[currentHLID].modelNumber = elements.LIN07
                 }
                 if (segment === "SN1" && asn.packages[currentHLParentID].lineItems[currentHLID]) {

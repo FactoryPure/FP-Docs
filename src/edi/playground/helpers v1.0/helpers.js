@@ -34,7 +34,16 @@ export const getElements = (line, separator) => {
     const segmentType = elements[0]
     return Object.fromEntries(elements.map((el, index) => [`${segmentType}` + `0${index}`.slice(-2), el]))
 }
-
+export const trimLeadingZeros = (str) => {
+    if (!str || typeof str !== "string") {
+        return null
+    }
+    let startIdx = 0
+    while (str[startIdx] == '0') {
+        startIdx++
+    }
+    return str.substring(startIdx)
+}
 export const validateEDIParserResult = (object, model, map, documentType) => {
     if (!object || !model || !documentType || !map) {
         return [{}, [{
