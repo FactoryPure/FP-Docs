@@ -1,4 +1,4 @@
-import { taxMap } from "./EDICodeMaps"
+import { taxMap } from "./EDICodeMaps.js"
 
 const taxMappingObject = Object.fromEntries(Object.entries(taxMap).map(([key, val]) => [key, {
   position: 1,
@@ -16,6 +16,10 @@ const taxModelObject = Object.fromEntries(Object.entries(taxMap).map(([key, val]
 
 export const map810 = {
   vendor: { position: 6, segment: "ISA" },
+  senderQualifier: { position: 5, segment: "ISA" },
+  senderID: { position: 6, segment: "ISA" },
+  receiverQualifier: { position: 7, segment: "ISA" },
+  receiverID: { position: 8, segment: "ISA" },
   currency: { position: "2", segment: "CUR" },
   entity: { position: 1, segment: "CUR" },
   ISAControlNumber: { position: 13, segment: "ISA" },
@@ -116,6 +120,10 @@ export const map810 = {
 
 export const model810 = {
   vendor: "!string",
+  senderQualifier: "!string",
+  senderID: "!string",
+  receiverQualifier: "!string",
+  receiverID: "!string",
   currency: "!string",
   entity: "!string",
   ISAControlNumber: "!string",
@@ -196,7 +204,9 @@ export const model810 = {
 
 export const map846 = {
   vendor: { position: 6, segment: "ISA" },
+  senderQualifier: { position: 5, segment: "ISA" },
   senderID: { position: 6, segment: "ISA" },
+  receiverQualifier: { position: 7, segment: "ISA" },
   receiverID: { position: 8, segment: "ISA" },
   ISAControlNumber: { position: 13, segment: "ISA" },
   GSControlNumber: { position: 6, segment: "GS" },
@@ -221,7 +231,9 @@ export const map846 = {
 
 export const model846 = {
   vendor: "!string",
+  senderQualifier: "!string",
   senderID: "!string",
+  receiverQualifier: "!string",
   receiverID: "!string",
   ISAControlNumber: "!string",
   GSControlNumber: "!string",
@@ -245,7 +257,9 @@ export const model846 = {
 
 export const map850 = {
   vendor: { position: 6, segment: "ISA" },
+  senderQualifier: { position: 5, segment: "ISA" },
   senderID: { position: 6, segment: "ISA" },
+  receiverQualifier: { position: 7, segment: "ISA" },
   receiverID: { position: 8, segment: "ISA" },
   ISAControlNumber: { position: 13, segment: "ISA" },
   GSControlNumber: { position: 6, segment: "GS" },
@@ -301,7 +315,9 @@ export const map850 = {
 
 export const model850 = {
   vendor: "!string",
+  senderQualifier: "!string",
   senderID: "!string",
+  receiverQualifier: "!string",
   receiverID: "!string",
   ISAControlNumber: "!string",
   GSControlNumber: "!string",
@@ -346,7 +362,9 @@ export const model850 = {
 
 export const map856 = {
   vendor: { position: 6, segment: "ISA" },
+  senderQualifier: { position: 5, segment: "ISA" },
   senderID: { position: 6, segment: "ISA" },
+  receiverQualifier: { position: 7, segment: "ISA" },
   receiverID: { position: 8, segment: "ISA" },
   ISAControlNumber: { position: 13, segment: "ISA" },
   GSControlNumber: { position: 6, segment: "GS" },
@@ -405,7 +423,9 @@ export const map856 = {
 
 export const model856 = {
   vendor: "!string",
+  senderQualifier: "!string",
   senderID: "!string",
+  receiverQualifier: "!string",
   receiverID: "!string",
   ISAControlNumber: "!string",
   GSControlNumber: "!string",
@@ -458,7 +478,9 @@ export const model856 = {
 
 export const map997 = {
   vendor: { position: 6, segment: "ISA" },
+  senderQualifier: { position: 5, segment: "ISA" },
   senderID: { position: 6, segment: "ISA" },
+  receiverQualifier: { position: 7, segment: "ISA" },
   receiverID: { position: 8, segment: "ISA" },
   ISAControlNumber: { position: 13, segment: "ISA" },
   GSControlNumber: { position: 6, segment: "GS" },
@@ -482,7 +504,9 @@ export const map997 = {
 
 export const model997 = {
   vendor: "!string",
+  senderQualifier: "!string",
   senderID: "!string",
+  receiverQualifier: "!string",
   receiverID: "!string",
   ISAControlNumber: "!string",
   GSControlNumber: "!string",

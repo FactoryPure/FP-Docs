@@ -25,7 +25,9 @@ export function read810 (data) {
             errorLocation = segment  
             if (segment === "ISA") {
                 invoice.vendor = EDIMaps.vendorMap[elements.ISA06.trim()] || elements.ISA06.trim()
+                invoice.senderQualifier = elements.ISA05
                 invoice.senderID = elements.ISA06
+                invoice.receiverQualifier = elements.ISA07
                 invoice.receiverID = elements.ISA08
                 invoice.createdAt = new Date(Date.UTC(
                     `20` + elements.ISA09.slice(0,2), 
@@ -197,7 +199,9 @@ export const read846 = (data) => {
             errorLocation = segment
             if (segment === "ISA") {
                 inventoryAdvice.vendor = EDIMaps.vendorMap[elements.ISA06.trim()] || elements.ISA06.trim()
+                inventoryAdvice.senderQualifier = elements.ISA05
                 inventoryAdvice.senderID = elements.ISA06
+                inventoryAdvice.receiverQualifier = elements.ISA07
                 inventoryAdvice.receiverID = elements.ISA08
                 inventoryAdvice.createdAt = new Date(Date.UTC(
                     `20` + elements.ISA09.slice(0,2), 
@@ -271,7 +275,9 @@ export const read850 = (data) => {
             errorLocation = segment
             if (segment === "ISA") {
                 purchaseOrder.vendor = EDIMaps.vendorMap[elements.ISA06.trim()] || elements.ISA06.trim()
+                purchaseOrder.senderQualifier = elements.ISA05
                 purchaseOrder.senderID = elements.ISA06
+                purchaseOrder.receiverQualifier = elements.ISA07
                 purchaseOrder.receiverID = elements.ISA08
                 purchaseOrder.createdAt = new Date(Date.UTC(
                     `20` + elements.ISA09.slice(0,2), 
@@ -385,7 +391,9 @@ export const read856 = (data) => {
             errorLocation = segment
             if (segment === "ISA") {
                 asn.vendor = EDIMaps.vendorMap[elements.ISA06.trim()] || elements.ISA06.trim()
+                asn.senderQualifier = elements.ISA05
                 asn.senderID = elements.ISA06
+                asn.receiverQualifier = elements.ISA07
                 asn.receiverID = elements.ISA08
                 asn.createdAt = new Date(Date.UTC(
                     `20` + elements.ISA09.slice(0,2), 
@@ -523,7 +531,9 @@ export function read997 (data) {
             errorLocation = segment
             if (segment === "ISA") {
                 functionalAcknowledgement.vendor = EDIMaps.vendorMap[elements.ISA06.trim()] || elements.ISA06.trim()
+                functionalAcknowledgement.senderQualifier = elements.ISA05
                 functionalAcknowledgement.senderID = elements.ISA06
+                functionalAcknowledgement.receiverQualifier = elements.ISA07
                 functionalAcknowledgement.receiverID = elements.ISA08
                 functionalAcknowledgement.createdAt = new Date(Date.UTC(
                     `20` + elements.ISA09.slice(0,2), 
