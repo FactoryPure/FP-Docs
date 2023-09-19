@@ -5,16 +5,9 @@ export function read810 (data) {
     const { elementDelimiter, lineTerminator } = getDelimiters(data)
     const lines = getSegments(data, lineTerminator)
 
-    const invoice = {
-        shipTo: {},
-        shippingTerms: {},
-        invoiceTerms: {},
-        lineItems: [],
-        taxes: {},
-        carrier: {},
-        shipment: {}
-    }
-
+    const invoices = []
+    const interchangeInfo = {}
+    let currentInvoice = null
     let currentShippingParty
     let currentLineItem = {}
     let errorLocation
@@ -24,56 +17,71 @@ export function read810 (data) {
             const segment = Object.values(elements)[0]   
             errorLocation = segment  
             if (segment === "ISA") {
-                invoice.vendor = EDIMaps.vendorMap[elements.ISA06.trim()] || elements.ISA06.trim()
-                invoice.senderQualifier = elements.ISA05
-                invoice.senderID = elements.ISA06
-                invoice.receiverQualifier = elements.ISA07
-                invoice.receiverID = elements.ISA08
-                invoice.createdAt = new Date(Date.UTC(
+                interchangeInfo.vendor = EDIMaps.vendorMap[elements.ISA06.trim()] || elements.ISA06.trim()
+                interchangeInfo.senderQualifier = elements.ISA05
+                interchangeInfo.senderID = elements.ISA06
+                interchangeInfo.receiverQualifier = elements.ISA07
+                interchangeInfo.receiverID = elements.ISA08
+                interchangeInfo.createdAt = new Date(Date.UTC(
                     `20` + elements.ISA09.slice(0,2), 
                     parseInt(elements.ISA09.slice(2,4)) - 1,
                     parseInt(elements.ISA09.slice(4,6)), 
                     parseInt(elements.ISA10.slice(0,2)),
                     parseInt(elements.ISA10.slice(2,4))
                 )).toISOString()
-                invoice.isTest = elements.ISA15 === "T"
-                invoice.ISAControlNumber = elements.ISA13
+                interchangeInfo.isTest = elements.ISA15 === "T"
+                interchangeInfo.ISAControlNumber = elements.ISA13
             }
             if (segment === "GS") {
-                invoice.GSControlNumber = elements.GS06
+                interchangeInfo.GSControlNumber = elements.GS06
             }
             if (segment === "ST") {
-                invoice.STCode = elements.ST01
-                invoice.STControlNumber = elements.ST02
+                if (currentInvoice) {
+                    invoices.push({
+                        ...interchangeInfo,
+                        ...currentInvoice
+                    })
+                }
+                currentInvoice = {
+                    shipTo: {},
+                    shippingTerms: {},
+                    invoiceTerms: {},
+                    lineItems: [],
+                    taxes: {},
+                    carrier: {},
+                    shipment: {}
+                }
+                currentInvoice.STCode = elements.ST01
+                currentInvoice.STControlNumber = elements.ST02
             }
             if (segment === "BIG") {
-                invoice.invoiceDate = elements.BIG01;
-                invoice.invoiceNumber = elements.BIG02;
-                invoice.purchaseOrderDate = elements.BIG03;
-                invoice.purchaseOrderNumber = elements.BIG04;
-                invoice.transactionType = elements.BIG07; // DI DEBIT INVOICE
+                currentInvoice.invoiceDate = elements.BIG01;
+                currentInvoice.invoiceNumber = elements.BIG02;
+                currentInvoice.purchaseOrderDate = elements.BIG03;
+                currentInvoice.purchaseOrderNumber = elements.BIG04;
+                currentInvoice.transactionType = elements.BIG07; // DI DEBIT INVOICE
             }
             if (segment === "NTE") {
-                if (!invoice.notes) {
-                    invoice.notes = []
+                if (!currentInvoice.notes) {
+                    currentInvoice.notes = []
                 }
-                invoice.notes.push(elements.NTE02)
+                currentInvoice.notes.push(elements.NTE02)
             }
             if (segment === "CUR") {
-                invoice.entity = elements.CUR01
-                invoice.currency = elements.CUR02
+                currentInvoice.entity = elements.CUR01
+                currentInvoice.currency = elements.CUR02
             }
             if (segment === "REF") {
                 if (elements.REF01 === "BM") {
-                    if (!invoice.BOLNumbers) {
-                        invoice.BOLNumbers = []
+                    if (!currentInvoice.BOLNumbers) {
+                        currentInvoice.BOLNumbers = []
                     }
-                    invoice.BOLNumbers.push(elements.REF02)
+                    currentInvoice.BOLNumbers.push(elements.REF02)
                 } else if (elements.REF01 === "2I") {
-                    if (!invoice.trackingNumbers) {
-                        invoice.trackingNumbers = []
+                    if (!currentInvoice.trackingNumbers) {
+                        currentInvoice.trackingNumbers = []
                     }
-                    invoice.trackingNumbers.push(elements.REF02)
+                    currentInvoice.trackingNumbers.push(elements.REF02)
                 }
             }
             if (segment === "N1") {
@@ -81,58 +89,58 @@ export function read810 (data) {
             }
             if (currentShippingParty === "ST") {
                 if (segment === "N1") {
-                    invoice.shipTo.name = elements.N102
+                    currentInvoice.shipTo.name = elements.N102
                 }
                 if (segment === "N3") {
-                    invoice.shipTo.address1 = elements.N301
-                    invoice.shipTo.address2 = elements.N302
+                    currentInvoice.shipTo.address1 = elements.N301
+                    currentInvoice.shipTo.address2 = elements.N302
                 }
                 if (segment === "N4") {
-                    invoice.shipTo.city = elements.N401
-                    invoice.shipTo.state = elements.N402
-                    invoice.shipTo.zip = elements.N403
-                    invoice.shipTo.country = elements.N404
+                    currentInvoice.shipTo.city = elements.N401
+                    currentInvoice.shipTo.state = elements.N402
+                    currentInvoice.shipTo.zip = elements.N403
+                    currentInvoice.shipTo.country = elements.N404
                 }
             }
             if (currentShippingParty === "SF") {
                 if (segment === "N1") {
-                    if (!invoice.shipFrom) {
-                        invoice.shipFrom = {}
+                    if (!currentInvoice.shipFrom) {
+                        currentInvoice.shipFrom = {}
                     }
-                    invoice.shipFrom.name = elements.N102
+                    currentInvoice.shipFrom.name = elements.N102
                 }
                 if (segment === "N3") {
-                    invoice.shipFrom.address1 = elements.N301
-                    invoice.shipFrom.address2 = elements.N302
+                    currentInvoice.shipFrom.address1 = elements.N301
+                    currentInvoice.shipFrom.address2 = elements.N302
                 }
                 if (segment === "N4") {
-                    invoice.shipFrom.city = elements.N401
-                    invoice.shipFrom.state = elements.N402
-                    invoice.shipFrom.zip = elements.N403
-                    invoice.shipFrom.country = elements.N404
+                    currentInvoice.shipFrom.city = elements.N401
+                    currentInvoice.shipFrom.state = elements.N402
+                    currentInvoice.shipFrom.zip = elements.N403
+                    currentInvoice.shipFrom.country = elements.N404
                 }
             }
             if (segment === "ITD") {
-                invoice.invoiceTerms.effectiveDate = elements.ITD02 === "3" ? invoice.invoiceDate : null
-                invoice.invoiceTerms.dueDate = elements.ITD06 || invoice.invoiceDate
-                invoice.invoiceTerms.daysDue = elements.ITD07
-                invoice.invoiceTerms.description = elements.ITD12
+                currentInvoice.invoiceTerms.effectiveDate = elements.ITD02 === "3" ? currentInvoice.invoiceDate : null
+                currentInvoice.invoiceTerms.dueDate = elements.ITD06 || currentInvoice.invoiceDate
+                currentInvoice.invoiceTerms.daysDue = elements.ITD07
+                currentInvoice.invoiceTerms.description = elements.ITD12
                 if (elements.ITD08) {
-                    invoice.invoiceTerms.discount = {}
-                    invoice.invoiceTerms.discount.percent = elements.ITD03
-                    invoice.invoiceTerms.discount.dueDate = elements.ITD04 || invoice.invoiceDate
-                    invoice.invoiceTerms.discount.daysDue = elements.ITD05
-                    invoice.invoiceTerms.discount.total = elements.ITD08
+                    currentInvoice.invoiceTerms.discount = {}
+                    currentInvoice.invoiceTerms.discount.percent = elements.ITD03
+                    currentInvoice.invoiceTerms.discount.dueDate = elements.ITD04 || currentInvoice.invoiceDate
+                    currentInvoice.invoiceTerms.discount.daysDue = elements.ITD05
+                    currentInvoice.invoiceTerms.discount.total = elements.ITD08
                 }
             }
             if (segment === "FOB") {
-                invoice.shippingTerms.shippingPayment = EDIMaps.shipmentPaymentMap[elements.FOB01]
-                invoice.shippingTerms.deliveryAddressType = EDIMaps.addressTypeMap[elements.FOB02]
-                invoice.shippingTerms.withLiftGate = elements.FOB03 === "WITHLIFTGATE"
+                currentInvoice.shippingTerms.shippingPayment = EDIMaps.shipmentPaymentMap[elements.FOB01]
+                currentInvoice.shippingTerms.deliveryAddressType = EDIMaps.addressTypeMap[elements.FOB02]
+                currentInvoice.shippingTerms.withLiftGate = elements.FOB03 === "WITHLIFTGATE"
             }
             if (segment === "IT1") {
                 if (Object.keys(currentLineItem).length) {
-                    invoice.lineItems.push({...currentLineItem})
+                    currentInvoice.lineItems.push({...currentLineItem})
                     currentLineItem = {}
                 }
                 currentLineItem.quantity = elements.IT102
@@ -146,12 +154,12 @@ export function read810 (data) {
                 currentLineItem.description = elements.PID05
             }
             if (segment === "TDS") {
-                invoice.total = (parseFloat(elements.TDS01) / 100).toFixed(2)
+                currentInvoice.total = (parseFloat(elements.TDS01) / 100).toFixed(2)
             }
             if (segment === "TXI") {
                 const taxRef = EDIMaps.taxMap[elements.TXI01]
-                invoice.jurisdiction = elements.TXI05
-                invoice.taxes[taxRef] = {
+                currentInvoice.jurisdiction = elements.TXI05
+                currentInvoice.taxes[taxRef] = {
                     amount: elements.TXI02,
                     percent: elements.TXI03,
                     definedBy: elements.TXI04,
@@ -159,26 +167,32 @@ export function read810 (data) {
                 }
             }
             if (segment === "CAD") {
-                invoice.carrier.type = EDIMaps.carrierMethodMap[elements.CAD01]
-                invoice.carrier.SCAC = elements.CAD04
-                invoice.carrier.name = elements.CAD05
+                currentInvoice.carrier.type = EDIMaps.carrierMethodMap[elements.CAD01]
+                currentInvoice.carrier.SCAC = elements.CAD04
+                currentInvoice.carrier.name = elements.CAD05
             }
             if (segment === "ISS") {
-                invoice.shipment.items = elements.ISS01
-                invoice.shipment.weight = elements.ISS03
-                invoice.shipment.weightUnit = elements.ISS04
-                invoice.shipment.volume = elements.ISS05
-                invoice.shipment.volumeUnit = elements.ISS06
+                currentInvoice.shipment.items = elements.ISS01
+                currentInvoice.shipment.weight = elements.ISS03
+                currentInvoice.shipment.weightUnit = elements.ISS04
+                currentInvoice.shipment.volume = elements.ISS05
+                currentInvoice.shipment.volumeUnit = elements.ISS06
             }
             if (segment === "CTT") {
                 if (Object.keys(currentLineItem).length) {
-                    invoice.lineItems.push({...currentLineItem})
+                    currentInvoice.lineItems.push({...currentLineItem})
                     currentLineItem = {}
                 }
-                invoice.uniqueItems = elements.CTT01
+                currentInvoice.uniqueItems = elements.CTT01
+            }
+            if (segment === "IEA") {
+                invoices.push({
+                    ...interchangeInfo,
+                    ...currentInvoice
+                })
             }
         }
-        return invoice;
+        return invoices;
     } catch (err) {
         return { error: err.message, segment: errorLocation, position: 0 };
     }
@@ -187,9 +201,10 @@ export function read810 (data) {
 export const read846 = (data) => {
     const { elementDelimiter, lineTerminator } = getDelimiters(data)
     const lines = getSegments(data, lineTerminator)
-    const inventoryAdvice = {
-        lineItems: []
-    }
+
+    const inventoryAdvices = []
+    const interchangeInfo = {}
+    let currentInventoryAdvice = null
     let currentLineItem = {}
     let errorLocation
     try {
@@ -198,34 +213,43 @@ export const read846 = (data) => {
             const segment = Object.values(elements)[0]
             errorLocation = segment
             if (segment === "ISA") {
-                inventoryAdvice.vendor = EDIMaps.vendorMap[elements.ISA06.trim()] || elements.ISA06.trim()
-                inventoryAdvice.senderQualifier = elements.ISA05
-                inventoryAdvice.senderID = elements.ISA06
-                inventoryAdvice.receiverQualifier = elements.ISA07
-                inventoryAdvice.receiverID = elements.ISA08
-                inventoryAdvice.createdAt = new Date(Date.UTC(
+                interchangeInfo.vendor = EDIMaps.vendorMap[elements.ISA06.trim()] || elements.ISA06.trim()
+                interchangeInfo.senderQualifier = elements.ISA05
+                interchangeInfo.senderID = elements.ISA06
+                interchangeInfo.receiverQualifier = elements.ISA07
+                interchangeInfo.receiverID = elements.ISA08
+                interchangeInfo.createdAt = new Date(Date.UTC(
                     `20` + elements.ISA09.slice(0,2), 
                     parseInt(elements.ISA09.slice(2,4)) - 1,
                     parseInt(elements.ISA09.slice(4,6)), 
                     parseInt(elements.ISA10.slice(0,2)),
                     parseInt(elements.ISA10.slice(2,4))
                 )).toISOString()
-                inventoryAdvice.isTest = elements.ISA15 === "T"
-                inventoryAdvice.ISAControlNumber = elements.ISA13
+                interchangeInfo.isTest = elements.ISA15 === "T"
+                interchangeInfo.ISAControlNumber = elements.ISA13
             }
             if (segment === "GS") {
-                inventoryAdvice.GSControlNumber = elements.GS06
+                interchangeInfo.GSControlNumber = elements.GS06
             }
             if (segment === "ST") {
-                inventoryAdvice.STCode = elements.ST01
-                inventoryAdvice.STControlNumber = elements.ST02
+                if (currentInventoryAdvice) {
+                    inventoryAdvices.push({
+                        ...interchangeInfo,
+                        ...currentInventoryAdvice
+                    })
+                }
+                currentInventoryAdvice = {
+                    lineItems: []
+                }
+                currentInventoryAdvice.STCode = elements.ST01
+                currentInventoryAdvice.STControlNumber = elements.ST02
             }
             if (segment === "BIA") {
-                inventoryAdvice.periodOrReferenceNumber = elements.BIA03
+                currentInventoryAdvice.periodOrReferenceNumber = elements.BIA03
             }
             if (segment === "LIN") {
                 if (Object.values(currentLineItem).length) {
-                    inventoryAdvice.lineItems.push({...currentLineItem})
+                    currentInventoryAdvice.lineItems.push({...currentLineItem})
                     currentLineItem = {}
                 }
                 currentLineItem.upc = elements.LIN03
@@ -247,12 +271,18 @@ export const read846 = (data) => {
             }
             if (segment === "CTT") {
                 if (Object.values(currentLineItem).length) {
-                    inventoryAdvice.lineItems.push({...currentLineItem})
+                    currentInventoryAdvice.lineItems.push({...currentLineItem})
                     currentLineItem = {}
                 }
             }
+            if (segment === "IEA") {
+                inventoryAdvices.push({
+                    ...interchangeInfo,
+                    ...currentInventoryAdvice
+                })
+            }
         }
-        return inventoryAdvice
+        return inventoryAdvices
     } catch (err) {
         return { error: err.message, segment: errorLocation, position: 0 };
     }
@@ -371,18 +401,13 @@ export const read850 = (data) => {
 export const read856 = (data) => {
     const { elementDelimiter, lineTerminator } = getDelimiters(data)
     const lines = getSegments(data, lineTerminator)
-    const asn = {
-        shipment: {
-            shipTo: {},
-            shipFrom: {}
-        },
-        order: {},
-        packages: {}
-    }
+    const interchangeInfo = {}
+    const ASNs = []
     let currentHLCode = null
     let currentHLID = null
     let currentHLParentID = null
     let currentShippingParty = null
+    let currentASN = null
     let errorLocation
     try {
         for (let line of lines) {
@@ -390,12 +415,12 @@ export const read856 = (data) => {
             const segment = Object.values(elements)[0]
             errorLocation = segment
             if (segment === "ISA") {
-                asn.vendor = EDIMaps.vendorMap[elements.ISA06.trim()] || elements.ISA06.trim()
-                asn.senderQualifier = elements.ISA05
-                asn.senderID = elements.ISA06
-                asn.receiverQualifier = elements.ISA07
-                asn.receiverID = elements.ISA08
-                asn.createdAt = new Date(Date.UTC(
+                interchangeInfo.vendor = EDIMaps.vendorMap[elements.ISA06.trim()] || elements.ISA06.trim()
+                interchangeInfo.senderQualifier = elements.ISA05
+                interchangeInfo.senderID = elements.ISA06
+                interchangeInfo.receiverQualifier = elements.ISA07
+                interchangeInfo.receiverID = elements.ISA08
+                interchangeInfo.createdAt = new Date(Date.UTC(
                     `20` + elements.ISA09.slice(0,2), 
                     parseInt(elements.ISA09.slice(2,4)) - 1,
                     parseInt(elements.ISA09.slice(4,6)), 
@@ -403,15 +428,31 @@ export const read856 = (data) => {
                     parseInt(elements.ISA10.slice(2,4))
                     
                 )).toISOString()
-                asn.isTest = elements.ISA15 === "T"
-                asn.ISAControlNumber = elements.ISA13
+                interchangeInfo.isTest = elements.ISA15 === "T"
+                interchangeInfo.ISAControlNumber = elements.ISA13
             }
             if (segment === "GS") {
-                asn.GSControlNumber = elements.GS06
+                interchangeInfo.GSControlNumber = elements.GS06
             }
             if (segment === "ST") {
-                asn.STCode = elements.ST01
-                asn.STControlNumber = elements.ST02
+                if (currentASN) {
+                    const parsedPackages = Object.values(currentASN.packages).map(pack => ({ ...pack, lineItems: Object.values(pack.lineItems) }))
+                    currentASN.packages = parsedPackages
+                    ASNs.push({
+                        ...interchangeInfo,
+                        ...currentASN
+                    })
+                }
+                currentASN = {
+                    shipment: {
+                        shipTo: {},
+                        shipFrom: {}
+                    },
+                    order: {},
+                    packages: {}
+                }
+                currentASN.STCode = elements.ST01
+                currentASN.STControlNumber = elements.ST02
             }
             if (segment === "HL") {
                 currentHLID = elements.HL01
@@ -419,48 +460,48 @@ export const read856 = (data) => {
                 currentHLCode = elements.HL03
             }
             if (segment === "REF" && elements.REF01 === "BM") {
-                asn.shipment.BOL = elements.REF02
+                currentASN.shipment.BOL = elements.REF02
             }
     
             // SHIPMENT LEVEL
             if (currentHLCode === "S") {
                 if (segment === "TD1") {
-                    asn.shipment.packages = parseInt(elements.TD102)
+                    currentASN.shipment.packages = parseInt(elements.TD102)
                     // asn.shipment.weight = elements.TD107
                     // asn.shipment.units = elements.TD108 
                 }
                 if (segment === "TD5") {
-                    asn.shipment.SCAC = elements.TD503
-                    asn.shipment.transportMethod = elements.TD504
+                    currentASN.shipment.SCAC = elements.TD503
+                    currentASN.shipment.transportMethod = elements.TD504
                 }
                 if (segment === "N1") {
                     currentShippingParty = elements.N101
                 }
                 if (currentShippingParty === "ST") {
                     if (segment === "N1") {
-                        asn.shipment.shipTo.name = elements.N102
+                        currentASN.shipment.shipTo.name = elements.N102
                     }
                     if (segment === "N3") {
-                        asn.shipment.shipTo.address1 = elements.N301
-                        asn.shipment.shipTo.address2 = elements.N302
+                        currentASN.shipment.shipTo.address1 = elements.N301
+                        currentASN.shipment.shipTo.address2 = elements.N302
                     }
                     if (segment === "N4") {
-                        asn.shipment.shipTo.city = elements.N401
-                        asn.shipment.shipTo.state = elements.N402
-                        asn.shipment.shipTo.zip = elements.N403
+                        currentASN.shipment.shipTo.city = elements.N401
+                        currentASN.shipment.shipTo.state = elements.N402
+                        currentASN.shipment.shipTo.zip = elements.N403
                     }
                 } else if (currentShippingParty === "SF") {
                     if (segment === "N1") {
-                        asn.shipment.shipFrom.name = elements.N102
+                        currentASN.shipment.shipFrom.name = elements.N102
                     }
                     if (segment === "N3") {
-                        asn.shipment.shipFrom.address1 = elements.N301
-                        asn.shipment.shipFrom.address2 = elements.N302
+                        currentASN.shipment.shipFrom.address1 = elements.N301
+                        currentASN.shipment.shipFrom.address2 = elements.N302
                     }
                     if (segment === "N4") {
-                        asn.shipment.shipFrom.city = elements.N401
-                        asn.shipment.shipFrom.state = elements.N402
-                        asn.shipment.shipFrom.zip = elements.N403
+                        currentASN.shipment.shipFrom.city = elements.N401
+                        currentASN.shipment.shipFrom.state = elements.N402
+                        currentASN.shipment.shipFrom.zip = elements.N403
                     }
                 }
             }
@@ -468,7 +509,7 @@ export const read856 = (data) => {
             // ORDER LEVEL
             if (currentHLCode === "O") {
                 if (segment === "PRF") {
-                    asn.order = {
+                    currentASN.order = {
                         purchaseOrder: elements.PRF01,
                         createdAt: elements.PRF04
                             ? new Date(Date.UTC(elements.PRF04.slice(0, 4), parseInt(elements.PRF04.slice(4, 6)) - 1, elements.PRF04.slice(6, 8))).toISOString()
@@ -480,40 +521,49 @@ export const read856 = (data) => {
             // PACK LEVEL
             if (currentHLCode === "P") {
                 if (segment === "REF" && elements.REF01 === "2I") {
-                    if (!asn.packages[currentHLID]) {
-                        asn.packages[currentHLID] = {
+                    if (!currentASN.packages[currentHLID]) {
+                        currentASN.packages[currentHLID] = {
                             trackingNumber: "",
                             lineItems: {}
                         }
                     }
-                    asn.packages[currentHLID].trackingNumber = elements.REF02
+                    currentASN.packages[currentHLID].trackingNumber = elements.REF02
                 }
             }
     
             // ITEM LEVEL
-            if (currentHLCode === "I" && asn.packages[currentHLParentID]) {
+            if (currentHLCode === "I" && currentASN.packages[currentHLParentID]) {
                 if (segment === "LIN") {
-                    if (!asn.packages[currentHLParentID].lineItems[currentHLID]) {
-                        asn.packages[currentHLParentID].lineItems[currentHLID] = {}
+                    if (!currentASN.packages[currentHLParentID].lineItems[currentHLID]) {
+                        currentASN.packages[currentHLParentID].lineItems[currentHLID] = {}
                     }
-                    asn.packages[currentHLParentID].lineItems[currentHLID].upc = elements.LIN03
-                    asn.packages[currentHLParentID].lineItems[currentHLID].sku = trimLeadingZeros(elements.LIN05)
-                    asn.packages[currentHLParentID].lineItems[currentHLID].modelNumber = elements.LIN07
+                    currentASN.packages[currentHLParentID].lineItems[currentHLID].upc = elements.LIN03
+                    currentASN.packages[currentHLParentID].lineItems[currentHLID].sku = trimLeadingZeros(elements.LIN05)
+                    currentASN.packages[currentHLParentID].lineItems[currentHLID].modelNumber = elements.LIN07
                 }
-                if (segment === "SN1" && asn.packages[currentHLParentID].lineItems[currentHLID]) {
-                    asn.packages[currentHLParentID].lineItems[currentHLID].quantity = parseInt(elements.SN102)
-                    asn.packages[currentHLParentID].lineItems[currentHLID].units = elements.SN103
+                if (segment === "SN1" && currentASN.packages[currentHLParentID].lineItems[currentHLID]) {
+                    currentASN.packages[currentHLParentID].lineItems[currentHLID].quantity = parseInt(elements.SN102)
+                    currentASN.packages[currentHLParentID].lineItems[currentHLID].units = elements.SN103
                 }
-                if (segment === "PID" && asn.packages[currentHLParentID].lineItems[currentHLID]) {
-                    asn.packages[currentHLParentID].lineItems[currentHLID].description = elements.PID05
+                if (segment === "PID" && currentASN.packages[currentHLParentID].lineItems[currentHLID]) {
+                    currentASN.packages[currentHLParentID].lineItems[currentHLID].description = elements.PID05
+                }
+            }
+
+            if (segment === "IEA") {
+                if (currentASN && currentASN.order.purchaseOrder) {
+                    const parsedPackages = Object.values(currentASN.packages).map(pack => ({ ...pack, lineItems: Object.values(pack.lineItems) }))
+                    currentASN.packages = parsedPackages
+                    ASNs.push({
+                        ...interchangeInfo,
+                        ...currentASN
+                    })
                 }
             }
         }
-        const parsedPackages = Object.values(asn.packages).map(pack => ({ ...pack, lineItems: Object.values(pack.lineItems) }))
-        asn.packages = parsedPackages
-        return asn
+        return ASNs
     } catch (err) {
-        return { error: err.message, segment: errorLocation, position: 0 };
+        return { error: err.message, segment: errorLocation, position: 0 }
     }
 }
 export function read997 (data) {

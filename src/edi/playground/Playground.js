@@ -9,7 +9,7 @@ import { map810, map846, map850, map856, map997, model810, model846, model850, m
 
 const safePrinter = (object) => {
     try {
-        return JSON.stringify(JSON.parse(object), null, 2)
+        return JSON.stringify(object, null, 2)
     } catch {
         return "null"
     }
@@ -49,18 +49,37 @@ export default function Playground ({}) {
             if (!fileReader[transactionType]) { 
                 setFileOutput({ outputMessage: "Nothing could be returned.", errors: [{message: "ISA, GS, or ST Header is malformed. Cannot detect transaction type. Please check your file again."}]})
             } else {
-                const parsedFile = fileReader[transactionType](fileContents.replaceAll("\n", "").replaceAll("\r", ""));
-                if (parsedFile.error) {
-                    setFileOutput({
-                        outputMessage: "A catastrophic error occurred. Please refer to the documentation and restructure your file.",
-                        errors: [{message: parsedFile.error, segment: parsedFile.segment, position: parsedFile.position}]
-                    })
+                const parsedFiles = fileReader[transactionType](fileContents.replaceAll("\n", "").replaceAll("\r", ""));
+                if (Array.isArray(parsedFiles)) {
+                    let output = {
+                        outputMessage: "",
+                        javascriptObject: [],
+                        errors: []
+                    }
+                    for (let parsedFile of parsedFiles) {
+                        if (parsedFile.error) {
+                            output.outputMessage = "A catastrophic error occurred. Please refer to the documentation and restructure your file."
+                            output.errors.push({message: parsedFile.error, segment: parsedFile.segment, position: parsedFile.position})
+                        } else {
+                            const [returnedFile, errors] = validateEDIParserResult(parsedFile, models[transactionType], maps[transactionType], transactionType)
+                            output.javascriptObject.push(returnedFile)
+                            output.errors.push(...errors)
+                        }
+                    }
+                    setFileOutput(output)
                 } else {
-                    const [returnedFile, errors] = validateEDIParserResult(parsedFile, models[transactionType], maps[transactionType], transactionType)
-                    setFileOutput({
-                        javascriptObject: JSON.stringify(returnedFile),
-                        errors: errors
-                    })
+                    if (parsedFiles.error) {
+                        setFileOutput({
+                            outputMessage: "A catastrophic error occurred. Please refer to the documentation and restructure your file.",
+                            errors: [{message: parsedFiles.error, segment: parsedFiles.segment, position: parsedFiles.position}]
+                        })
+                    } else {
+                        const [returnedFile, errors] = validateEDIParserResult(parsedFiles, models[transactionType], maps[transactionType], transactionType)
+                        setFileOutput({
+                            javascriptObject: returnedFile,
+                            errors: errors
+                        })
+                    }
                 }
             }
         }
