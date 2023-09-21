@@ -328,9 +328,9 @@ export const model850 = {
   purchaseOrderNumber: "!string",
   createdAt: "!string",
   carrierInfo: {
-    accountNumber: "!string",
-    SCACCode: "!string",
-    carrierName: "!string",
+    accountNumber: "?string",
+    SCACCode: "?string",
+    carrierName: "?string",
     deliveryAddressType: "!string",
   },
   "?shipFrom": {

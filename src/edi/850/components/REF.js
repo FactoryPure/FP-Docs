@@ -16,7 +16,7 @@ export default function REF() {
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>REF</div>
                     <div>Reference Identifier</div>
-                    <div>M</div>
+                    <div>O</div>
                     <div>1</div>
                     <div></div>
                     <div>FactoryPure Carrier Account Number</div>
