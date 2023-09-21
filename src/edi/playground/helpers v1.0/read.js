@@ -345,6 +345,7 @@ export const read850 = (data) => {
             if (currentShippingParty === "ST") {
                 if (segment === "N1") {
                     purchaseOrder.shipTo.name = elements.N102
+                    purchaseOrder.shipTo.phone = elements.N104
                 }
                 if (segment === "N3") {
                     purchaseOrder.shipTo.address1 = elements.N301

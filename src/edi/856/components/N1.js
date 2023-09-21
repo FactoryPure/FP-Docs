@@ -51,6 +51,24 @@ export default function N1() {
                     <div>1/60</div>
                     <div></div>
                 </div>
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>N103</div>
+                    <div>66</div>
+                    <div>Identification Code Qualifier</div>
+                    <div>O</div>
+                    <div>ID</div>
+                    <div>1/2</div>
+                    <div>12</div>
+                </div>
+                <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
+                    <div>N104</div>
+                    <div>67</div>
+                    <div>Identification Code</div>
+                    <div>O</div>
+                    <div>AN</div>
+                    <div>2/80</div>
+                    <div></div>
+                </div>
             </div>
         </div>
     )

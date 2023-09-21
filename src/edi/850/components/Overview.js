@@ -94,7 +94,7 @@ export default function Overview() {
                     <div>M</div>
                     <div>1</div>
                     <div>N1</div>
-                    <div className="text-[14px]">Since we choose routes in advance to optimize cost, ST will be the customer, SF will specify which warehouse to ship from.</div>
+                    <div className="text-[14px]">If we choose routes in advance to optimize cost, ST will be the customer, SF will specify which warehouse to ship from.</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>N3</div>

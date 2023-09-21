@@ -280,7 +280,7 @@ export const map850 = {
     deliveryAddressType: { position: 2, segment: "FOB" },
     withLiftGate: { position: 3, segment: "FOB" },
   },
-  shipFrom: {
+  "?shipFrom": {
     position: 0,
     segment: "N1/N3/N4",
     name: { position: 2, segment: "N1" },
@@ -343,6 +343,7 @@ export const model850 = {
   },
   shipTo: {
     name: "!string",
+    phone: "?string",
     address1: "!string",
     address2: "?string",
     city: "!string",
@@ -382,6 +383,7 @@ export const map856 = {
       position: 0,
       segment: "N1/N3/N4",
       name: { position: 2, segment: "N1" },
+      phone: { position: 4, segment: "N1" },
       address1: { position: 1, segment: "N3" },
       address2: { position: 2, segment: "N3" },
       city: { position: 1, segment: "N4" },

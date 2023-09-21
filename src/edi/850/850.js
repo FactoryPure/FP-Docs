@@ -31,7 +31,7 @@ export default function EightFifty() {
                 FactoryPure EDI 850
             </h1>
             <h2 className="text-offwhite font-bold text-[24px] leading-[1] mb-[8px]">Version: 4010</h2>
-            <h2 className="text-offwhite font-bold text-[24px] leading-[1] mb-[32px]">Release: 1.0</h2>
+            <h2 className="text-offwhite font-bold text-[24px] leading-[1] mb-[32px]">Release: 1.1 (updated 2023-09-21)</h2>
             <div className="flex gap-[32px]">
                 <div className="w-[70%]">
                     <Overview />
