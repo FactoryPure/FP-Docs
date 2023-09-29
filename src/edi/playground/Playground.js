@@ -49,7 +49,7 @@ export default function Playground ({}) {
             if (!fileReader[transactionType]) { 
                 setFileOutput({ outputMessage: "Nothing could be returned.", errors: [{message: "ISA, GS, or ST Header is malformed. Cannot detect transaction type. Please check your file again."}]})
             } else {
-                const parsedFiles = fileReader[transactionType](fileContents.replaceAll("\n", "").replaceAll("\r", ""));
+                const parsedFiles = fileReader[transactionType](fileContents.replaceAll("\n", "~").replaceAll("\r", ""));
                 if (Array.isArray(parsedFiles)) {
                     let output = {
                         outputMessage: "",
