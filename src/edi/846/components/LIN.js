@@ -101,7 +101,7 @@ export default function LIN() {
                     <div>LIN08</div>
                     <div>235</div>
                     <div>Product ID Qualifier</div>
-                    <div>C</div>
+                    <div>O</div>
                     <div>ID</div>
                     <div>2/2</div>
                     <div>DV</div>
@@ -110,7 +110,7 @@ export default function LIN() {
                     <div>LIN09</div>
                     <div>234</div>
                     <div>Location Code</div>
-                    <div>M</div>
+                    <div>O</div>
                     <div>AN</div>
                     <div>1/48</div>
                     <div></div>
