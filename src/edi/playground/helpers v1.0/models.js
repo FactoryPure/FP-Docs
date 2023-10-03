@@ -460,7 +460,7 @@ export const model856 = {
   },
   order: {
     purchaseOrder: "!string",
-    createdAt: "!string",
+    createdAt: "?string",
   },
   packages: [
     {
