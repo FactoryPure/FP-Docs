@@ -112,14 +112,60 @@ export const SACTypeMap = {
     "D240": "Freight",
     "D980": "Insurance"
 }
-export const purcahseOrderPurposeMap = {
+export const purchaseOrderPurposeMap = {
     "00": "ORIGINAL",
     "01": "CHANGE",
     "05": "CANCEL"
 }
+export const purchaseOrderAcceptanceMap = {
+    "AC": "Acknowledge - With Detail and Change",
+    "AD": "Acknowledge - With Detail, No Change",
+    "AE": "Acknowledge - With Exception Detail Only",
+    "AH": "Acknowledge - Hold Status",
+    "AK": "Acknowledge - No Detail or Change",
+    "AP": "Acknowledge - Product Replenishment",
+    "AT": "Accepted",
+    "NA": "No Acknowledgment Needed",
+    "RD": "Reject with Detail",
+    "RF": "Reject with Exception Detail Only",
+    "RJ": "Rejected - No Detail",
+    "RN": "Rejected - Not as Agreed",
+    "RO": "Rejected With Counter Offer",
+    "RV": "Rejected - Violates Industry Practices",
+    "ZZ": "Mutually Defined",
+}
+export const lineItemAcceptanceMap = {
+    "AA": "Item Accepted - Order Forwarded to Alternate Supplier Location",
+    "AC": "Item Accepted and Shipped",
+    "AR": "Item Accepted and Released for Shipment",
+    "BP": "Item Accepted - Partial Shipment, Balance Backordered",
+    "DR": "Item Accepted - Date Rescheduled",
+    "IA": "Item Accepted",
+    "IB": "Item Backordered",
+    "IC": "Item Accepted - Changes Made",
+    "ID": "Item Deleted",
+    "IE": "Item Accepted, Price Pending",
+    "IF": "Item on Hold, Incomplete Description",
+    "IH": "Item on Hold",
+    "IP": "Item Accepted - Price Changed",
+    "IQ": "Item Accepted - Quantity Changed",
+    "IR": "Item Rejected",
+    "IS": "Item Accepted - Substitution Made",
+    "IW": "Item on Hold-Waiver Required",
+    "R1": "Item Rejected, Not a Contract Item",
+    "R2": "Item Rejected, Invalid Item Product Number",
+    "R3": "Item Rejected, Invalid Unit of Issue",
+    "R4": "Item Rejected, Contract Item not Available",
+    "R5": "Item Rejected, Reorder Item as a Just in Time (JIT) Order",
+    "R6": "Item Rejected, Reorder Item as an Extended Delivery Order (EDO)",
+    "R7": "Item Rejected, Reorder Item as a Drop Shipment",
+    "R8": "Item Rejected, Reorder Item as a Surge Order",
+    "SP": "Item Accepted - Schedule Date Pending",    
+}
 export const setMap = {
     "IN": "Invoice Information (810,819)",
     "IB": "Inventory Inquiry/Advice (846)",
+    "PR": "Purchase Order Acknowledgement (855)",
     "PO": "Purchase Order (850)",
     "SH": "Ship Notice/Manifest (856)"
 }

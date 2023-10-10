@@ -2,9 +2,9 @@ import { NavLink } from "react-router-dom"
 import BackButton from "../components/BackButton"
 import { scrollToTop } from "../../helpers"
 import { useEffect, useState } from "react";
-import { read810, read846, read850, read856, read997 } from "./helpers v1.0/read";
+import { read810, read846, read850, read855, read856, read997 } from "./helpers v1.0/read";
 import { getTransactionType, syncCatcher, validateEDIParserResult } from "./helpers v1.0/helpers";
-import { map810, map846, map850, map856, map997, model810, model846, model850, model856, model997, testAgainstModel } from "./helpers v1.0/models";
+import { map810, map846, map850, map855, map856, map997, model810, model846, model850, model855, model856, model997, testAgainstModel } from "./helpers v1.0/models";
 
 
 const safePrinter = (object) => {
@@ -23,6 +23,7 @@ export default function Playground ({}) {
         "810": (fileContents) => read810(fileContents),
         "846": (data) => read846(data),
         "850": (data) => read850(data),
+        "855": (data) => read855(data),
         "856": (data) => read856(data),
         "997": (fileContents) => read997(fileContents),
     }
@@ -30,6 +31,7 @@ export default function Playground ({}) {
         "810": model810,
         "846": model846,
         "850": model850,
+        "855": model855,
         "856": model856,
         "997": model997
     }
@@ -37,6 +39,7 @@ export default function Playground ({}) {
         "810": map810,
         "846": map846,
         "850": map850,
+        "855": map855,
         "856": map856,
         "997": map997
     }

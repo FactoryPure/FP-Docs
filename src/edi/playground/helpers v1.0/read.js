@@ -327,7 +327,7 @@ export const read850 = (data) => {
                 purchaseOrder.STControlNumber = elements.ST02
             }
             if (segment === "BEG") {
-                purchaseOrder.purpose = EDIMaps.purcahseOrderPurposeMap[elements.BEG01]
+                purchaseOrder.purpose = EDIMaps.purchaseOrderPurposeMap[elements.BEG01]
                 purchaseOrder.purchaseOrderNumber = elements.BEG03
             }
             if (segment === "REF") {
@@ -397,6 +397,139 @@ export const read850 = (data) => {
         return purchaseOrder
     } catch (err) {
         return { error: err.message, segment: errorLocation, position: 0 };
+    }
+}
+export const read855 = (data) => {
+    const { elementDelimiter, lineTerminator } = getDelimiters(data)
+    const lines = getSegments(data, lineTerminator)
+    const interchangeInfo = {}
+    const acknowledgements = []
+    let currentAcknowledgement
+    let currentShippingParty
+    let currentLineItem = {}
+    let errorLocation
+    try {
+        for (let line of lines) {
+            const elements = getElements(line, elementDelimiter)
+            const segment = Object.values(elements)[0]
+            errorLocation = segment
+            if (segment === "ISA") {
+                interchangeInfo.vendor = EDIMaps.vendorMap[elements.ISA06.trim()] || elements.ISA06.trim()
+                interchangeInfo.senderQualifier = elements.ISA05
+                interchangeInfo.senderID = elements.ISA06
+                interchangeInfo.receiverQualifier = elements.ISA07
+                interchangeInfo.receiverID = elements.ISA08
+                interchangeInfo.createdAt = new Date(Date.UTC(
+                    `20` + elements.ISA09.slice(0,2), 
+                    parseInt(elements.ISA09.slice(2,4)) - 1,
+                    parseInt(elements.ISA09.slice(4,6)), 
+                    parseInt(elements.ISA10.slice(0,2)),
+                    parseInt(elements.ISA10.slice(2,4))
+                    
+                )).toISOString()
+                interchangeInfo.isTest = elements.ISA15 === "T"
+                interchangeInfo.ISAControlNumber = elements.ISA13
+            }
+            if (segment === "GS") {
+                interchangeInfo.GSControlNumber = elements.GS06
+            }
+            if (segment === "ST") {
+                if (currentAcknowledgement) {
+                    acknowledgements.push({
+                        ...interchangeInfo,
+                        ...currentAcknowledgement
+                    })
+                }
+                currentAcknowledgement = {}
+                currentAcknowledgement.STCode = elements.ST01
+                currentAcknowledgement.STControlNumber = elements.ST02
+            }
+            if (segment === "BAK") {
+                currentAcknowledgement.purpose = EDIMaps.purchaseOrderPurposeMap[elements.BAK01]
+                currentAcknowledgement.acceptance = EDIMaps.purchaseOrderAcceptanceMap[elements.BAK02]
+                currentAcknowledgement.purchaseOrderNumber = elements.BAK03
+            }
+            if (segment === "SAC" && elements.SAC02 === "D980") {
+                currentAcknowledgement.insuranceCost = (parseFloat(elements.SAC05) / 100).toFixed(2)
+            }
+            if (segment === "MSG") {
+                currentAcknowledgement.note = elements.MSG01
+            }
+            if (segment === "N1") {
+                currentShippingParty = elements.N101
+            }
+            if (currentShippingParty === "ST") {
+                if (segment === "N1") {
+                    if (!currentAcknowledgement.shipTo) {
+                        currentAcknowledgement.shipTo = {}
+                    }
+                    currentAcknowledgement.shipTo.name = elements.N102
+                    currentAcknowledgement.shipTo.phone = elements.N104
+                }
+                if (segment === "N3") {
+                    currentAcknowledgement.shipTo.address1 = elements.N301
+                    currentAcknowledgement.shipTo.address2 = elements.N302
+                }
+                if (segment === "N4") {
+                    currentAcknowledgement.shipTo.city = elements.N401
+                    currentAcknowledgement.shipTo.state = elements.N402
+                    currentAcknowledgement.shipTo.zip = elements.N403
+                    currentAcknowledgement.shipTo.country = elements.N404
+                }
+            }
+            if (currentShippingParty === "SF") {
+                if (segment === "N1") {
+                    if (!currentAcknowledgement.shipFrom) {
+                        currentAcknowledgement.shipFrom = {}
+                    }
+                    currentAcknowledgement.shipFrom.name = elements.N102
+                }
+                if (segment === "N3") {
+                    currentAcknowledgement.shipFrom.address1 = elements.N301
+                    currentAcknowledgement.shipFrom.address2 = elements.N302
+                }
+                if (segment === "N4") {
+                    currentAcknowledgement.shipFrom.city = elements.N401
+                    currentAcknowledgement.shipFrom.state = elements.N402
+                    currentAcknowledgement.shipFrom.zip = elements.N403
+                    currentAcknowledgement.shipFrom.country = elements.N404
+                }
+            }
+            if (segment === "PO1") {
+                if (!currentAcknowledgement.lineItems) {
+                    currentAcknowledgement.lineItems = []
+                }
+                if (Object.keys(currentLineItem).length) {
+                    currentAcknowledgement.lineItems.push(currentLineItem)
+                    currentLineItem = {}
+                }
+                currentLineItem.quantity = parseInt(elements.PO102)
+                currentLineItem.price = parseFloat(elements.PO104)
+                currentLineItem.upc = elements.PO107
+                currentLineItem.sku = elements.PO109
+                currentLineItem.modelNumber = elements.PO111
+            }
+            if (segment === "ACK") {
+                currentLineItem.acceptance = EDIMaps.lineItemAcceptanceMap[elements.ACK01]
+                currentLineItem.acceptedQuantity = parseFloat(elements.ACK02)
+            }
+            if (segment === "IEA") {
+                if (Object.keys(currentLineItem).length) {
+                    currentAcknowledgement.lineItems.push(currentLineItem)
+                    currentLineItem = {}
+                }
+                if (currentAcknowledgement) {
+                    acknowledgements.push({
+                        ...interchangeInfo,
+                        ...currentAcknowledgement
+                    })
+                }
+                currentAcknowledgement = {}
+            }
+        }
+        return acknowledgements
+    } catch (err) {
+        return { error: err.message, segment: errorLocation, position: 0 }
     }
 }
 export const read856 = (data) => {
