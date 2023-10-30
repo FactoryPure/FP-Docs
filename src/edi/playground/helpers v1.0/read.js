@@ -446,7 +446,7 @@ export const read855 = (data) => {
             }
             if (segment === "BAK") {
                 currentAcknowledgement.purpose = EDIMaps.purchaseOrderPurposeMap[elements.BAK01]
-                currentAcknowledgement.acceptance = EDIMaps.purchaseOrderAcceptanceMap[elements.BAK02]
+                currentAcknowledgement.acceptanceStatus = EDIMaps.purchaseOrderAcceptanceMap[elements.BAK02]
                 currentAcknowledgement.purchaseOrderNumber = elements.BAK03
             }
             if (segment === "SAC" && elements.SAC02 === "D980") {
@@ -510,7 +510,7 @@ export const read855 = (data) => {
                 currentLineItem.modelNumber = elements.PO111
             }
             if (segment === "ACK") {
-                currentLineItem.acceptance = EDIMaps.lineItemAcceptanceMap[elements.ACK01]
+                currentLineItem.acceptanceStatus = EDIMaps.lineItemAcceptanceMap[elements.ACK01]
                 currentLineItem.acceptedQuantity = parseFloat(elements.ACK02)
             }
             if (segment === "IEA") {

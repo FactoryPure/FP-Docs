@@ -373,7 +373,7 @@ export const map855 = {
   STCode: { position: 1, segment: "ST" },
   isTest: { position: 15, segment: "ISA" },
   purpose: { position: 1, segment: "BAK" },
-  acceptance: { position: 2, segment: "BAK" },
+  acceptanceStatus: { position: 2, segment: "BAK" },
   purchaseOrderNumber: { position: 3, segment: "BAK" },
   note: { position: 1, segment: "MSG" },
   insuranceCost: { position: 5, segment: "SAC" },
@@ -407,7 +407,7 @@ export const map855 = {
     upc: { position: 7, segment: "PO1" },
     sku: { position: 9, segment: "PO1" },
     modelNumber: { position: 11, segment: "PO1" },
-    acceptance: { position: 1, segment: "ACK" },
+    acceptanceStatus: { position: 1, segment: "ACK" },
     acceptedQuantity: { position: 2, segment: "ACK" },
   },
 }
@@ -448,7 +448,7 @@ export const model855 = {
       upc: "Cstring",
       sku: "Cstring",
       modelNumber: "Cstring",
-      acceptance: "!string",
+      acceptanceStatus: "!string",
       acceptedQuantity: "?number"
     },
   ],
