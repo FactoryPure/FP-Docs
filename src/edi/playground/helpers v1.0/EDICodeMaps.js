@@ -10,6 +10,8 @@ export const addressTypeMap = {
 }
 export const shipmentPaymentMap = {
     "CC": "Collect",
+    "DE": "Per Contract",
+    "PP": "Prepaid By Seller"
 }
 export const transportTermsMap = {
     "01": "Incoterms",

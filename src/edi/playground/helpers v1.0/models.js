@@ -145,7 +145,7 @@ export const model810 = {
     city: "!string",
     state: "!string",
     zip: "!string",
-    country: "!string",
+    country: "?string",
   },
   shipTo: {
     name: "!string",
@@ -153,8 +153,8 @@ export const model810 = {
     address2: "?string",
     city: "!string",
     state: "!string",
-    country: "!string",
     zip: "!string",
+    country: "?string",
   },
   shippingTerms: {
     shippingPayment: "!string",
