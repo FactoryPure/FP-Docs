@@ -663,10 +663,25 @@ export const read856 = (data) => {
                     }
                     currentASN.packages[currentHLID].trackingNumber = elements.REF02
                 }
+                if (segment === "MAN" && elements.MAN01 === "2I") {
+                    if (!currentASN.packages[currentHLID]) {
+                        currentASN.packages[currentHLID] = {
+                            trackingNumber: "",
+                            lineItems: {}
+                        }
+                    }
+                    currentASN.packages[currentHLID].trackingNumber = elements.MAN02
+                }
             }
-    
+
             // ITEM LEVEL
-            if (currentHLCode === "I" && currentASN.packages[currentHLParentID]) {
+            if (currentHLCode === "I") {
+                if (!currentASN.packages[currentHLParentID]) {
+                    currentASN.packages[currentHLParentID] = {
+                        trackingNumber: "",
+                        lineItems: {}
+                    }
+                }
                 if (segment === "LIN") {
                     if (!currentASN.packages[currentHLParentID].lineItems[currentHLID]) {
                         currentASN.packages[currentHLParentID].lineItems[currentHLID] = {}
