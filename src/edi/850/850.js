@@ -47,7 +47,7 @@ export default function EightFifty() {
                         <MSG />
                     </div>
                     <div id="n1-loop" className="p-[8px] bg-darkgrey rounded-[4px] shadow-small mb-[32px]">
-                        <p className="text-fire text-[20px] font-bold leading-[1] mb-[8px] text-[18px]">N1 LOOP - Repeat: 1</p>
+                        <p className="text-fire text-[20px] font-bold leading-[1] mb-[8px] text-[18px]">N1 LOOP - Repeat: 1 or 2</p>
                         <N1 />
                         <N3 />
                         <N4 />
