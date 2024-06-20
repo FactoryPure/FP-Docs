@@ -1,7 +1,7 @@
 import { getDelimiters, getElements, getSegments, trimLeadingZeros } from "./helpers.js"
 import * as EDIMaps from "./EDICodeMaps"
 
-export function read810 (data) {
+export function read810(data) {
     const { elementDelimiter, lineTerminator } = getDelimiters(data)
     const lines = getSegments(data, lineTerminator)
 
@@ -14,21 +14,23 @@ export function read810 (data) {
     try {
         for (let line of lines) {
             const elements = getElements(line, elementDelimiter)
-            const segment = Object.values(elements)[0]   
-            errorLocation = segment  
+            const segment = Object.values(elements)[0]
+            errorLocation = segment
             if (segment === "ISA") {
                 interchangeInfo.vendor = EDIMaps.vendorMap[elements.ISA06.trim()] || elements.ISA06.trim()
                 interchangeInfo.senderQualifier = elements.ISA05
                 interchangeInfo.senderID = elements.ISA06
                 interchangeInfo.receiverQualifier = elements.ISA07
                 interchangeInfo.receiverID = elements.ISA08
-                interchangeInfo.createdAt = new Date(Date.UTC(
-                    `20` + elements.ISA09.slice(0,2), 
-                    parseInt(elements.ISA09.slice(2,4)) - 1,
-                    parseInt(elements.ISA09.slice(4,6)), 
-                    parseInt(elements.ISA10.slice(0,2)),
-                    parseInt(elements.ISA10.slice(2,4))
-                )).toISOString()
+                interchangeInfo.createdAt = new Date(
+                    Date.UTC(
+                        `20` + elements.ISA09.slice(0, 2),
+                        parseInt(elements.ISA09.slice(2, 4)) - 1,
+                        parseInt(elements.ISA09.slice(4, 6)),
+                        parseInt(elements.ISA10.slice(0, 2)),
+                        parseInt(elements.ISA10.slice(2, 4))
+                    )
+                ).toISOString()
                 interchangeInfo.isTest = elements.ISA15 === "T"
                 interchangeInfo.ISAControlNumber = elements.ISA13
             }
@@ -39,7 +41,7 @@ export function read810 (data) {
                 if (currentInvoice) {
                     invoices.push({
                         ...interchangeInfo,
-                        ...currentInvoice
+                        ...currentInvoice,
                     })
                 }
                 currentInvoice = {
@@ -49,17 +51,17 @@ export function read810 (data) {
                     lineItems: [],
                     taxes: {},
                     carrier: {},
-                    shipment: {}
+                    shipment: {},
                 }
                 currentInvoice.STCode = elements.ST01
                 currentInvoice.STControlNumber = elements.ST02
             }
             if (segment === "BIG") {
-                currentInvoice.invoiceDate = elements.BIG01;
-                currentInvoice.invoiceNumber = elements.BIG02;
-                currentInvoice.purchaseOrderDate = elements.BIG03;
-                currentInvoice.purchaseOrderNumber = elements.BIG04;
-                currentInvoice.transactionType = elements.BIG07; // DI DEBIT INVOICE
+                currentInvoice.invoiceDate = elements.BIG01
+                currentInvoice.invoiceNumber = elements.BIG02
+                currentInvoice.purchaseOrderDate = elements.BIG03
+                currentInvoice.purchaseOrderNumber = elements.BIG04
+                currentInvoice.transactionType = elements.BIG07 // DI DEBIT INVOICE
             }
             if (segment === "NTE") {
                 if (!currentInvoice.notes) {
@@ -140,7 +142,7 @@ export function read810 (data) {
             }
             if (segment === "IT1") {
                 if (Object.keys(currentLineItem).length) {
-                    currentInvoice.lineItems.push({...currentLineItem})
+                    currentInvoice.lineItems.push({ ...currentLineItem })
                     currentLineItem = {}
                 }
                 currentLineItem.quantity = elements.IT102
@@ -180,7 +182,7 @@ export function read810 (data) {
             }
             if (segment === "CTT") {
                 if (Object.keys(currentLineItem).length) {
-                    currentInvoice.lineItems.push({...currentLineItem})
+                    currentInvoice.lineItems.push({ ...currentLineItem })
                     currentLineItem = {}
                 }
                 currentInvoice.uniqueItems = elements.CTT01
@@ -188,13 +190,13 @@ export function read810 (data) {
             if (segment === "IEA") {
                 invoices.push({
                     ...interchangeInfo,
-                    ...currentInvoice
+                    ...currentInvoice,
                 })
             }
         }
-        return invoices;
+        return invoices
     } catch (err) {
-        return { error: err.message, segment: errorLocation, position: 0 };
+        return { error: err.message, segment: errorLocation, position: 0 }
     }
 }
 
@@ -208,7 +210,7 @@ export const read846 = (data) => {
     let currentLineItem = {}
     let errorLocation
     try {
-        for (let line of lines) { 
+        for (let line of lines) {
             const elements = getElements(line, elementDelimiter)
             const segment = Object.values(elements)[0]
             errorLocation = segment
@@ -218,13 +220,15 @@ export const read846 = (data) => {
                 interchangeInfo.senderID = elements.ISA06
                 interchangeInfo.receiverQualifier = elements.ISA07
                 interchangeInfo.receiverID = elements.ISA08
-                interchangeInfo.createdAt = new Date(Date.UTC(
-                    `20` + elements.ISA09.slice(0,2), 
-                    parseInt(elements.ISA09.slice(2,4)) - 1,
-                    parseInt(elements.ISA09.slice(4,6)), 
-                    parseInt(elements.ISA10.slice(0,2)),
-                    parseInt(elements.ISA10.slice(2,4))
-                )).toISOString()
+                interchangeInfo.createdAt = new Date(
+                    Date.UTC(
+                        `20` + elements.ISA09.slice(0, 2),
+                        parseInt(elements.ISA09.slice(2, 4)) - 1,
+                        parseInt(elements.ISA09.slice(4, 6)),
+                        parseInt(elements.ISA10.slice(0, 2)),
+                        parseInt(elements.ISA10.slice(2, 4))
+                    )
+                ).toISOString()
                 interchangeInfo.isTest = elements.ISA15 === "T"
                 interchangeInfo.ISAControlNumber = elements.ISA13
             }
@@ -235,11 +239,11 @@ export const read846 = (data) => {
                 if (currentInventoryAdvice) {
                     inventoryAdvices.push({
                         ...interchangeInfo,
-                        ...currentInventoryAdvice
+                        ...currentInventoryAdvice,
                     })
                 }
                 currentInventoryAdvice = {
-                    lineItems: []
+                    lineItems: [],
                 }
                 currentInventoryAdvice.STCode = elements.ST01
                 currentInventoryAdvice.STControlNumber = elements.ST02
@@ -249,7 +253,7 @@ export const read846 = (data) => {
             }
             if (segment === "LIN") {
                 if (Object.values(currentLineItem).length) {
-                    currentInventoryAdvice.lineItems.push({...currentLineItem})
+                    currentInventoryAdvice.lineItems.push({ ...currentLineItem })
                     currentLineItem = {}
                 }
                 currentLineItem.upc = elements.LIN03
@@ -271,20 +275,20 @@ export const read846 = (data) => {
             }
             if (segment === "CTT") {
                 if (Object.values(currentLineItem).length) {
-                    currentInventoryAdvice.lineItems.push({...currentLineItem})
+                    currentInventoryAdvice.lineItems.push({ ...currentLineItem })
                     currentLineItem = {}
                 }
             }
             if (segment === "IEA") {
                 inventoryAdvices.push({
                     ...interchangeInfo,
-                    ...currentInventoryAdvice
+                    ...currentInventoryAdvice,
                 })
             }
         }
         return inventoryAdvices
     } catch (err) {
-        return { error: err.message, segment: errorLocation, position: 0 };
+        return { error: err.message, segment: errorLocation, position: 0 }
     }
 }
 
@@ -292,14 +296,14 @@ export const read850 = (data) => {
     const purchaseOrder = {
         carrierInfo: {},
         shipTo: {},
-        lineItems: []
+        lineItems: [],
     }
     const { elementDelimiter, lineTerminator } = getDelimiters(data)
     let currentShippingParty = ""
     const lines = getSegments(data, lineTerminator)
     let errorLocation
     try {
-        for (let line of lines) { 
+        for (let line of lines) {
             const elements = getElements(line, elementDelimiter)
             const segment = Object.values(elements)[0]
             errorLocation = segment
@@ -309,13 +313,15 @@ export const read850 = (data) => {
                 purchaseOrder.senderID = elements.ISA06
                 purchaseOrder.receiverQualifier = elements.ISA07
                 purchaseOrder.receiverID = elements.ISA08
-                purchaseOrder.createdAt = new Date(Date.UTC(
-                    `20` + elements.ISA09.slice(0,2), 
-                    parseInt(elements.ISA09.slice(2,4)) - 1,
-                    parseInt(elements.ISA09.slice(4,6)), 
-                    parseInt(elements.ISA10.slice(0,2)),
-                    parseInt(elements.ISA10.slice(2,4))
-                )).toISOString()
+                purchaseOrder.createdAt = new Date(
+                    Date.UTC(
+                        `20` + elements.ISA09.slice(0, 2),
+                        parseInt(elements.ISA09.slice(2, 4)) - 1,
+                        parseInt(elements.ISA09.slice(4, 6)),
+                        parseInt(elements.ISA10.slice(0, 2)),
+                        parseInt(elements.ISA10.slice(2, 4))
+                    )
+                ).toISOString()
                 purchaseOrder.isTest = elements.ISA15 === "T"
                 purchaseOrder.ISAControlNumber = elements.ISA13
             }
@@ -390,13 +396,13 @@ export const read850 = (data) => {
                     price: parseFloat(elements.PO104),
                     upc: elements.PO107,
                     sku: elements.PO109,
-                    modelNumber: elements.PO111
+                    modelNumber: elements.PO111,
                 })
             }
         }
         return purchaseOrder
     } catch (err) {
-        return { error: err.message, segment: errorLocation, position: 0 };
+        return { error: err.message, segment: errorLocation, position: 0 }
     }
 }
 export const read855 = (data) => {
@@ -419,14 +425,15 @@ export const read855 = (data) => {
                 interchangeInfo.senderID = elements.ISA06
                 interchangeInfo.receiverQualifier = elements.ISA07
                 interchangeInfo.receiverID = elements.ISA08
-                interchangeInfo.createdAt = new Date(Date.UTC(
-                    `20` + elements.ISA09.slice(0,2), 
-                    parseInt(elements.ISA09.slice(2,4)) - 1,
-                    parseInt(elements.ISA09.slice(4,6)), 
-                    parseInt(elements.ISA10.slice(0,2)),
-                    parseInt(elements.ISA10.slice(2,4))
-                    
-                )).toISOString()
+                interchangeInfo.createdAt = new Date(
+                    Date.UTC(
+                        `20` + elements.ISA09.slice(0, 2),
+                        parseInt(elements.ISA09.slice(2, 4)) - 1,
+                        parseInt(elements.ISA09.slice(4, 6)),
+                        parseInt(elements.ISA10.slice(0, 2)),
+                        parseInt(elements.ISA10.slice(2, 4))
+                    )
+                ).toISOString()
                 interchangeInfo.isTest = elements.ISA15 === "T"
                 interchangeInfo.ISAControlNumber = elements.ISA13
             }
@@ -437,7 +444,7 @@ export const read855 = (data) => {
                 if (currentAcknowledgement) {
                     acknowledgements.push({
                         ...interchangeInfo,
-                        ...currentAcknowledgement
+                        ...currentAcknowledgement,
                     })
                 }
                 currentAcknowledgement = {}
@@ -521,7 +528,7 @@ export const read855 = (data) => {
                 if (currentAcknowledgement) {
                     acknowledgements.push({
                         ...interchangeInfo,
-                        ...currentAcknowledgement
+                        ...currentAcknowledgement,
                     })
                 }
                 currentAcknowledgement = {}
@@ -554,14 +561,15 @@ export const read856 = (data) => {
                 interchangeInfo.senderID = elements.ISA06
                 interchangeInfo.receiverQualifier = elements.ISA07
                 interchangeInfo.receiverID = elements.ISA08
-                interchangeInfo.createdAt = new Date(Date.UTC(
-                    `20` + elements.ISA09.slice(0,2), 
-                    parseInt(elements.ISA09.slice(2,4)) - 1,
-                    parseInt(elements.ISA09.slice(4,6)), 
-                    parseInt(elements.ISA10.slice(0,2)),
-                    parseInt(elements.ISA10.slice(2,4))
-                    
-                )).toISOString()
+                interchangeInfo.createdAt = new Date(
+                    Date.UTC(
+                        `20` + elements.ISA09.slice(0, 2),
+                        parseInt(elements.ISA09.slice(2, 4)) - 1,
+                        parseInt(elements.ISA09.slice(4, 6)),
+                        parseInt(elements.ISA10.slice(0, 2)),
+                        parseInt(elements.ISA10.slice(2, 4))
+                    )
+                ).toISOString()
                 interchangeInfo.isTest = elements.ISA15 === "T"
                 interchangeInfo.ISAControlNumber = elements.ISA13
             }
@@ -570,20 +578,22 @@ export const read856 = (data) => {
             }
             if (segment === "ST") {
                 if (currentASN) {
-                    const parsedPackages = Object.values(currentASN.packages).map(pack => ({ ...pack, lineItems: Object.values(pack.lineItems) }))
+                    const parsedPackages = Object.values(currentASN.packages).map((pack) => ({
+                        ...pack,
+                        lineItems: Object.values(pack.lineItems),
+                    }))
                     currentASN.packages = parsedPackages
                     ASNs.push({
                         ...interchangeInfo,
-                        ...currentASN
+                        ...currentASN,
                     })
                 }
                 currentASN = {
                     shipment: {
                         shipTo: {},
-                        shipFrom: {}
                     },
                     order: {},
-                    packages: {}
+                    packages: {},
                 }
                 currentASN.STCode = elements.ST01
                 currentASN.STControlNumber = elements.ST02
@@ -596,13 +606,13 @@ export const read856 = (data) => {
             if (segment === "REF" && elements.REF01 === "BM") {
                 currentASN.shipment.BOL = elements.REF02
             }
-    
+
             // SHIPMENT LEVEL
             if (currentHLCode === "S") {
                 if (segment === "TD1") {
                     currentASN.shipment.packages = parseInt(elements.TD102)
                     // asn.shipment.weight = elements.TD107
-                    // asn.shipment.units = elements.TD108 
+                    // asn.shipment.units = elements.TD108
                 }
                 if (segment === "TD5") {
                     currentASN.shipment.SCAC = elements.TD503
@@ -625,6 +635,9 @@ export const read856 = (data) => {
                         currentASN.shipment.shipTo.zip = elements.N403
                     }
                 } else if (currentShippingParty === "SF") {
+                    if (!currentASN.shipment.shipFrom) {
+                        currentASN.shipment.shipFrom = {}
+                    }
                     if (segment === "N1") {
                         currentASN.shipment.shipFrom.name = elements.N102
                     }
@@ -639,26 +652,32 @@ export const read856 = (data) => {
                     }
                 }
             }
-    
+
             // ORDER LEVEL
             if (currentHLCode === "O") {
                 if (segment === "PRF") {
                     currentASN.order = {
                         purchaseOrder: elements.PRF01,
                         createdAt: elements.PRF04
-                            ? new Date(Date.UTC(elements.PRF04.slice(0, 4), parseInt(elements.PRF04.slice(4, 6)) - 1, elements.PRF04.slice(6, 8))).toISOString()
-                            : ''
+                            ? new Date(
+                                  Date.UTC(
+                                      elements.PRF04.slice(0, 4),
+                                      parseInt(elements.PRF04.slice(4, 6)) - 1,
+                                      elements.PRF04.slice(6, 8)
+                                  )
+                              ).toISOString()
+                            : "",
                     }
                 }
             }
-    
+
             // PACK LEVEL
             if (currentHLCode === "P") {
                 if (segment === "REF" && elements.REF01 === "2I") {
                     if (!currentASN.packages[currentHLID]) {
                         currentASN.packages[currentHLID] = {
                             trackingNumber: "",
-                            lineItems: {}
+                            lineItems: {},
                         }
                     }
                     currentASN.packages[currentHLID].trackingNumber = elements.REF02
@@ -667,7 +686,7 @@ export const read856 = (data) => {
                     if (!currentASN.packages[currentHLID]) {
                         currentASN.packages[currentHLID] = {
                             trackingNumber: "",
-                            lineItems: {}
+                            lineItems: {},
                         }
                     }
                     currentASN.packages[currentHLID].trackingNumber = elements.MAN02
@@ -679,7 +698,7 @@ export const read856 = (data) => {
                 if (!currentASN.packages[currentHLParentID]) {
                     currentASN.packages[currentHLParentID] = {
                         trackingNumber: "",
-                        lineItems: {}
+                        lineItems: {},
                     }
                 }
                 if (segment === "LIN") {
@@ -701,11 +720,14 @@ export const read856 = (data) => {
 
             if (segment === "IEA") {
                 if (currentASN && currentASN.order.purchaseOrder) {
-                    const parsedPackages = Object.values(currentASN.packages).map(pack => ({ ...pack, lineItems: Object.values(pack.lineItems) }))
+                    const parsedPackages = Object.values(currentASN.packages).map((pack) => ({
+                        ...pack,
+                        lineItems: Object.values(pack.lineItems),
+                    }))
                     currentASN.packages = parsedPackages
                     ASNs.push({
                         ...interchangeInfo,
-                        ...currentASN
+                        ...currentASN,
                     })
                 }
             }
@@ -715,7 +737,7 @@ export const read856 = (data) => {
         return { error: err.message, segment: errorLocation, position: 0 }
     }
 }
-export function read997 (data) {
+export function read997(data) {
     const { elementDelimiter, lineTerminator } = getDelimiters(data)
     const lines = getSegments(data, lineTerminator)
     const functionalAcknowledgement = {
@@ -734,13 +756,15 @@ export function read997 (data) {
                 functionalAcknowledgement.senderID = elements.ISA06
                 functionalAcknowledgement.receiverQualifier = elements.ISA07
                 functionalAcknowledgement.receiverID = elements.ISA08
-                functionalAcknowledgement.createdAt = new Date(Date.UTC(
-                    `20` + elements.ISA09.slice(0,2), 
-                    parseInt(elements.ISA09.slice(2,4)) - 1,
-                    parseInt(elements.ISA09.slice(4,6)), 
-                    parseInt(elements.ISA10.slice(0,2)),
-                    parseInt(elements.ISA10.slice(2,4))
-                )).toISOString()
+                functionalAcknowledgement.createdAt = new Date(
+                    Date.UTC(
+                        `20` + elements.ISA09.slice(0, 2),
+                        parseInt(elements.ISA09.slice(2, 4)) - 1,
+                        parseInt(elements.ISA09.slice(4, 6)),
+                        parseInt(elements.ISA10.slice(0, 2)),
+                        parseInt(elements.ISA10.slice(2, 4))
+                    )
+                ).toISOString()
                 functionalAcknowledgement.isTest = elements.ISA15 === "T"
                 functionalAcknowledgement.ISAControlNumber = elements.ISA13
             }
@@ -762,7 +786,7 @@ export function read997 (data) {
             }
             if (segment === "AK5") {
                 currentTransactionSet.accepted = EDIMaps.statusMap[elements.AK501]
-                functionalAcknowledgement.acknowledgedTransactionSets.push({...currentTransactionSet})
+                functionalAcknowledgement.acknowledgedTransactionSets.push({ ...currentTransactionSet })
                 currentTransactionSet = {}
             }
             if (segment === "AK9") {
@@ -770,12 +794,11 @@ export function read997 (data) {
                 functionalAcknowledgement.totalTransactionSets = parseInt(elements.AK902) || 0
                 functionalAcknowledgement.receivedTransactionSets = parseInt(elements.AK903) || 0
                 functionalAcknowledgement.acceptedTransactionSets = parseInt(elements.AK904) || 0
-    
             }
         }
     } catch (err) {
-        return { error: err.message, segment: errorLocation, position: 0 };
+        return { error: err.message, segment: errorLocation, position: 0 }
     }
 
-    return functionalAcknowledgement;
+    return functionalAcknowledgement
 }
