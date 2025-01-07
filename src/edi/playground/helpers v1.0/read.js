@@ -49,7 +49,7 @@ export function read810(data) {
                     shippingTerms: {},
                     invoiceTerms: {},
                     lineItems: [],
-                    taxes: {},
+                    taxes: [],
                     carrier: {},
                     shipment: {},
                 }
@@ -159,14 +159,14 @@ export function read810(data) {
                 currentInvoice.total = (parseFloat(elements.TDS01) / 100).toFixed(2)
             }
             if (segment === "TXI") {
-                const taxRef = EDIMaps.taxMap[elements.TXI01]
-                currentInvoice.jurisdiction = elements.TXI05
-                currentInvoice.taxes[taxRef] = {
+                currentInvoice.taxes.push({
+                    name: EDIMaps.taxMap[elements.TXI01],
                     amount: elements.TXI02,
                     percent: elements.TXI03,
                     definedBy: elements.TXI04,
+                    jurisdiction: elements.TXI05,
                     TIN: elements.TXI09,
-                }
+                })
             }
             if (segment === "CAD") {
                 currentInvoice.carrier.type = EDIMaps.carrierMethodMap[elements.CAD01]

@@ -1,4 +1,4 @@
-import { HashLink } from "react-router-hash-link";
+import { HashLink } from "react-router-hash-link"
 
 export default function Overview() {
     return (
@@ -19,7 +19,9 @@ export default function Overview() {
                     <div>M</div>
                     <div>1</div>
                     <div></div>
-                    <HashLink className="text-[14px] underline" to={"/edi#ids"}>Sender/Receiver ID Info</HashLink>
+                    <HashLink className="text-[14px] underline" to={"/edi#ids"}>
+                        Sender/Receiver ID Info
+                    </HashLink>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>GS</div>
@@ -27,7 +29,9 @@ export default function Overview() {
                     <div>M</div>
                     <div>1</div>
                     <div></div>
-                    <HashLink className="text-[14px] underline" to={"/edi#ids"}>Sender/Receiver ID Info</HashLink>
+                    <HashLink className="text-[14px] underline" to={"/edi#ids"}>
+                        Sender/Receiver ID Info
+                    </HashLink>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>ST</div>
@@ -166,8 +170,8 @@ export default function Overview() {
                 <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>TXI</div>
                     <div>Tax Information</div>
-                    <div>M</div>
-                    <div>1</div>
+                    <div>O</div>
+                    <div>&gt;1</div>
                     <div></div>
                     <div></div>
                 </div>

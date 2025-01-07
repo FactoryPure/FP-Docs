@@ -1,29 +1,3 @@
-import { taxMap } from "./EDICodeMaps.js"
-
-const taxMappingObject = Object.fromEntries(
-    Object.entries(taxMap).map(([key, val]) => [
-        key,
-        {
-            position: 1,
-            segment: "TXI",
-            amount: { position: 2, segment: "TXI" },
-            percent: { position: 3, segment: "TXI" },
-            definedBy: { position: 4, segment: "TXI" },
-        },
-    ])
-)
-
-const taxModelObject = Object.fromEntries(
-    Object.entries(taxMap).map(([key, val]) => [
-        `?${key}`,
-        {
-            amount: "Cstring",
-            percent: "Cstring",
-            definedBy: "?string",
-        },
-    ])
-)
-
 export const map810 = {
     vendor: { position: 6, segment: "ISA" },
     senderQualifier: { position: 5, segment: "ISA" },
@@ -104,7 +78,11 @@ export const map810 = {
     taxes: {
         position: 1,
         segment: "TXI",
-        ...taxMappingObject,
+        name: { position: 1, segment: "TXI" },
+        amount: { position: 2, segment: "TXI" },
+        percent: { position: 3, segment: "TXI" },
+        definedBy: { position: 4, segment: "TXI" },
+        jurisdiction: { position: 5, segement: "TXI" },
     },
     jurisdiction: { position: 5, segment: "TXI" },
     carrier: {
@@ -189,9 +167,15 @@ export const model810 = {
         volume: "?string",
         volumeUnit: "?string",
     },
-    taxes: {
-        ...taxModelObject,
-    },
+    "?taxes": [
+        {
+            name: "!string",
+            jurisdiction: "?string",
+            amount: "Cstring",
+            percent: "Cstring",
+            definedBy: "?string",
+        },
+    ],
     jurisdiction: "?string",
     carrier: {
         type: "?string",
