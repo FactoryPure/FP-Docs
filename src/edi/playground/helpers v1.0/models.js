@@ -162,8 +162,8 @@ export const model810 = {
     total: "!string",
     shipment: {
         items: "!string",
-        weight: "!string",
-        weightUnit: "!string",
+        weight: "?string",
+        weightUnit: "?string",
         volume: "?string",
         volumeUnit: "?string",
     },
@@ -328,12 +328,12 @@ export const model850 = {
         deliveryAddressType: "!string",
     },
     "?shipFrom": {
-        name: "!string",
-        address1: "!string",
+        name: "?string",
+        address1: "?string",
         address2: "?string",
-        city: "!string",
-        state: "!string",
-        zip: "!string",
+        city: "?string",
+        state: "?string",
+        zip: "?string",
     },
     shipTo: {
         name: "!string",
