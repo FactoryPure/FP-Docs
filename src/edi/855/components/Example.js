@@ -9,7 +9,7 @@ export default function Example() {
                 <br />
                 GS*PO*FACTORYPUREEDIP*VENDOREDIID*20230811*1145*1*X*004010~
                 <br />
-                ST*850*0001~
+                ST*855*0001~
                 <br />
                 BAK*00*AD*123456*20250918~
                 <br />
