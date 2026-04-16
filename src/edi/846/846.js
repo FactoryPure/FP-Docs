@@ -1,30 +1,28 @@
-import { HashLink } from "react-router-hash-link";
-import BackButton from "../components/BackButton";
-import BIA from "./components/BIA";
-import CTP from "./components/CTP";
-import CTT from "./components/CTT";
-import GE from "../headersAndTrailers/GE";
-import GS from "../headersAndTrailers/GS";
-import IEA from "../headersAndTrailers/IEA";
-import ISA from "../headersAndTrailers/ISA";
-import LDT from "./components/LDT";
-import LIN from "./components/LIN";
-import Overview from "./components/Overview";
-import PID from "./components/PID";
-import QTY from "./components/QTY";
-import SE from "../headersAndTrailers/SE";
-import ST from "../headersAndTrailers/ST";
-import Example from "./components/Example";
+import { HashLink } from "react-router-hash-link"
+import BackButton from "../components/BackButton"
+import BIA from "./components/BIA"
+import CTP from "./components/CTP"
+import CTT from "./components/CTT"
+import GE from "../headersAndTrailers/GE"
+import GS from "../headersAndTrailers/GS"
+import IEA from "../headersAndTrailers/IEA"
+import ISA from "../headersAndTrailers/ISA"
+import LDT from "./components/LDT"
+import LIN from "./components/LIN"
+import Overview from "./components/Overview"
+import PID from "./components/PID"
+import QTY from "./components/QTY"
+import SE from "../headersAndTrailers/SE"
+import ST from "../headersAndTrailers/ST"
+import Example from "./components/Example"
 
 export default function EightFortySix() {
     return (
         <>
             <BackButton previousLink={"/edi#guides"} />
-            <h1 className="text-offwhite font-bold text-[32px] leading-[1] mb-[16px]">
-                FactoryPure EDI 846
-            </h1>
+            <h1 className="text-offwhite font-bold text-[32px] leading-[1] mb-[16px]">FactoryPure EDI 846</h1>
             <h2 className="text-offwhite font-bold text-[24px] leading-[1] mb-[8px]">Version: 4010</h2>
-            <h2 className="text-offwhite font-bold text-[24px] leading-[1] mb-[32px]">Release: 1.0</h2>
+            <h2 className="text-offwhite font-bold text-[24px] leading-[1] mb-[32px]">Release: 1.1 (2026-04-16)</h2>
             <div className="flex gap-[32px]">
                 <div className="w-[70%]">
                     <Overview />
@@ -33,12 +31,19 @@ export default function EightFortySix() {
                     <ST transactionSetIdentifierCode={846} />
                     <BIA />
                     <div id="lin-loop" className="p-[8px] bg-darkgrey rounded-[4px] shadow-small mb-[32px]">
-                        <p className="text-fire text-[20px] font-bold leading-[1] mb-[8px] text-[18px]">LIN LOOP - Repeat: &gt;1</p>
+                        <p className="text-fire text-[20px] font-bold leading-[1] mb-[8px] text-[18px]">
+                            LIN LOOP - Repeat: &gt;1
+                        </p>
                         <LIN />
                         <PID />
                         <CTP />
-                        <LDT />
-                        <QTY />
+                        <div id="qty-loop" className="p-[8px] bg-grey/20 rounded-[4px] shadow-small">
+                            <p className="text-fire font-bold leading-[1] mb-[8px] text-[18px]">
+                                QTY LOOP - Repeat: &gt;1
+                            </p>
+                            <QTY />
+                            <LDT />
+                        </div>
                     </div>
                     <CTT />
                     <SE />
@@ -76,10 +81,15 @@ export default function EightFortySix() {
                                     <HashLink to="#ctp">CTP Segment</HashLink>
                                 </li>
                                 <li>
-                                    <HashLink to="#ldt">LDT Segment</HashLink>
-                                </li>
-                                <li>
-                                    <HashLink to="#qty">QTY Segment</HashLink>
+                                    <HashLink to="#qty-loop">QTY Loop</HashLink>
+                                    <ul className="pl-[8px] list-disc ml-[8px] text-offwhite">
+                                        <li>
+                                            <HashLink to="#qty">QTY Segment</HashLink>
+                                        </li>
+                                        <li>
+                                            <HashLink to="#ldt">LDT Segment</HashLink>
+                                        </li>
+                                    </ul>
                                 </li>
                             </ul>
                         </li>

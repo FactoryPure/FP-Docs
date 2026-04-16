@@ -2,7 +2,10 @@ export default function QTY() {
     return (
         <div id="qty" className="text-offwhite rounded-[4px] p-[32px] shadow-small bg-darkaccent">
             <h2 className="text-offwhite border-b pb-[8px] font-bold text-[20px] leading-[1] mb-[16px]">QTY Segment</h2>
-            <p className="text-offwhite mb-[16px]">To specific quantity information. Although this is a loop, please only send one quantity per line item. If available quantity is 0, please provide a lead time in the previous segment.</p>
+            <p className="text-offwhite mb-[16px]">
+                To specific quantity information. Although this is a loop, please only send one quantity per line item.
+                If available quantity is 0, please provide a lead time in the previous segment.
+            </p>
             <p className="text-fire font-bold leading-[1] mb-[16px] text-[18px]">Usage</p>
             <div className="text-offwhite grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] mb-[32px]">
                 <div className="text-offwhite font-bold text-[12px] uppercase grid grid-cols-[1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
@@ -50,7 +53,9 @@ export default function QTY() {
                     <div>R</div>
                     <div>1/15</div>
                     <div></div>
-                    <div className="col-span-full px-[8px] text-[16px] font-bold my-[8px]">Please only send current available quantity. If out of stock please notate 0.</div>
+                    <div className="col-span-full px-[8px] text-[16px] font-bold my-[8px]">
+                        If out of stock please notate 0. If possible please provide a lead time in another QTY loop
+                    </div>
                 </div>
             </div>
         </div>
