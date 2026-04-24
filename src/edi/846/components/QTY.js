@@ -43,7 +43,7 @@ export default function QTY() {
                     <div>M</div>
                     <div>ID</div>
                     <div>2/2</div>
-                    <div>V2</div>
+                    <div>17, 33, BA, V2</div>
                 </div>
                 <div className="text-offwhite grid grid-cols-[1fr_1fr_200px_1fr_1fr_1fr_1fr] gap-x-[16px] col-span-full pb-[4px] mb-[8px] border-b border-darkgrey">
                     <div>QTY02</div>
