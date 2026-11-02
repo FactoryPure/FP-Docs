@@ -14,3 +14,12 @@ export function fetchSpec(transactionType) {
 export function fetchRules() {
     return getData("/rules", "Failed to fetch rules")
 }
+
+const SPEC_PACKAGE_URL = "https://registry.npmjs.org/@factorypure/edi-functions"
+
+export async function fetchSpecPublishedAt(specVersion) {
+    const res = await fetch(SPEC_PACKAGE_URL)
+    if (!res.ok) throw new Error("Failed to fetch spec publish date")
+    const json = await res.json()
+    return json.time?.[specVersion] || null
+}

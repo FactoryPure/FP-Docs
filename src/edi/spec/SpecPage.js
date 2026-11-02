@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react"
 import { useParams } from "react-router-dom"
 import { HashLink } from "react-router-hash-link"
-import { fetchSpec, fetchRules } from "../api"
+import { fetchSpec, fetchRules, fetchSpecPublishedAt } from "../api"
 import BackButton from "../components/BackButton"
 import { SpecItemRenderer } from "./LoopRenderer"
 import SpecOverview from "./SpecOverview"
@@ -32,6 +32,22 @@ export default function SpecPage() {
         }
     }, [transactionType])
 
+    const specVersion = specData?.specVersion
+    const [specUpdatedAt, setSpecUpdatedAt] = useState(null)
+
+    useEffect(() => {
+        if (!specVersion) return
+        let cancelled = false
+        setSpecUpdatedAt(null)
+        // The publish date is a nice-to-have, so failures just leave it off
+        fetchSpecPublishedAt(specVersion)
+            .then((publishedAt) => !cancelled && setSpecUpdatedAt(publishedAt))
+            .catch(() => {})
+        return () => {
+            cancelled = true
+        }
+    }, [specVersion])
+
     const spec = useMemo(() => (specData ? annotateSpec(specData.spec) : []), [specData])
     const docs = TRANSACTION_DOCS[transactionType]
 
@@ -59,8 +75,11 @@ export default function SpecPage() {
             {docs?.release && (
                 <h2 className="text-offwhite font-bold text-[24px] leading-[1] mb-[8px]">Release: {docs.release}</h2>
             )}
-            {specData.specVersion && (
-                <p className="text-offwhite text-[14px] mb-[32px]">Generated from spec v{specData.specVersion}</p>
+            {specVersion && (
+                <p className="text-offwhite text-[14px] mb-[32px]">
+                    Generated from spec v{specVersion}
+                    {specUpdatedAt && ` (last updated ${new Date(specUpdatedAt).toLocaleDateString("en-CA")})`}
+                </p>
             )}
             <div className="flex gap-[32px]">
                 <div className="w-[70%]">

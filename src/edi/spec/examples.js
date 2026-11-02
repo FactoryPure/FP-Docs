@@ -1,7 +1,7 @@
 // Example EDI documents and release info shown alongside the generated spec pages.
 export const TRANSACTION_DOCS = {
     810: {
-        release: "1.1 (updated 2025-01-07)",
+        release: "2.0 (updated 2026-11-02)",
         exampleTitle: "Example Invoice",
         example: [
             "ISA*00*          *00*          *ZZ*VENDOREDIID    *ZZ*FACTORYPUREEDIP*230811*1145*U*00400*000000001*0*P*|~",
@@ -32,7 +32,7 @@ export const TRANSACTION_DOCS = {
         ].join("\n"),
     },
     846: {
-        release: "1.1 (updated 2026-04-16)",
+        release: "2.0 (updated 2026-11-02)",
         exampleTitle: "Example Inventory Advice",
         example: [
             "ISA*00*          *00*          *ZZ*VENDOREDIID    *ZZ*FACTORYPUREEDIP*230811*1145*U*00400*000000001*0*P*|~",
@@ -50,7 +50,7 @@ export const TRANSACTION_DOCS = {
         ].join("\n"),
     },
     850: {
-        release: "1.2 (updated 2024-06-17)",
+        release: "2.0 (updated 2026-11-02)",
         exampleTitle: "Example Purchase Order",
         example: [
             "ISA*00*          *00*          *ZZ*FACTORYPUREEDIP*ZZ*VENDOREDIID    *230811*1145*U*00400*000000001*0*P*|~",
@@ -77,7 +77,7 @@ export const TRANSACTION_DOCS = {
         ].join("\n"),
     },
     855: {
-        release: "1.0 (updated 2025-09-18)",
+        release: "2.0 (updated 2026-11-02)",
         exampleTitle: "Example Purchase Order Acknowledgement",
         example: [
             "ISA*00*          *00*          *ZZ*FACTORYPUREEDIP*ZZ*VENDOREDIID    *230811*1145*U*00400*000000001*0*P*|~",
@@ -96,7 +96,7 @@ export const TRANSACTION_DOCS = {
         ].join("\n"),
     },
     856: {
-        release: "1.0",
+        release: "2.0 (updated 2026-11-02)",
         exampleTitle: "Example Shipping Notice",
         example: [
             "ISA*00*          *00*          *ZZ*VENDOREDIID    *ZZ*FACTORYPUREEDIP*230811*1145*U*00400*000000001*0*P*|~",
@@ -129,7 +129,7 @@ export const TRANSACTION_DOCS = {
         ].join("\n"),
     },
     997: {
-        release: "1.0",
+        release: "2.0 (updated 2026-11-02)",
         exampleTitle: "Example Functional Acknowledgement",
         example: [
             "ISA*00*          *00*          *ZZ*VENDOREDIID    *ZZ*FACTORYPUREEDIP*230811*1145*U*00400*000000001*0*P*|~",
