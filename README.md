@@ -2,6 +2,14 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## EDI spec pages
+
+The EDI implementation guides (`/edi/810`, `/edi/846`, `/edi/850`, `/edi/855`, `/edi/856`, `/edi/997`) are rendered from the live spec in [`@factorypure/edi-functions`](https://github.com/FactoryPure/npm-packages/tree/main/edi-functions), served by `as2-server` at `/edi/spec/:transactionType` and `/edi/rules`. To change segments, elements, requirements, or notes, update the spec in `edi-functions`, publish it, and bump `as2-server`.
+
+Example documents and release labels live in `src/edi/spec/examples.js`.
+
+The API defaults to `https://as2.fpdash.com/edi`. Set `REACT_APP_EDI_API_URL` (for example in `.env.local`) to point at a local `as2-server`, such as `http://localhost:8080/edi`.
+
 ## Available Scripts
 
 In the project directory, you can run:
